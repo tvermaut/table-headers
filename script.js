@@ -1,126 +1,97 @@
 async function init() {
-    try {
-        const response = await fetch('data.json');
-        const data = await response.json();
-        const rows = data.results || data;
+    const response = await fetch('data.json');
+    const data = await response.json();
+    const rows = data.results || data;
 
-        const tablesMap = {};
-        rows.forEach(row => {
-            const t = row['Tabel']?.[0];
-            if (t) {
-                if (!tablesMap[t.id]) tablesMap[t.id] = [];
-                tablesMap[t.id].push(row);
-            }
-        });
-
-        const container = document.getElementById('table-container');
-        container.innerHTML = '';
-
-        for (const tableId in tablesMap) {
-            const sortedItems = tablesMap[tableId].sort((a, b) => 
-                (a['logische volgorde'] || "").localeCompare(b['logische volgorde'] || "", undefined, {numeric: true})
-            );
-
-            const roots = sortedItems.filter(item => {
-                const code = item['logische volgorde'] || "";
-                return !sortedItems.some(other => {
-                    const oC = other['logische volgorde'] || "";
-                    return code.startsWith(oC + ".") && code !== oC;
-                });
-            });
-
-            const title = document.createElement('h2');
-            title.textContent = `Tabel: ${tableId}`;
-            container.appendChild(title);
-
-            // De nieuwe Wrapper die alles bij elkaar houdt
-            const tableWrapper = document.createElement('div');
-            tableWrapper.className = 'table-wrapper';
-
-            const headerContainer = document.createElement('div');
-            headerContainer.className = 'header-container';
-            roots.forEach(root => headerContainer.appendChild(renderNode(root, sortedItems)));
-            tableWrapper.appendChild(headerContainer);
-
-            // Sub-row toevoegen binnen de wrapper
-            tableWrapper.appendChild(renderSubRow(sortedItems));
-            
-            container.appendChild(tableWrapper);
+    const tablesMap = {};
+    rows.forEach(row => {
+        const t = row['Tabel']?.[0];
+        if (t) {
+            if (!tablesMap[t.id]) tablesMap[t.id] = [];
+            tablesMap[t.id].push(row);
         }
-    } catch (e) {
-        console.error("Fout:", e);
+    });
+
+    const container = document.getElementById('table-container');
+    container.innerHTML = '';
+
+    for (const tableId in tablesMap) {
+        renderTable(tablesMap[tableId], container, tableId);
     }
 }
 
-function renderNode(node, allItems) {
-    const group = document.createElement('div');
-    group.className = 'column-group';
-
-    const cell = document.createElement('div');
-    cell.className = 'header-cell';
+function renderTable(items, container, id) {
+    const sorted = items.sort((a, b) => (a['logische volgorde'] || "").localeCompare(b['logische volgorde'] || "", undefined, {numeric: true}));
     
-    const code = node['logische volgorde'] || "";
-    const children = allItems.filter(i => {
-        const iC = i['logische volgorde'] || "";
-        return iC.startsWith(code + ".") && iC.split('.').length === code.split('.').length + 1;
+    // 1. Identificeer leaf-nodes en ken ze een index toe
+    const leaves = sorted.filter(i => !sorted.some(other => (other['logische volgorde'] || "").startsWith(i['logische volgorde'] + ".")));
+    
+    // Bereken totaal aantal sub-kolommen voor het grid
+    let totalGridCols = 0;
+    const leafInfo = leaves.map(leaf => {
+        const subType = leaf['sub']?.id;
+        const subCount = subType === 1351 ? 3 : (subType === 1352 ? 2 : 1);
+        const start = totalGridCols + 1;
+        totalGridCols += subCount;
+        return { ...leaf, gridStart: start, gridEnd: totalGridCols + 1, subCount };
     });
 
-    // Bepaal of het een leaf of een groep is voor de accolade-logica
-    if (children.length > 0) {
-        cell.classList.add('is-group');
-    } else {
-        cell.classList.add('is-leaf');
-    }
+    const grid = document.createElement('div');
+    grid.className = 'table-grid';
+    grid.style.gridTemplateColumns = `repeat(${totalGridCols}, 1fr)`;
 
-    const titleArea = document.createElement('div');
-    titleArea.className = 'title-area';
-    const span = document.createElement('span');
-    span.innerHTML = node['titel'] || node['lbl'] || '';
-    if (node['verticaal'] === true) span.className = 'vertical-text';
-    titleArea.appendChild(span);
-    cell.appendChild(titleArea);
-
-    const lbl = document.createElement('div');
-    lbl.className = 'volgorde-lbl';
-    lbl.textContent = node['volgorde lbl'] || '';
-    cell.appendChild(lbl);
-
-    group.appendChild(cell);
-
-    if (children.length > 0) {
-        const childrenWrapper = document.createElement('div');
-        childrenWrapper.className = 'children-container';
-        children.forEach(child => childrenWrapper.appendChild(renderNode(child, allItems)));
-        group.appendChild(childrenWrapper);
-    }
-
-    return group;
-}
-
-function renderSubRow(allItems) {
-    const subRow = document.createElement('div');
-    subRow.className = 'sub-row-container';
-
-    const leafNodes = allItems.filter(i => 
-        !allItems.some(other => (other['logische volgorde'] || "").startsWith(i['logische volgorde'] + "."))
-    );
-
-    leafNodes.forEach(node => {
-        const subCol = document.createElement('div');
-        subCol.className = 'sub-column';
+    // 2. Plaats alle items (ook groepen) in het grid
+    sorted.forEach(item => {
+        const code = item['logische volgorde'] || "";
+        const depth = code.split('.').length;
         
-        const subType = node['sub']?.id;
-        const letters = subType === 1351 ? ['b', 'r', 'e'] : (subType === 1352 ? ['f', 'c'] : [null]);
+        // Vind alle leaves die onder dit item vallen voor de breedte
+        const leavesUnder = leafInfo.filter(l => (l['logische volgorde'] || "").startsWith(code));
+        const start = leavesUnder[0].gridStart;
+        const end = leavesUnder[leavesUnder.length - 1].gridEnd;
 
-        letters.forEach(l => {
-            const div = document.createElement('div');
-            div.className = 'sub-item';
-            div.innerHTML = l || '&nbsp;';
-            subCol.appendChild(div);
-        });
-        subRow.appendChild(subCol);
+        const cell = document.createElement('div');
+        cell.className = 'cell';
+        cell.style.gridColumn = `${start} / ${end}`;
+        cell.style.gridRow = depth;
+
+        const isGroup = sorted.some(other => (other['logische volgorde'] || "").startsWith(code + "."));
+        if (isGroup) cell.classList.add('group-cell');
+
+        const span = document.createElement('span');
+        span.innerHTML = item['titel'] || item['lbl'] || '';
+        if (item['verticaal']) span.className = 'vertical-text';
+        cell.appendChild(span);
+
+        if (!isGroup) {
+            const lbl = document.createElement('div');
+            lbl.className = 'volgorde-lbl';
+            lbl.textContent = item['volgorde lbl'] || '';
+            cell.appendChild(lbl);
+        }
+        grid.appendChild(cell);
     });
-    return subRow;
+
+    // 3. Plaats de sub-letters (b|r|e) in de onderste rij
+    leafInfo.forEach(leaf => {
+        const subType = leaf['sub']?.id;
+        const letters = subType === 1351 ? ['b', 'r', 'e'] : (subType === 1352 ? ['f', 'c'] : [null]);
+        
+        letters.forEach((l, idx) => {
+            const subCell = document.createElement('div');
+            subCell.className = 'cell sub-item';
+            subCell.innerHTML = l || '&nbsp;';
+            subCell.style.gridColumn = leaf.gridStart + idx;
+            // Plaats dit onder de diepste header-rij
+            subCell.style.gridRow = 10; 
+            grid.appendChild(subCell);
+        });
+    });
+
+    const h2 = document.createElement('h2');
+    h2.textContent = `Tabel: ${id}`;
+    container.appendChild(h2);
+    container.appendChild(grid);
 }
 
 window.onload = init;
