@@ -46,17 +46,19 @@ function generateTable(items, tableId) {
 
         levelItems.forEach(item => {
             const th = document.createElement('th');
+            const titleText = item['titel'] || item['lbl'] || '';
             const isVertical = item['verticaal'] === true; // Check de nieuwe boolean kolom
 
-            const span = document.createElement('span');
-            span.textContent = item['titel'] || item['lbl'] || '';
+            // Gebruik een container span voor de tekst
+            const titleSpan = document.createElement('span');
+            titleSpan.innerHTML = titleText;
             
             if (isVertical) {
-                span.className = 'vertical-text';
+                titleSpan.className = 'vertical-text';
                 th.classList.add('has-vertical');
             }
             
-            th.appendChild(span);
+            th.appendChild(titleSpan);
 
             const code = item['logische volgorde'] || "";
 
