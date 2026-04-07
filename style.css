@@ -3,29 +3,35 @@ body {
     color: #000;
     background-color: #fff;
     padding: 20px;
+    margin: 0;
+}
+
+#table-container {
+    width: 100%;
 }
 
 h2 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    font-weight: normal; /* Geen bold */
     border-bottom: 1px solid #000;
-    margin-top: 40px;
+    margin: 40px 0 10px 0;
     padding-bottom: 5px;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 30px;
-    table-layout: fixed; /* Zorgt voor strakke verdeling over 100% breedte */
+    margin-bottom: 50px;
+    table-layout: fixed; /* Forceert 100% breedte verdeling */
 }
 
 th {
     border: 1px solid #000;
-    padding: 6px;
-    font-weight: bold;
-    font-size: 11px;
+    padding: 8px 4px;
+    font-weight: normal; /* Geen bold */
+    font-size: 12px;
     text-align: center;
+    vertical-align: middle;
     word-wrap: break-word;
-    background: none;
-    color: #000;
+    background: transparent;
 }

@@ -1,16 +1,15 @@
 async function init() {
     try {
         const response = await fetch('data.json');
-        const rawData = await response.json();
-        const rows = rawData.results || rawData;
+        const rows = await response.json();
+        const data = rows.results || rows;
 
-        // 1. Groepeer op Tabel (field_3225)
         const tablesMap = {};
-        rows.forEach(row => {
-            const tableEntry = row['Tabel']?.[0];
-            if (tableEntry) {
-                if (!tablesMap[tableEntry.id]) tablesMap[tableEntry.id] = [];
-                tablesMap[tableEntry.id].push(row);
+        data.forEach(row => {
+            const t = row['Tabel']?.[0];
+            if (t) {
+                if (!tablesMap[t.id]) tablesMap[t.id] = [];
+                tablesMap[t.id].push(row);
             }
         });
 
@@ -18,87 +17,75 @@ async function init() {
         container.innerHTML = '';
 
         for (const tableId in tablesMap) {
-            const h2 = document.createElement('h2');
-            h2.textContent = `Tabel: ${tableId}`;
-            container.appendChild(h2);
-            
-            const htmlTable = generateNestedHeader(tablesMap[tableId]);
-            container.appendChild(htmlTable);
+            const title = document.createElement('h2');
+            title.textContent = `Tabel: ${tableId}`;
+            container.appendChild(title);
+            container.appendChild(generateTable(tablesMap[tableId]));
         }
     } catch (e) {
         console.error("Fout bij laden:", e);
     }
 }
 
-function generateNestedHeader(data) {
+function generateTable(items) {
+    // 1. Sorteer op logische volgorde (AA.BB.CC.DD)
+    const sorted = items.sort((a, b) => {
+        const aVal = a['logische volgorde'] || "";
+        const bVal = b['logische volgorde'] || "";
+        return aVal.localeCompare(bVal, undefined, {numeric: true, sensitivity: 'base'});
+    });
+
     const table = document.createElement('table');
     const thead = document.createElement('thead');
 
-    // 1. Sorteer data op de 'logische volgorde' string (AA.BB.CC.DD)
-    // We splitsen op punten en vergelijken de numerieke segmenten
-    const sortedData = data.sort((a, b) => {
-        const partsA = (a['logische volgorde'] || "").split('.').map(Number);
-        const partsB = (b['logische volgorde'] || "").split('.').map(Number);
-        for (let i = 0; i < Math.max(partsA.length, partsB.length); i++) {
-            if ((partsA[i] || 0) !== (partsB[i] || 0)) {
-                return (partsA[i] || 0) - (partsB[i] || 0);
-            }
-        }
-        return 0;
-    });
+    // 2. Hulpunctie: telt hoeveel 'bladeren' (kolommen zonder kinderen) onder dit item vallen
+    function countLeaves(parentCode) {
+        // Een leaf is een item dat GEEN ander item heeft dat begint met zijn eigen code + "."
+        const children = sorted.filter(i => (i['logische volgorde'] || "").startsWith(parentCode + "."));
+        
+        if (children.length === 0) return 1;
 
-    // 2. Bepaal maximale diepte (aantal segmenten in AA.BB.CC.DD)
-    let maxDepth = 0;
-    sortedData.forEach(d => {
-        const depth = (d['logische volgorde'] || "").split('.').length;
-        if (depth > maxDepth) maxDepth = depth;
-    });
-
-    // 3. Bouw een matrix voor de header cellen [rij][kolom]
-    const headerRows = Array.from({ length: maxDepth }, () => []);
-
-    // Helper om te tellen hoeveel "leaf nodes" (eindpunten) onder een item vallen voor colspan
-    function getLeafCount(item, allItems) {
-        const itemCode = item['logische volgorde'];
-        const children = allItems.filter(child => {
-            const childCode = child['logische volgorde'];
-            return childCode.startsWith(itemCode + ".") && childCode.split('.').length === itemCode.split('.').length + 1;
+        // Tel alleen de items die zelf geen kinderen meer hebben binnen deze selectie
+        const leavesUnderneath = sorted.filter(i => {
+            const code = i['logische volgorde'] || "";
+            const isDescendant = code.startsWith(parentCode + ".");
+            const hasNoOwnChildren = !sorted.some(other => (other['logische volgorde'] || "").startsWith(code + "."));
+            return isDescendant && hasNoOwnChildren;
         });
 
-        if (children.length === 0) return 1;
-        return children.reduce((sum, child) => sum + getLeafCount(child, allItems), 0);
+        return leavesUnderneath.length || 1;
     }
 
-    // 4. Verdeel de items over de rijen
-    sortedData.forEach(item => {
-        const code = item['logische volgombe'] || "";
-        const level = code.split('.').length - 1;
-        
-        const cell = {
-            label: item['titel'] || item['lbl'],
-            colspan: getLeafCount(item, sortedData),
-            isLeaf: !sortedData.some(other => other['logische volgorde'].startsWith(code + "."))
-        };
+    // 3. Bepaal max diepte
+    const depths = sorted.map(i => (i['logische volgorde'] || "").split('.').length);
+    const maxDepth = Math.max(...depths);
 
-        headerRows[level].push(cell);
-    });
-
-    // 5. Render de rijen naar HTML
-    headerRows.forEach((rowCells, rowIndex) => {
+    // 4. Maak rijen
+    for (let d = 1; d <= maxDepth; d++) {
         const tr = document.createElement('tr');
-        rowCells.forEach(cell => {
+        
+        // Pak alle items die op dit niveau zitten
+        const levelItems = sorted.filter(i => (i['logische volgorde'] || "").split('.').length === d);
+
+        levelItems.forEach(item => {
+            const code = item['logische volgorde'] || "";
             const th = document.createElement('th');
-            th.textContent = cell.label;
-            if (cell.colspan > 1) th.colSpan = cell.colspan;
-            
-            // Rowspan: als het een leaf is, moet hij doortrekken naar de bodem van de header
-            if (cell.isLeaf && rowIndex < maxDepth - 1) {
-                th.rowSpan = maxDepth - rowIndex;
+            th.textContent = item['titel'] || item['lbl'];
+
+            // Bereken breedte (colspan)
+            const leaves = countLeaves(code);
+            if (leaves > 1) th.colSpan = leaves;
+
+            // Bereken hoogte (rowspan): als dit item geen kinderen heeft, moet hij de rest van de rijen vullen
+            const hasChildren = sorted.some(other => (other['logische volgorde'] || "").startsWith(code + "."));
+            if (!hasChildren && d < maxDepth) {
+                th.rowSpan = (maxDepth - d) + 1;
             }
+
             tr.appendChild(th);
         });
         thead.appendChild(tr);
-    });
+    }
 
     table.appendChild(thead);
     return table;
