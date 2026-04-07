@@ -1,58 +1,65 @@
 body { font-family: sans-serif; color: #555; margin: 30px; }
 
-.table-grid {
-    display: grid;
+.header-row {
+    display: flex;
     width: 100%;
     border-top: 1px solid #555;
     border-left: 1px solid #555;
-    background-color: #fff;
-    /* De grid-template-columns worden door JS gezet op basis van het aantal letters */
+    align-items: flex-end; /* Belangrijk: alles lijnt onderaan uit */
 }
 
-.cell {
+.column-stack {
+    display: flex;
+    flex-direction: column-reverse; /* Stapelen van onder naar boven */
     border-right: 1px solid #555;
-    border-bottom: 1px solid #555;
+    flex: 1;
+    min-width: min-content;
+}
+
+.header-block {
+    width: 100%;
+    border-top: 1px solid #555; /* Dit wordt de horizontale lijn tussen blokken */
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
     padding: 8px 4px;
-    box-sizing: border-box;
     position: relative;
-    min-height: 40px;
 }
 
-/* De Sierlijke Accolade: BREED aan de onderkant, SMAL aan de bovenkant */
-.group-cell {
-    border-bottom: none; /* Geen lijn onder de tekst van een groep */
-    padding-bottom: 25px; 
-}
+/* De onderste blokken (nummers) hebben geen bovenlijn nodig omdat ze de basis vormen */
+.stack-base { border-top: none; height: 35px; }
 
-.group-cell::after {
+/* De Sierlijke Accolade: wijst nu OMHOOG vanaf de scheidingslijn */
+.has-accolade {
+    padding-top: 20px;
+}
+.has-accolade::before {
     content: "";
     position: absolute;
-    bottom: 2px;
-    left: 4px;
-    right: 4px;
-    height: 18px;
-    /* De accolade wijst nu OMHOOG naar de groepstitel */
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 18' preserveAspectRatio='none'%3E%3Cpath d='M0,18 C0,8 15,6 35,6 L45,6 C48,6 50,2 50,0 C50,2 52,6 55,6 L75,6 C90,6 100,8 100,18' fill='none' stroke='%23555' stroke-width='0.8'/%3E%3C/svg%3E");
+    top: 2px;
+    left: 10%;
+    right: 10%;
+    height: 15px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 15' preserveAspectRatio='none'%3E%3Cpath d='M0,15 C0,5 15,3 35,3 L45,3 C48,3 50,0 50,0 C50,0 52,3 55,3 L75,3 C90,3 100,5 100,15' fill='none' stroke='%23555' stroke-width='1'/%3E%3C/svg%3E");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 
-.num-cell {
-    height: 35px;
-    font-size: 11px;
-    border-bottom: 1px solid #555;
+.sub-row {
+    display: flex;
+    width: 100%;
+    border-top: 1px solid #555;
 }
-
-.sub-cell {
-    height: 25px;
+.sub-letter {
+    flex: 1;
+    text-align: center;
     font-size: 10px;
-    border-bottom: none;
+    line-height: 20px;
+    border-right: 1px solid #ccc;
 }
+.sub-letter:last-child { border-right: none; }
 
 .vertical-text {
     writing-mode: vertical-rl;
