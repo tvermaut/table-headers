@@ -1,29 +1,40 @@
 async function init() {
-    const res = await fetch('data.json');
-    const data = await res.json();
-    const items = data.results || data;
+    try {
+        const response = await fetch('data.json');
+        const data = await response.json();
+        const items = data.results || data;
 
-    const tablesMap = {};
-    items.forEach(r => {
-        const tid = r['Tabel']?.[0]?.id;
-        if (tid) (tablesMap[tid] = tablesMap[tid] || []).push(r);
-    });
+        const tablesMap = {};
+        items.forEach(r => {
+            const tid = r['Tabel']?.[0]?.id;
+            if (tid) (tablesMap[tid] = tablesMap[tid] || []).push(r);
+        });
 
-    const container = document.getElementById('table-container');
-    container.innerHTML = '';
+        const container = document.getElementById('table-container');
+        container.innerHTML = '';
 
-    for (const tid in tablesMap) {
-        renderTableStack(tablesMap[tid], container, tid);
+        for (const tid in tablesMap) {
+            renderTableStack(tablesMap[tid], container, tid);
+        }
+    } catch (e) {
+        console.error("Fout bij laden:", e);
     }
 }
 
 function renderTableStack(items, target, tid) {
-    const sorted = items.sort((a, b) => (a['logische volgorde'] || "").localeCompare(b['logische volgorde'] || "", undefined, {numeric: true}));
+    // Sorteer op logische volgorde (01, 01.1, etc.)
+    const sorted = items.sort((a, b) => 
+        (a['logische volgorde'] || "").localeCompare(b['logische volgorde'] || "", undefined, {numeric: true})
+    );
     
-    // 1. Vind de onderste elementen (de kolommen met de nummers)
+    // Vind de leaf-nodes (de kolommen die daadwerkelijk nummers hebben)
     const leafNodes = sorted.filter(i => 
         !sorted.some(other => (other['logische volgorde'] || "").startsWith(i['logische volgorde'] + "."))
     );
+
+    const title = document.createElement('h2');
+    title.textContent = `Tabel: ${tid}`;
+    target.appendChild(title);
 
     const headerRow = document.createElement('div');
     headerRow.className = 'header-row';
@@ -32,30 +43,31 @@ function renderTableStack(items, target, tid) {
         const stack = document.createElement('div');
         stack.className = 'column-stack';
 
-        // STAP 1: De letters (b|r|e) - helemaal onderaan
+        // 1. Onderste laag: b|r|e of f|c
         const subType = leaf['sub']?.id;
-        if (subId === 1351 || subId === 1352) {
+        if (subType === 1351 || subType === 1352) {
             const subDiv = document.createElement('div');
             subDiv.className = 'sub-row';
-            const letters = (subId === 1351) ? ['b','r','e'] : ['f','c'];
+            const letters = (subType === 1351) ? ['b','r','e'] : ['f','c'];
             letters.forEach(l => {
-                const span = document.createElement('div');
-                span.className = 'sub-letter';
-                span.textContent = l;
-                subDiv.appendChild(span);
+                const div = document.createElement('div');
+                div.className = 'sub-letter';
+                div.textContent = l;
+                subDiv.appendChild(div);
             });
             stack.appendChild(subDiv);
         }
 
-        // STAP 2: Het nummer (de basis van de stack)
+        // 2. Basis laag: Het kolomnummer (volgorde lbl)
         const numBlock = document.createElement('div');
         numBlock.className = 'header-block stack-base';
         numBlock.textContent = leaf['volgorde lbl'] || '';
         stack.appendChild(numBlock);
 
-        // STAP 3: De hiërarchie omhoog bouwen
+        // 3. Hiërarchie omhoog bouwen (ouders opzoeken)
         const parts = (leaf['logische volgorde'] || "").split('.');
-        // We lopen van de leaf naar de root (bijv. 01.2.3 -> 01.2 -> 01)
+        
+        // We lopen van de diepste code naar de root (bijv. 01.2.3 -> 01.2 -> 01)
         for (let i = parts.length; i > 0; i--) {
             const currentCode = parts.slice(0, i).join('.');
             const node = sorted.find(n => n['logische volgorde'] === currentCode);
@@ -64,13 +76,12 @@ function renderTableStack(items, target, tid) {
                 const block = document.createElement('div');
                 block.className = 'header-block';
                 
-                // Alleen de titel van de leaf zelf (de onderste) of groepen
                 const span = document.createElement('span');
-                span.innerHTML = node['titel'] || node['lbl'];
+                span.innerHTML = node['titel'] || node['lbl'] || '';
                 if (node['verticaal']) span.className = 'vertical-text';
                 block.appendChild(span);
 
-                // Als dit een ouder is, voeg de accolade toe
+                // Als dit een ouder is (niet de leaf zelf), krijgt hij een accolade
                 if (i < parts.length) {
                     block.classList.add('has-accolade');
                 }
@@ -81,9 +92,6 @@ function renderTableStack(items, target, tid) {
         headerRow.appendChild(stack);
     });
 
-    const h2 = document.createElement('h2');
-    h2.textContent = `Tabel: ${tid}`;
-    target.appendChild(h2);
     target.appendChild(headerRow);
 }
 
