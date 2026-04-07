@@ -1,11 +1,11 @@
 async function init() {
     try {
         const response = await fetch('data.json');
-        const rows = await response.json();
-        const data = rows.results || rows;
+        const data = await response.json();
+        const rows = data.results || data;
 
         const tablesMap = {};
-        data.forEach(row => {
+        rows.forEach(row => {
             const t = row['Tabel']?.[0];
             if (t) {
                 if (!tablesMap[t.id]) tablesMap[t.id] = [];
@@ -21,12 +21,11 @@ async function init() {
                 (a['logische volgorde'] || "").localeCompare(b['logische volgorde'] || "", undefined, {numeric: true})
             );
 
-            // CORRECTIE: De filter-logica voor root-nodes (geen 'otherCode' error meer)
             const roots = sortedItems.filter(item => {
                 const code = item['logische volgorde'] || "";
                 return !sortedItems.some(other => {
-                    const otherC = other['logische volgorde'] || "";
-                    return code.startsWith(otherC + ".") && code !== otherC;
+                    const oC = other['logische volgorde'] || "";
+                    return code.startsWith(oC + ".") && code !== oC;
                 });
             });
 
@@ -34,53 +33,22 @@ async function init() {
             title.textContent = `Tabel: ${tableId}`;
             container.appendChild(title);
 
-            // Container voor de eigenlijke header-blokken
-            const wrapper = document.createElement('div');
-            wrapper.className = 'header-container';
-            roots.forEach(root => wrapper.appendChild(renderNode(root, sortedItems)));
-            container.appendChild(wrapper);
+            // De nieuwe Wrapper die alles bij elkaar houdt
+            const tableWrapper = document.createElement('div');
+            tableWrapper.className = 'table-wrapper';
 
-            // De sub-row voor b|r|e en f|c (onder de laatste lijn)
-            const subRow = document.createElement('div');
-            subRow.className = 'sub-row-container';
-            subRow.style.borderLeft = '1px solid #555';
-            subRow.style.display = 'flex';
-            subRow.style.width = '100%';
+            const headerContainer = document.createElement('div');
+            headerContainer.className = 'header-container';
+            roots.forEach(root => headerContainer.appendChild(renderNode(root, sortedItems)));
+            tableWrapper.appendChild(headerContainer);
 
-            // Alle leaf-nodes (kolommen zonder kinderen)
-            const leafNodes = sortedItems.filter(i => 
-                !sortedItems.some(other => (other['logische volgorde'] || "").startsWith(i['logische volgorde'] + "."))
-            );
-
-            leafNodes.forEach(node => {
-                const subCol = document.createElement('div');
-                subCol.className = 'sub-column';
-                subCol.style.flex = "1";
-                subCol.style.display = "flex";
-                subCol.style.borderRight = "1px solid #555";
-                
-                const subType = node['sub']?.id;
-                const letters = subType === 1351 ? ['b', 'r', 'e'] : (subType === 1352 ? ['f', 'c'] : [null]);
-
-                letters.forEach(l => {
-                    const div = document.createElement('div');
-                    div.className = 'sub-item';
-                    div.style.flex = "1";
-                    div.style.textAlign = "center";
-                    div.style.fontSize = "10px";
-                    div.style.lineHeight = "18px";
-                    if (letters.length > 1 && l !== letters[letters.length - 1]) {
-                        div.style.borderRight = "1px solid #555";
-                    }
-                    div.innerHTML = l || '&nbsp;';
-                    subCol.appendChild(div);
-                });
-                subRow.appendChild(subCol);
-            });
-            container.appendChild(subRow);
+            // Sub-row toevoegen binnen de wrapper
+            tableWrapper.appendChild(renderSubRow(sortedItems));
+            
+            container.appendChild(tableWrapper);
         }
     } catch (e) {
-        console.error("Fout in init:", e);
+        console.error("Fout:", e);
     }
 }
 
@@ -90,6 +58,19 @@ function renderNode(node, allItems) {
 
     const cell = document.createElement('div');
     cell.className = 'header-cell';
+    
+    const code = node['logische volgorde'] || "";
+    const children = allItems.filter(i => {
+        const iC = i['logische volgorde'] || "";
+        return iC.startsWith(code + ".") && iC.split('.').length === code.split('.').length + 1;
+    });
+
+    // Bepaal of het een leaf of een groep is voor de accolade-logica
+    if (children.length > 0) {
+        cell.classList.add('is-group');
+    } else {
+        cell.classList.add('is-leaf');
+    }
 
     const titleArea = document.createElement('div');
     titleArea.className = 'title-area';
@@ -99,13 +80,6 @@ function renderNode(node, allItems) {
     titleArea.appendChild(span);
     cell.appendChild(titleArea);
 
-    const code = node['logische volgorde'] || "";
-    const children = allItems.filter(i => {
-        const iCode = i['logische volgorde'] || "";
-        return iCode.startsWith(code + ".") && iCode.split('.').length === code.split('.').length + 1;
-    });
-
-    // Het volgorde nummer (volgorde lbl) onderin de cel
     const lbl = document.createElement('div');
     lbl.className = 'volgorde-lbl';
     lbl.textContent = node['volgorde lbl'] || '';
@@ -116,12 +90,37 @@ function renderNode(node, allItems) {
     if (children.length > 0) {
         const childrenWrapper = document.createElement('div');
         childrenWrapper.className = 'children-container';
-        childrenWrapper.style.display = 'flex';
         children.forEach(child => childrenWrapper.appendChild(renderNode(child, allItems)));
         group.appendChild(childrenWrapper);
     }
 
     return group;
+}
+
+function renderSubRow(allItems) {
+    const subRow = document.createElement('div');
+    subRow.className = 'sub-row-container';
+
+    const leafNodes = allItems.filter(i => 
+        !allItems.some(other => (other['logische volgorde'] || "").startsWith(i['logische volgorde'] + "."))
+    );
+
+    leafNodes.forEach(node => {
+        const subCol = document.createElement('div');
+        subCol.className = 'sub-column';
+        
+        const subType = node['sub']?.id;
+        const letters = subType === 1351 ? ['b', 'r', 'e'] : (subType === 1352 ? ['f', 'c'] : [null]);
+
+        letters.forEach(l => {
+            const div = document.createElement('div');
+            div.className = 'sub-item';
+            div.innerHTML = l || '&nbsp;';
+            subCol.appendChild(div);
+        });
+        subRow.appendChild(subCol);
+    });
+    return subRow;
 }
 
 window.onload = init;

@@ -1,24 +1,28 @@
 body {
     font-family: sans-serif;
-    color: #555; /* Donkergrijze tekst */
+    color: #555;
     margin: 20px;
-    background-color: #fff;
 }
 
 h2 {
     font-weight: normal;
     font-size: 1.1rem;
-    color: #333;
     border-bottom: 1px solid #555;
     margin-top: 40px;
+}
+
+/* De container die alles (incl. sub-row) bij elkaar houdt voor uitlijning */
+.table-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-top: 1px solid #555;
+    border-left: 1px solid #555;
 }
 
 .header-container {
     display: flex;
     width: 100%;
-    border-top: 1px solid #555;
-    border-left: 1px solid #555;
-    box-sizing: border-box;
 }
 
 .column-group {
@@ -28,13 +32,30 @@ h2 {
 }
 
 .header-cell {
-    border-right: 1px solid #555; /* Donkergrijze kolomgrenzen */
-    border-bottom: 1px solid #555;
+    border-right: 1px solid #555;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    min-height: 50px;
-    box-sizing: border-box;
+    position: relative;
+    background: #fff;
+}
+
+/* De 'accolade' voor groepsheaders (niet de onderste lijn) */
+.header-cell.is-group:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 4px;   /* De minuscule witruimte links */
+    right: 4px;  /* De minuscule witruimte rechts */
+    height: 6px;
+    border-bottom: 1px solid #555;
+    border-left: 1px solid #555;
+    border-right: 1px solid #555;
+}
+
+/* De onderste harde lijn van de header (alleen bij leaf nodes) */
+.header-cell.is-leaf {
+    border-bottom: 1px solid #555;
 }
 
 .title-area {
@@ -50,47 +71,40 @@ h2 {
     writing-mode: vertical-rl;
     transform: rotate(180deg);
     white-space: nowrap;
-    margin: 10px auto;
 }
 
-/* De onderste regel binnen de cel (het nummer) */
 .volgorde-lbl {
     font-size: 10px;
     padding-bottom: 4px;
     text-align: center;
-    width: 100%;
 }
 
-/* De aanduidingen ONDER de laatste lijn */
+/* De sub-row die perfect uitlijnt */
 .sub-row-container {
     display: flex;
     width: 100%;
-    /* Geen border-bottom hier, zoals gevraagd */
+    border-left: 1px solid #555; /* Matcht de wrapper */
 }
 
 .sub-column {
     flex: 1;
     display: flex;
-    flex-direction: row;
     border-right: 1px solid #555;
 }
 
 .sub-item {
     flex: 1;
     font-size: 10px;
-    line-height: 18px;
+    line-height: 20px;
     text-align: center;
-    color: #555;
-    border-right: 1px solid #555;
+    border-right: 1px solid #ccc; /* Iets lichtere lijn tussen letters */
 }
 
 .sub-item:last-child {
     border-right: none;
 }
 
-/* Container voor geneste kolommen */
 .children-container {
     display: flex;
-    flex-direction: row;
     width: 100%;
 }
