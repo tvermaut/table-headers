@@ -39,7 +39,8 @@
     "L1": "1",
     "L2": null,
     "L3": null,
-    "breedte": "2.37"
+    "breedte": "2.37",
+    "verticaal": false
   },
   {
     "id": 2,
@@ -81,7 +82,8 @@
     "L1": "2",
     "L2": null,
     "L3": null,
-    "breedte": "2.44"
+    "breedte": "2.44",
+    "verticaal": true
   },
   {
     "id": 3,
@@ -117,7 +119,8 @@
     "L1": "3",
     "L2": null,
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 4,
@@ -165,7 +168,8 @@
     "L1": "3",
     "L2": "1",
     "L3": null,
-    "breedte": "0.99"
+    "breedte": "0.99",
+    "verticaal": true
   },
   {
     "id": 5,
@@ -213,7 +217,8 @@
     "L1": "3",
     "L2": "2",
     "L3": null,
-    "breedte": "1.74"
+    "breedte": "1.74",
+    "verticaal": true
   },
   {
     "id": 6,
@@ -249,7 +254,8 @@
     "L1": "4",
     "L2": null,
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 8,
@@ -297,7 +303,8 @@
     "L1": "4",
     "L2": "1",
     "L3": null,
-    "breedte": "7.75"
+    "breedte": "7.75",
+    "verticaal": false
   },
   {
     "id": 9,
@@ -339,7 +346,8 @@
     "L1": "9",
     "L2": null,
     "L3": null,
-    "breedte": "1.61"
+    "breedte": "1.61",
+    "verticaal": true
   },
   {
     "id": 10,
@@ -387,7 +395,8 @@
     "L1": "4",
     "L2": "2",
     "L3": null,
-    "breedte": "7.64"
+    "breedte": "7.64",
+    "verticaal": false
   },
   {
     "id": 11,
@@ -435,7 +444,8 @@
     "L1": "4",
     "L2": "3",
     "L3": null,
-    "breedte": "4.05"
+    "breedte": "4.05",
+    "verticaal": false
   },
   {
     "id": 12,
@@ -483,7 +493,8 @@
     "L1": "4",
     "L2": "4",
     "L3": null,
-    "breedte": "5.00"
+    "breedte": "5.00",
+    "verticaal": false
   },
   {
     "id": 13,
@@ -525,7 +536,8 @@
     "L1": "5",
     "L2": null,
     "L3": null,
-    "breedte": "1.98"
+    "breedte": "1.98",
+    "verticaal": true
   },
   {
     "id": 14,
@@ -567,7 +579,8 @@
     "L1": "6",
     "L2": null,
     "L3": null,
-    "breedte": "5.00"
+    "breedte": "5.00",
+    "verticaal": false
   },
   {
     "id": 15,
@@ -609,7 +622,8 @@
     "L1": "7",
     "L2": null,
     "L3": null,
-    "breedte": "1.71"
+    "breedte": "1.71",
+    "verticaal": true
   },
   {
     "id": 16,
@@ -661,7 +675,8 @@
     "L1": "8",
     "L2": "1",
     "L3": null,
-    "breedte": "3.92"
+    "breedte": "3.92",
+    "verticaal": false
   },
   {
     "id": 17,
@@ -697,7 +712,8 @@
     "L1": "8",
     "L2": null,
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 21,
@@ -749,7 +765,8 @@
     "L1": "8",
     "L2": "2",
     "L3": null,
-    "breedte": "3.90"
+    "breedte": "3.90",
+    "verticaal": false
   },
   {
     "id": 26,
@@ -785,7 +802,8 @@
     "L1": "10",
     "L2": null,
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 27,
@@ -843,7 +861,8 @@
     "L1": "10",
     "L2": "1",
     "L3": "2",
-    "breedte": "4.23"
+    "breedte": "4.23",
+    "verticaal": false
   },
   {
     "id": 28,
@@ -891,7 +910,8 @@
     "L1": "10",
     "L2": "2",
     "L3": null,
-    "breedte": "1.74"
+    "breedte": "1.74",
+    "verticaal": true
   },
   {
     "id": 29,
@@ -933,7 +953,8 @@
     "L1": "10",
     "L2": "1",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 30,
@@ -991,7 +1012,8 @@
     "L1": "10",
     "L2": "1",
     "L3": "1",
-    "breedte": "4.23"
+    "breedte": "4.23",
+    "verticaal": false
   },
   {
     "id": 31,
@@ -1049,7 +1071,8 @@
     "L1": "10",
     "L2": "1",
     "L3": "4",
-    "breedte": "4.31"
+    "breedte": "4.31",
+    "verticaal": false
   },
   {
     "id": 32,
@@ -1107,7 +1130,8 @@
     "L1": "10",
     "L2": "1",
     "L3": "3",
-    "breedte": "4.25"
+    "breedte": "4.25",
+    "verticaal": false
   },
   {
     "id": 33,
@@ -1165,7 +1189,8 @@
     "L1": "10",
     "L2": "1",
     "L3": "5",
-    "breedte": "4.23"
+    "breedte": "4.23",
+    "verticaal": false
   },
   {
     "id": 48,
@@ -1201,7 +1226,8 @@
     "L1": "11",
     "L2": null,
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 49,
@@ -1253,7 +1279,8 @@
     "L1": "11",
     "L2": "1",
     "L3": null,
-    "breedte": "3.12"
+    "breedte": "3.12",
+    "verticaal": false
   },
   {
     "id": 50,
@@ -1305,7 +1332,8 @@
     "L1": "11",
     "L2": "2",
     "L3": null,
-    "breedte": "3.08"
+    "breedte": "3.08",
+    "verticaal": false
   },
   {
     "id": 51,
@@ -1357,7 +1385,8 @@
     "L1": "11",
     "L2": "3",
     "L3": null,
-    "breedte": "3.15"
+    "breedte": "3.15",
+    "verticaal": false
   },
   {
     "id": 52,
@@ -1409,7 +1438,8 @@
     "L1": "11",
     "L2": "4",
     "L3": null,
-    "breedte": "3.12"
+    "breedte": "3.12",
+    "verticaal": false
   },
   {
     "id": 53,
@@ -1461,7 +1491,8 @@
     "L1": "11",
     "L2": "5",
     "L3": null,
-    "breedte": "3.13"
+    "breedte": "3.13",
+    "verticaal": false
   },
   {
     "id": 64,
@@ -1507,7 +1538,8 @@
     "L1": "12",
     "L2": null,
     "L3": null,
-    "breedte": "3.13"
+    "breedte": "3.13",
+    "verticaal": false
   },
   {
     "id": 67,
@@ -1543,7 +1575,8 @@
     "L1": "13",
     "L2": null,
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 68,
@@ -1595,7 +1628,8 @@
     "L1": "13",
     "L2": "1",
     "L3": null,
-    "breedte": "3.10"
+    "breedte": "3.10",
+    "verticaal": false
   },
   {
     "id": 69,
@@ -1647,7 +1681,8 @@
     "L1": "13",
     "L2": "2",
     "L3": null,
-    "breedte": "3.12"
+    "breedte": "3.12",
+    "verticaal": false
   },
   {
     "id": 74,
@@ -1689,7 +1724,8 @@
     "L1": "14",
     "L2": null,
     "L3": null,
-    "breedte": "1.91"
+    "breedte": "1.91",
+    "verticaal": true
   },
   {
     "id": 75,
@@ -1731,7 +1767,8 @@
     "L1": "16",
     "L2": null,
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": true
   },
   {
     "id": 76,
@@ -1783,7 +1820,8 @@
     "L1": "13",
     "L2": "2",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 77,
@@ -1819,7 +1857,8 @@
     "L1": "15",
     "L2": null,
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 78,
@@ -1871,7 +1910,8 @@
     "L1": "13",
     "L2": "1",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 79,
@@ -1907,7 +1947,8 @@
     "L1": "13",
     "L2": null,
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 81,
@@ -1949,7 +1990,8 @@
     "L1": "5",
     "L2": null,
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": true
   },
   {
     "id": 82,
@@ -1985,7 +2027,8 @@
     "L1": "4",
     "L2": null,
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 83,
@@ -2027,7 +2070,8 @@
     "L1": "7",
     "L2": null,
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": true
   },
   {
     "id": 84,
@@ -2069,7 +2113,8 @@
     "L1": "6",
     "L2": null,
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 85,
@@ -2121,7 +2166,8 @@
     "L1": "8",
     "L2": "1",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 86,
@@ -2157,7 +2203,8 @@
     "L1": "8",
     "L2": null,
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 87,
@@ -2215,7 +2262,8 @@
     "L1": "11",
     "L2": "1",
     "L3": "4",
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 88,
@@ -2257,7 +2305,8 @@
     "L1": "9",
     "L2": null,
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": true
   },
   {
     "id": 89,
@@ -2309,7 +2358,8 @@
     "L1": "8",
     "L2": "2",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 90,
@@ -2351,7 +2401,8 @@
     "L1": "11",
     "L2": "1",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 91,
@@ -2409,7 +2460,8 @@
     "L1": "11",
     "L2": "1",
     "L3": "2",
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 92,
@@ -2467,7 +2519,8 @@
     "L1": "11",
     "L2": "1",
     "L3": "1",
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 93,
@@ -2515,7 +2568,8 @@
     "L1": "11",
     "L2": "2",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": true
   },
   {
     "id": 94,
@@ -2551,7 +2605,8 @@
     "L1": "11",
     "L2": null,
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 95,
@@ -2593,7 +2648,8 @@
     "L1": "10",
     "L2": null,
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 96,
@@ -2651,7 +2707,8 @@
     "L1": "11",
     "L2": "1",
     "L3": "3",
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 97,
@@ -2709,7 +2766,8 @@
     "L1": "11",
     "L2": "1",
     "L3": "5",
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 98,
@@ -2745,7 +2803,8 @@
     "L1": "12",
     "L2": null,
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 99,
@@ -2797,7 +2856,8 @@
     "L1": "12",
     "L2": "5",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 100,
@@ -2849,7 +2909,8 @@
     "L1": "12",
     "L2": "1",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 101,
@@ -2901,7 +2962,8 @@
     "L1": "12",
     "L2": "4",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 102,
@@ -2953,7 +3015,8 @@
     "L1": "12",
     "L2": "3",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 103,
@@ -3005,7 +3068,8 @@
     "L1": "12",
     "L2": "2",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 104,
@@ -3057,7 +3121,8 @@
     "L1": "15",
     "L2": "1",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 105,
@@ -3103,7 +3168,8 @@
     "L1": "14",
     "L2": null,
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 106,
@@ -3155,7 +3221,8 @@
     "L1": "15",
     "L2": "2",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 107,
@@ -3203,7 +3270,8 @@
     "L1": "4",
     "L2": "4",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 108,
@@ -3251,7 +3319,8 @@
     "L1": "4",
     "L2": "3",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 109,
@@ -3299,7 +3368,8 @@
     "L1": "4",
     "L2": "2",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 110,
@@ -3347,7 +3417,8 @@
     "L1": "4",
     "L2": "1",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 111,
@@ -3395,7 +3466,8 @@
     "L1": "3",
     "L2": "2",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": true
   },
   {
     "id": 112,
@@ -3443,7 +3515,8 @@
     "L1": "3",
     "L2": "1",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": true
   },
   {
     "id": 113,
@@ -3479,7 +3552,8 @@
     "L1": "3",
     "L2": null,
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 114,
@@ -3521,7 +3595,8 @@
     "L1": "2",
     "L2": null,
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": true
   },
   {
     "id": 115,
@@ -3563,7 +3638,8 @@
     "L1": "1",
     "L2": null,
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 116,
@@ -3605,7 +3681,8 @@
     "L1": "11",
     "L2": null,
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": true
   },
   {
     "id": 117,
@@ -3657,7 +3734,8 @@
     "L1": "10",
     "L2": "2",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 118,
@@ -3693,7 +3771,8 @@
     "L1": "2",
     "L2": null,
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 119,
@@ -3745,7 +3824,8 @@
     "L1": "10",
     "L2": "1",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 120,
@@ -3781,7 +3861,8 @@
     "L1": "10",
     "L2": null,
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 121,
@@ -3833,7 +3914,8 @@
     "L1": "9",
     "L2": "5",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 122,
@@ -3875,7 +3957,8 @@
     "L1": "4",
     "L2": null,
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": true
   },
   {
     "id": 123,
@@ -3927,7 +4010,8 @@
     "L1": "9",
     "L2": "4",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 124,
@@ -3979,7 +4063,8 @@
     "L1": "9",
     "L2": "3",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 125,
@@ -4031,7 +4116,8 @@
     "L1": "9",
     "L2": "2",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 126,
@@ -4083,7 +4169,8 @@
     "L1": "9",
     "L2": "1",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 127,
@@ -4119,7 +4206,8 @@
     "L1": "9",
     "L2": null,
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 128,
@@ -4177,7 +4265,8 @@
     "L1": "8",
     "L2": "1",
     "L3": "5",
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 129,
@@ -4235,7 +4324,8 @@
     "L1": "8",
     "L2": "1",
     "L3": "4",
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 130,
@@ -4293,7 +4383,8 @@
     "L1": "8",
     "L2": "1",
     "L3": "3",
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 131,
@@ -4351,7 +4442,8 @@
     "L1": "8",
     "L2": "1",
     "L3": "2",
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 132,
@@ -4409,7 +4501,8 @@
     "L1": "8",
     "L2": "1",
     "L3": "1",
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 133,
@@ -4461,7 +4554,8 @@
     "L1": "6",
     "L2": "2",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 134,
@@ -4509,7 +4603,8 @@
     "L1": "8",
     "L2": "2",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": true
   },
   {
     "id": 135,
@@ -4551,7 +4646,8 @@
     "L1": "8",
     "L2": "1",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 136,
@@ -4587,7 +4683,8 @@
     "L1": "8",
     "L2": null,
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 137,
@@ -4629,7 +4726,8 @@
     "L1": "7",
     "L2": null,
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": true
   },
   {
     "id": 138,
@@ -4681,7 +4779,8 @@
     "L1": "6",
     "L2": "1",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 139,
@@ -4717,7 +4816,8 @@
     "L1": "6",
     "L2": null,
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 140,
@@ -4765,7 +4865,8 @@
     "L1": "3",
     "L2": "1",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 141,
@@ -4813,7 +4914,8 @@
     "L1": "3",
     "L2": "4",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 142,
@@ -4855,7 +4957,8 @@
     "L1": "5",
     "L2": null,
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 143,
@@ -4903,7 +5006,8 @@
     "L1": "3",
     "L2": "3",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 144,
@@ -4951,7 +5055,8 @@
     "L1": "3",
     "L2": "2",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 145,
@@ -4987,7 +5092,8 @@
     "L1": "3",
     "L2": null,
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 146,
@@ -5041,7 +5147,8 @@
     "L1": "2",
     "L2": "2",
     "L3": "2",
-    "breedte": null
+    "breedte": null,
+    "verticaal": true
   },
   {
     "id": 147,
@@ -5095,7 +5202,8 @@
     "L1": "2",
     "L2": "2",
     "L3": "1",
-    "breedte": null
+    "breedte": null,
+    "verticaal": true
   },
   {
     "id": 148,
@@ -5149,7 +5257,8 @@
     "L1": "2",
     "L2": "1",
     "L3": "3",
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 149,
@@ -5203,7 +5312,8 @@
     "L1": "2",
     "L2": "1",
     "L3": "2",
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 150,
@@ -5257,7 +5367,8 @@
     "L1": "2",
     "L2": "1",
     "L3": "1",
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 151,
@@ -5299,7 +5410,8 @@
     "L1": "2",
     "L2": "2",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 152,
@@ -5341,7 +5453,8 @@
     "L1": "2",
     "L2": "1",
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   },
   {
     "id": 153,
@@ -5383,6 +5496,7 @@
     "L1": "1",
     "L2": null,
     "L3": null,
-    "breedte": null
+    "breedte": null,
+    "verticaal": false
   }
 ]
