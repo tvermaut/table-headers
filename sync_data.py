@@ -53,11 +53,13 @@ def main():
     old_sorted = sorted(old_data, key=lambda x: x['id'])
 
     if json.dumps(new_sorted) != json.dumps(old_sorted):
-        with open(filename, 'w', encoding='utf-8') as f:
+        with open('data.json', 'w', encoding='utf-8') as f:
             json.dump(new_sorted, f, indent=2, ensure_ascii=False)
-        print("Data is gewijzigd en weggeschreven.")
+        print("Bestand data.json is succesvol weggeschreven naar:", os.path.abspath('data.json'))
     else:
-        print("Data is identiek aan de huidige dump.")
+        print("Geen wijzigingen, maar we schrijven het bestand toch even voor de zekerheid...")
+        with open('data.json', 'w', encoding='utf-8') as f:
+            json.dump(new_sorted, f, indent=2, ensure_ascii=False)
 
 if __name__ == "__main__":
     main()

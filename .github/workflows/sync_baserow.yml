@@ -20,16 +20,29 @@ jobs:
         with:
           python-version: '3.x'
 
-      # ... rest van je stappen (install, fetch) ...
+      - name: Fetch and Compare Data
+        run: python sync_data.py
+        env:
+          BASEROW_TOKEN: ${{ secrets.BASEROW_TOKEN }}
+
+      - name: Debug - List files
+        run: ls -la # Hierdoor zien we in de logs of data.json echt bestaat
 
       - name: Commit and Push if changed
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git add data.json
-          if git diff --staged --quiet; then
-            echo "Geen wijzigingen gevonden."
+          
+          # Check of het bestand bestaat voor we het toevoegen
+          if [ -f data.json ]; then
+            git add data.json
+            if git diff --staged --quiet; then
+              echo "Geen wijzigingen gevonden t.o.v. de vorige versie."
+            else
+              git commit -m "Update Baserow data dump"
+              git push
+            fi
           else
-            git commit -m "Update Baserow data dump"
-            git push
+            echo "FOUT: data.json is niet gevonden!"
+            exit 1
           fi
