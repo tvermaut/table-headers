@@ -1,39 +1,55 @@
-body { font-family: sans-serif; color: #444; margin: 20px; }
-.header-grid {
-    display: grid;
-    border-top: 1px solid #444;
-    border-left: 1px solid #444;
+body { font-family: sans-serif; color: #555; margin: 20px; }
+
+table {
     width: 100%;
+    border-collapse: collapse; /* Cruciaal voor doorlopende lijnen */
+    table-layout: fixed;
+    border-top: 1px solid #555;
+    border-left: 1px solid #555;
 }
-.cell {
-    border-right: 1px solid #444;
-    border-bottom: 1px solid #444;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
+th, td {
+    border-right: 1px solid #555;
+    border-bottom: 1px solid #555;
+    padding: 0;
+    font-weight: normal;
+    vertical-align: middle;
     text-align: center;
-    padding: 8px 4px;
-    background: #fff;
     position: relative;
-    box-sizing: border-box;
+    background: #fff;
 }
-/* Alleen groepen krijgen de accolade en GEEN onderlijn */
-.group-cell {
-    border-bottom: none;
-    padding-bottom: 20px;
+
+.title-container {
+    padding: 8px 4px;
+    line-height: 1.2;
+    font-size: 12px;
 }
-.group-cell::after {
+
+/* De Sierlijke Accolade: boven de tekst, wijzend naar de titel */
+.accolade-space {
+    height: 18px;
+    width: 100%;
+    position: relative;
+}
+
+.accolade-space::after {
     content: "";
     position: absolute;
-    bottom: 0;
-    left: 10px;
-    right: 10px;
-    height: 15px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 15' preserveAspectRatio='none'%3E%3Cpath d='M0,15 C0,5 15,3 35,3 L45,3 C48,3 50,0 50,0 C50,0 52,3 55,3 L75,3 C90,3 100,5 100,15' fill='none' stroke='%23444' stroke-width='1'/%3E%3C/svg%3E");
+    top: 2px;
+    left: 6px;
+    right: 6px;
+    height: 14px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 14' preserveAspectRatio='none'%3E%3Cpath d='M0,14 C0,6 15,4 35,4 L45,4 C48,4 50,0 50,0 C50,0 52,4 55,4 L75,4 C90,4 100,6 100,14' fill='none' stroke='%23555' stroke-width='0.8'/%3E%3C/svg%3E");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
-.num-cell { height: 35px; font-size: 11px; }
-.sub-cell { height: 20px; font-size: 10px; border-bottom: none; }
-.vertical-text { writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; }
+
+.num-cell { height: 30px; font-size: 11px; }
+.sub-cell { height: 22px; font-size: 10px; border-bottom: none; }
+
+.vertical-text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    white-space: nowrap;
+    display: inline-block;
+}
