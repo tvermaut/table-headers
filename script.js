@@ -2,7 +2,7 @@ async function init() {
     // We laden de statische JSON die door GitHub Actions is gegenereerd
     const response = await fetch('data.json');
     const rawData = await response.json();
-    const rows = rawData.results;
+    const rows = rawData;
 
     // 1. Groepeer kolommen per 'Tabel' (field_3225)
     const tablesMap = {};
