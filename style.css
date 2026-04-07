@@ -5,17 +5,18 @@ body {
 }
 
 .header-container {
-    display: flex; /* Horizontale uitlijning van de hoofdkolommen */
+    display: flex;
     width: 100%;
-    border-top: 1px solid #000;
-    border-left: 1px solid #000;
+    border: 1px solid #000; /* De buitenrand */
+    border-right: none;
+    border-bottom: none;
 }
 
 .column-group {
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Zorgt dat groepen de ruimte vullen */
-    min-width: min-content; /* Optimaliseert breedte op basis van inhoud */
+    flex: 1 1 auto; /* Zorgt dat kolommen uitvullen */
+    min-width: min-content;
 }
 
 .header-cell {
@@ -23,17 +24,14 @@ body {
     border-bottom: 1px solid #000;
     padding: 8px 4px;
     text-align: center;
-    position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    min-height: 40px;
+    justify-content: center; /* Verticaal centreren van de titel */
+    flex-grow: 1; /* Dit zorgt dat de cel de hoogte vult als de buurman langer is */
 }
 
-/* Verticale tekst handling */
 .has-vertical {
-    padding-top: 15px;
-    padding-bottom: 25px; /* Ruimte voor volgorde-lbl */
+    min-height: 120px;
 }
 
 .vertical-text {
@@ -41,22 +39,22 @@ body {
     transform: rotate(180deg);
     white-space: nowrap;
     margin: 0 auto;
-    display: inline-block;
 }
 
-/* De onderste label waarde */
 .volgorde-lbl {
     font-size: 10px;
-    margin-top: auto; /* Duwt het naar de bodem van de cel */
-    padding-top: 5px;
+    margin-top: 10px; /* Ruimte tussen titel en label */
 }
 
-/* Sub-segmenten onderaan de leaf-nodes */
+/* Sub-segmenten strak onderaan */
 .sub-container {
     display: flex;
     width: 100%;
-    border-top: 1px solid #000;
     margin-top: 5px;
+    border-top: 1px solid #000;
+    margin-bottom: -8px; /* Heft de padding van de parent op voor strakke lijn */
+    margin-left: -4px;
+    margin-right: -4px;
 }
 
 .sub-item {
@@ -70,10 +68,8 @@ body {
     border-right: none;
 }
 
-/* Container voor kinderen van een groep */
 .children-container {
     display: flex;
     flex-direction: row;
-    width: 100%;
-    flex-grow: 1;
+    flex-grow: 0; /* Alleen de cellen groeien, niet de containers eromheen */
 }
