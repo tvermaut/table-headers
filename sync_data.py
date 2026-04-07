@@ -8,19 +8,28 @@ BASE_URL = f"https://dcp.huc.knaw.nl/api/database/rows/table/{TABLE_ID}/"
 
 def fetch_all_data():
     all_rows = []
-    url = f"{BASE_URL}?user_field_names=true&size=200" # Batch size 200
+    # Voeg 'page' of 'user_field_names' expliciet toe
+    url = f"{BASE_URL}?user_field_names=true&size=200" 
+    
+    headers = {
+        "Authorization": f"Token {TOKEN}",
+        "Content-Type": "application/json"
+    }
     
     while url:
         print(f"Ophalen: {url}")
-        response = requests.get(
-            url,
-            headers={"Authorization": f"Token {TOKEN}"}
-        )
+        response = requests.get(url, headers=headers)
+        
+        if response.status_code == 401:
+            print("FOUT: 401 Unauthorized. Controleer of de BASEROW_TOKEN secret in GitHub correct is.")
+            print("Zorg dat er geen extra spaties in de secret staan.")
+            response.raise_for_status()
+            
         response.raise_for_status()
         data = response.json()
         
         all_rows.extend(data['results'])
-        url = data['next'] # Baserow geeft de URL voor de volgende batch
+        url = data['next']
         
     return all_rows
 
