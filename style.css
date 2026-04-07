@@ -1,23 +1,23 @@
 body {
     font-family: sans-serif;
-    color: #000;
+    color: #555; /* Donkergrijze tekst */
     margin: 20px;
     background-color: #fff;
 }
 
 h2 {
     font-weight: normal;
-    font-size: 1.2rem;
-    border-bottom: 1px solid #000;
-    margin-bottom: 15px;
+    font-size: 1.1rem;
+    color: #333;
+    border-bottom: 1px solid #555;
     margin-top: 40px;
 }
 
 .header-container {
     display: flex;
     width: 100%;
-    border-top: 1px solid #000;
-    border-left: 1px solid #000;
+    border-top: 1px solid #555;
+    border-left: 1px solid #555;
     box-sizing: border-box;
 }
 
@@ -25,20 +25,18 @@ h2 {
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
-    min-width: min-content;
 }
 
 .header-cell {
-    border-right: 1px solid #000;
-    border-bottom: 1px solid #000;
+    border-right: 1px solid #555; /* Donkergrijze kolomgrenzen */
+    border-bottom: 1px solid #555;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    background: #fff;
+    min-height: 50px;
     box-sizing: border-box;
 }
 
-/* Bovenste gedeelte voor de titel */
 .title-area {
     padding: 8px 4px;
     flex-grow: 1;
@@ -46,15 +44,8 @@ h2 {
     align-items: center;
     justify-content: center;
     text-align: center;
-    min-height: 40px;
 }
 
-.title-area span {
-    font-size: 12px;
-    line-height: 1.2;
-}
-
-/* Verticale tekst rotatie */
 .vertical-text {
     writing-mode: vertical-rl;
     transform: rotate(180deg);
@@ -62,47 +53,42 @@ h2 {
     margin: 10px auto;
 }
 
-/* De footer zone die de lijnen laat doorlopen */
-.footer-area {
-    border-top: 1px solid #000;
-    display: flex;
-    flex-direction: column;
-    background: #fff;
-}
-
+/* De onderste regel binnen de cel (het nummer) */
 .volgorde-lbl {
     font-size: 10px;
-    padding: 3px 0;
+    padding-bottom: 4px;
     text-align: center;
-    height: 14px;
-    line-height: 14px;
+    width: 100%;
 }
 
-/* Sub-kolommen b|r|e en f|c */
-.sub-container {
+/* De aanduidingen ONDER de laatste lijn */
+.sub-row-container {
     display: flex;
     width: 100%;
-    border-top: 1px solid #000;
-    height: 20px;
+    /* Geen border-bottom hier, zoals gevraagd */
+}
+
+.sub-column {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    border-right: 1px solid #555;
 }
 
 .sub-item {
     flex: 1;
     font-size: 10px;
-    line-height: 20px;
+    line-height: 18px;
     text-align: center;
-    border-right: 1px solid #000;
+    color: #555;
+    border-right: 1px solid #555;
 }
 
 .sub-item:last-child {
     border-right: none;
 }
 
-/* Als er geen sub-items zijn, houden we de hoogte wel gelijk */
-.empty-sub {
-    height: 20px;
-}
-
+/* Container voor geneste kolommen */
 .children-container {
     display: flex;
     flex-direction: row;
