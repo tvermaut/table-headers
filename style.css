@@ -1,11 +1,31 @@
-table { border-collapse: collapse; margin-bottom: 2em; font-family: sans-serif; }
-th { 
-    border: 1px solid #444; 
-    padding: 8px; 
-    background: #f0f0f0; 
-    font-size: 12px; 
-    text-align: center;
+body {
+    font-family: sans-serif;
+    color: #000;
+    background-color: #fff;
+    padding: 20px;
 }
-.header-row-0 { background: #0052cc; color: white; }
-.header-row-1 { background: #007bff; color: white; }
-.header-row-2 { background: #e9ecef; color: black; }
+
+h2 {
+    font-size: 1.2rem;
+    border-bottom: 1px solid #000;
+    margin-top: 40px;
+    padding-bottom: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    table-layout: fixed; /* Zorgt voor strakke verdeling over 100% breedte */
+}
+
+th {
+    border: 1px solid #000;
+    padding: 6px;
+    font-weight: bold;
+    font-size: 11px;
+    text-align: center;
+    word-wrap: break-word;
+    background: none;
+    color: #000;
+}

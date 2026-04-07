@@ -1,87 +1,99 @@
 async function init() {
-    // We laden de statische JSON die door GitHub Actions is gegenereerd
-    const response = await fetch('data.json');
-    const rawData = await response.json();
-    const rows = rawData;
+    try {
+        const response = await fetch('data.json');
+        const rawData = await response.json();
+        const rows = rawData.results || rawData;
 
-    // 1. Groepeer kolommen per 'Tabel' (field_3225)
-    const tablesMap = {};
-    rows.forEach(row => {
-        const tableInfo = row['Tabel'][0]; // Neem de eerste gekoppelde tabel
-        if (tableInfo) {
-            if (!tablesMap[tableInfo.id]) tablesMap[tableInfo.id] = [];
-            tablesMap[tableInfo.id].push(row);
+        // 1. Groepeer op Tabel (field_3225)
+        const tablesMap = {};
+        rows.forEach(row => {
+            const tableEntry = row['Tabel']?.[0];
+            if (tableEntry) {
+                if (!tablesMap[tableEntry.id]) tablesMap[tableEntry.id] = [];
+                tablesMap[tableEntry.id].push(row);
+            }
+        });
+
+        const container = document.getElementById('table-container');
+        container.innerHTML = '';
+
+        for (const tableId in tablesMap) {
+            const h2 = document.createElement('h2');
+            h2.textContent = `Tabel: ${tableId}`;
+            container.appendChild(h2);
+            
+            const htmlTable = generateNestedHeader(tablesMap[tableId]);
+            container.appendChild(htmlTable);
         }
-    });
-
-    const container = document.getElementById('table-container');
-
-    // 2. Bouw voor elke tabel in de data een HTML tabel
-    for (const tableId in tablesMap) {
-        const tableRows = tablesMap[tableId];
-        const h2 = document.createElement('h2');
-        h2.textContent = `Tabel ID: ${tableId}`;
-        container.appendChild(h2);
-        
-        const htmlTable = buildComplexHeader(tableRows);
-        container.appendChild(htmlTable);
+    } catch (e) {
+        console.error("Fout bij laden:", e);
     }
 }
 
-function buildComplexHeader(nodes) {
+function generateNestedHeader(data) {
     const table = document.createElement('table');
     const thead = document.createElement('thead');
-    
-    // Identificeer de boomstructuur
-    const idMap = {};
-    nodes.forEach(n => { idMap[n.id] = { ...n, children: [], width: 0, depth: 0 }; });
-    
-    const roots = [];
-    nodes.forEach(n => {
-        // Controleer Ouder kolom 1 (field_3227)
-        const parentId = n['Ouder kolom 1']?.[0]?.id;
-        if (parentId && idMap[parentId]) {
-            idMap[parentId].children.push(idMap[n.id]);
-        } else {
-            roots.push(idMap[n.id]);
+
+    // 1. Sorteer data op de 'logische volgorde' string (AA.BB.CC.DD)
+    // We splitsen op punten en vergelijken de numerieke segmenten
+    const sortedData = data.sort((a, b) => {
+        const partsA = (a['logische volgorde'] || "").split('.').map(Number);
+        const partsB = (b['logische volgorde'] || "").split('.').map(Number);
+        for (let i = 0; i < Math.max(partsA.length, partsB.length); i++) {
+            if ((partsA[i] || 0) !== (partsB[i] || 0)) {
+                return (partsA[i] || 0) - (partsB[i] || 0);
+            }
         }
+        return 0;
     });
 
-    // Bereken breedte (colspan) en diepte (rowspan) recursief
-    function calculateMetrics(node, depth) {
-        node.depth = depth;
-        if (node.children.length === 0) {
-            node.width = 1;
-            return 1;
-        }
-        node.width = node.children.reduce((acc, child) => acc + calculateMetrics(child, depth + 1), 0);
-        return node.width;
+    // 2. Bepaal maximale diepte (aantal segmenten in AA.BB.CC.DD)
+    let maxDepth = 0;
+    sortedData.forEach(d => {
+        const depth = (d['logische volgorde'] || "").split('.').length;
+        if (depth > maxDepth) maxDepth = depth;
+    });
+
+    // 3. Bouw een matrix voor de header cellen [rij][kolom]
+    const headerRows = Array.from({ length: maxDepth }, () => []);
+
+    // Helper om te tellen hoeveel "leaf nodes" (eindpunten) onder een item vallen voor colspan
+    function getLeafCount(item, allItems) {
+        const itemCode = item['logische volgorde'];
+        const children = allItems.filter(child => {
+            const childCode = child['logische volgorde'];
+            return childCode.startsWith(itemCode + ".") && childCode.split('.').length === itemCode.split('.').length + 1;
+        });
+
+        if (children.length === 0) return 1;
+        return children.reduce((sum, child) => sum + getLeafCount(child, allItems), 0);
     }
-    roots.forEach(r => calculateMetrics(r, 0));
 
-    // Maak rijen voor de header (max 4 diep op basis van je Ouder 1,2,3 velden)
-    const maxDepth = 4;
-    const grid = Array.from({ length: maxDepth }, () => []);
+    // 4. Verdeel de items over de rijen
+    sortedData.forEach(item => {
+        const code = item['logische volgombe'] || "";
+        const level = code.split('.').length - 1;
+        
+        const cell = {
+            label: item['titel'] || item['lbl'],
+            colspan: getLeafCount(item, sortedData),
+            isLeaf: !sortedData.some(other => other['logische volgorde'].startsWith(code + "."))
+        };
 
-    function fillGrid(node, d) {
-        grid[d].push(node);
-        node.children.forEach(c => fillGrid(c, d + 1));
-    }
-    roots.sort((a,b) => a['volgnr. log.'] - b['volgnr. log.']).forEach(r => fillGrid(r, 0));
+        headerRows[level].push(cell);
+    });
 
-    // Bouw de HTML rijen
-    grid.forEach((rowNodes, d) => {
-        if (rowNodes.length === 0) return;
+    // 5. Render de rijen naar HTML
+    headerRows.forEach((rowCells, rowIndex) => {
         const tr = document.createElement('tr');
-        tr.className = `header-row-${d}`;
-        rowNodes.forEach(node => {
+        rowCells.forEach(cell => {
             const th = document.createElement('th');
-            th.textContent = node.titel || node.lbl;
-            if (node.width > 1) th.colSpan = node.width;
+            th.textContent = cell.label;
+            if (cell.colspan > 1) th.colSpan = cell.colspan;
             
-            // Als het een blad-node is (geen kinderen), moet hij verticaal stretchen
-            if (node.children.length === 0 && d < maxDepth - 1) {
-                th.rowSpan = maxDepth - d;
+            // Rowspan: als het een leaf is, moet hij doortrekken naar de bodem van de header
+            if (cell.isLeaf && rowIndex < maxDepth - 1) {
+                th.rowSpan = maxDepth - rowIndex;
             }
             tr.appendChild(th);
         });
@@ -92,4 +104,4 @@ function buildComplexHeader(nodes) {
     return table;
 }
 
-init();
+window.onload = init;
