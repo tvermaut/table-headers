@@ -46,10 +46,19 @@ function generateTable(items, tableId) {
 
         levelItems.forEach(item => {
             const th = document.createElement('th');
-            const code = item['logische volgorde'] || "";
+            const isVertical = item['verticaal'] === true; // Check de nieuwe boolean kolom
+
+            const span = document.createElement('span');
+            span.textContent = item['titel'] || item['lbl'] || '';
             
-            // Titel bovenin
-            th.innerHTML = `<span>${item['titel'] || item['lbl'] || ''}</span>`;
+            if (isVertical) {
+                span.className = 'vertical-text';
+                th.classList.add('has-vertical');
+            }
+            
+            th.appendChild(span);
+
+            const code = item['logische volgorde'] || "";
 
             // Volgorde LBL onderin (alleen bij leaf nodes of op het laagste niveau van dit item)
             const isLeaf = !sorted.some(other => (other['logische volgorde'] || "").startsWith(code + "."));

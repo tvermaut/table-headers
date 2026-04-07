@@ -56,3 +56,17 @@ th {
 .sub-split-item:last-child {
     border-right: none;
 }
+
+.vertical-text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg); /* Zorgt dat tekst van onder naar boven leest (tegen de klok in) */
+    white-space: nowrap;
+    margin: 10px auto;
+    display: inline-block;
+}
+
+/* Zorg dat cellen met verticale tekst hoog genoeg kunnen worden */
+th.has-vertical {
+    height: 150px; /* Pas dit aan naar de lengte van je titels */
+    vertical-align: middle;
+}
