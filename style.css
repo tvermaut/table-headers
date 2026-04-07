@@ -1,8 +1,13 @@
 body { font-family: sans-serif; color: #555; margin: 20px; }
 
+/* Verticaal witruimte tussen verschillende tabellen */
+.table-wrapper {
+    margin-bottom: 80px; 
+}
+
 table {
     width: 100%;
-    border-collapse: collapse; /* Cruciaal voor doorlopende lijnen */
+    border-collapse: collapse;
     table-layout: fixed;
     border-top: 1px solid #555;
     border-left: 1px solid #555;
@@ -13,39 +18,63 @@ th, td {
     border-bottom: 1px solid #555;
     padding: 0;
     font-weight: normal;
-    vertical-align: middle;
-    text-align: center;
-    position: relative;
+    vertical-align: top;
     background: #fff;
 }
 
-.title-container {
+/* Container om elementen binnen een TH te positioneren */
+.cell-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Zorgt dat de flex-box de hele rowspan vult */
+    min-height: 60px;
+}
+
+.title-text {
     padding: 8px 4px;
-    line-height: 1.2;
+    flex-grow: 1; /* Duwt de rest naar beneden */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     font-size: 12px;
 }
 
-/* De Sierlijke Accolade: boven de tekst, wijzend naar de titel */
-.accolade-space {
+/* Accolade ONDER de tekst, aan de onderzijde van de groepscel */
+.accolade-row {
     height: 18px;
     width: 100%;
     position: relative;
+    margin-bottom: 2px;
 }
 
-.accolade-space::after {
+.accolade-row::after {
     content: "";
     position: absolute;
-    top: 2px;
-    left: 6px;
-    right: 6px;
+    bottom: 0;
+    left: 8px;
+    right: 8px;
     height: 14px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 14' preserveAspectRatio='none'%3E%3Cpath d='M0,14 C0,6 15,4 35,4 L45,4 C48,4 50,0 50,0 C50,0 52,4 55,4 L75,4 C90,4 100,6 100,14' fill='none' stroke='%23555' stroke-width='0.8'/%3E%3C/svg%3E");
+    /* Accolade wijst nu weer omlaag, onder de tekst */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 14' preserveAspectRatio='none'%3E%3Cpath d='M0,0 C0,8 15,10 35,10 L45,10 C48,10 50,14 50,14 C50,14 52,10 55,10 L75,10 C90,10 100,8 100,0' fill='none' stroke='%23555' stroke-width='0.8'/%3E%3C/svg%3E");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 
-.num-cell { height: 30px; font-size: 11px; }
-.sub-cell { height: 22px; font-size: 10px; border-bottom: none; }
+/* Kolomnummer strak aan de onderkant */
+.num-label {
+    font-size: 10px;
+    padding: 4px 0;
+    text-align: center;
+    border-top: 1px solid transparent; /* Ruimtehouder */
+}
+
+.sub-cell {
+    height: 22px;
+    font-size: 10px;
+    text-align: center;
+    border-bottom: none;
+}
 
 .vertical-text {
     writing-mode: vertical-rl;
