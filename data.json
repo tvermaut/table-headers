@@ -2,8 +2,8 @@
   {
     "id": 1,
     "order": "1.00000000000000000000",
-    "lbl": "1. Polder, gehucht of plaatselijke benaming",
-    "titel": "Polder, gehucht of plaatselijke benaming",
+    "lbl": "1. Polder,<br/>gehucht<br/>of<br/>plaatselijke<br/>benaming",
+    "titel": "Polder,<br/>gehucht<br/>of<br/>plaatselijke<br/>benaming",
     "Tabel": [
       {
         "id": 1,
@@ -19,10 +19,10 @@
     },
     "logische volgorde": "01",
     "volgorde lbl": "1",
-    "Ouder-lbl": "01. Polder, gehucht of plaatselijke benaming",
+    "Ouder-lbl": "01. Polder,<br/>gehucht<br/>of<br/>plaatselijke<br/>benaming",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "1. Polder, gehucht of plaatselijke benaming",
+    "hierarchie": "1. Polder,<br/>gehucht<br/>of<br/>plaatselijke<br/>benaming",
     "sub": null,
     "Sem. Veld": [
       {
@@ -45,8 +45,8 @@
   {
     "id": 2,
     "order": "2.00000000000000000000",
-    "lbl": "2. N°. der percelen op het kadastrale plan",
-    "titel": "N°. der percelen op het kadastrale plan",
+    "lbl": "2. N°. der percelen op het<br/>kadastrale plan",
+    "titel": "N°. der percelen op het<br/>kadastrale plan",
     "Tabel": [
       {
         "id": 1,
@@ -62,10 +62,10 @@
     },
     "logische volgorde": "02",
     "volgorde lbl": "2",
-    "Ouder-lbl": "02. N°. der percelen op het kadastrale plan",
+    "Ouder-lbl": "02. N°. der percelen op het<br/>kadastrale plan",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "2. N°. der percelen op het kadastrale plan",
+    "hierarchie": "2. N°. der percelen op het<br/>kadastrale plan",
     "sub": null,
     "Sem. Veld": [
       {
@@ -88,8 +88,8 @@
   {
     "id": 3,
     "order": "3.00000000000000000000",
-    "lbl": "Verwijzing naar het algemeene register der hypotheken",
-    "titel": "Verwijzing naar het algemeene register der hypotheken",
+    "lbl": "Verwijzing<br/>naar het<br/>algemeene<br/>register<br/>der<br/>hypotheken",
+    "titel": "Verwijzing<br/>naar het<br/>algemeene<br/>register<br/>der<br/>hypotheken",
     "Tabel": [
       {
         "id": 1,
@@ -105,10 +105,10 @@
     },
     "logische volgorde": "03",
     "volgorde lbl": "",
-    "Ouder-lbl": "03. Verwijzing naar het algemeene register der hypotheken",
+    "Ouder-lbl": "03. Verwijzing<br/>naar het<br/>algemeene<br/>register<br/>der<br/>hypotheken",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "Verwijzing naar het algemeene register der hypotheken",
+    "hierarchie": "Verwijzing<br/>naar het<br/>algemeene<br/>register<br/>der<br/>hypotheken",
     "sub": null,
     "Sem. Veld": [],
     "volgnr. log.": "3",
@@ -137,7 +137,7 @@
     "Ouder kolom 1": [
       {
         "id": 3,
-        "value": "Verwijzing naar het algemeene register der hypotheken",
+        "value": "Verwijzing<br/>naar het<br/>algemeene<br/>register<br/>der<br/>hypotheken",
         "order": "3.00000000000000000000"
       }
     ],
@@ -186,7 +186,7 @@
     "Ouder kolom 1": [
       {
         "id": 3,
-        "value": "Verwijzing naar het algemeene register der hypotheken",
+        "value": "Verwijzing<br/>naar het<br/>algemeene<br/>register<br/>der<br/>hypotheken",
         "order": "3.00000000000000000000"
       }
     ],
@@ -499,8 +499,8 @@
   {
     "id": 13,
     "order": "7.79999999999999982236",
-    "lbl": "9. Artikel der alphabetische lijst (1e gedeelte van den kadastr. legger)",
-    "titel": "Artikel der alphabetische lijst (1e gedeelte van den kadastr. legger)",
+    "lbl": "9. Artikel der alphabetische lijst<br/>(1e gedeelte van den kadastr. legger)",
+    "titel": "Artikel der alphabetische lijst<br/>(1e gedeelte van den kadastr. legger)",
     "Tabel": [
       {
         "id": 1,
@@ -516,10 +516,10 @@
     },
     "logische volgorde": "05",
     "volgorde lbl": "9",
-    "Ouder-lbl": "05. Artikel der alphabetische lijst (1e gedeelte van den kadastr. legger)",
+    "Ouder-lbl": "05. Artikel der alphabetische lijst<br/>(1e gedeelte van den kadastr. legger)",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "9. Artikel der alphabetische lijst (1e gedeelte van den kadastr. legger)",
+    "hierarchie": "9. Artikel der alphabetische lijst<br/>(1e gedeelte van den kadastr. legger)",
     "sub": null,
     "Sem. Veld": [
       {
@@ -542,8 +542,8 @@
   {
     "id": 14,
     "order": "7.83333333333333303727",
-    "lbl": "10. Soort der eigendommen",
-    "titel": "Soort der eigendommen",
+    "lbl": "10. Soort<br/>der<br/>eigendommen",
+    "titel": "Soort<br/>der<br/>eigendommen",
     "Tabel": [
       {
         "id": 1,
@@ -559,10 +559,10 @@
     },
     "logische volgorde": "06",
     "volgorde lbl": "10",
-    "Ouder-lbl": "06. Soort der eigendommen",
+    "Ouder-lbl": "06. Soort<br/>der<br/>eigendommen",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "10. Soort der eigendommen",
+    "hierarchie": "10. Soort<br/>der<br/>eigendommen",
     "sub": null,
     "Sem. Veld": [
       {
@@ -585,8 +585,8 @@
   {
     "id": 15,
     "order": "7.85714285714285676221",
-    "lbl": "11. Volgnommer der gebouwde eigendommen",
-    "titel": "Volgnommer der gebouwde eigendommen",
+    "lbl": "11. Volgnommer der gebouwde<br/>eigendommen",
+    "titel": "Volgnommer der gebouwde<br/>eigendommen",
     "Tabel": [
       {
         "id": 1,
@@ -602,10 +602,10 @@
     },
     "logische volgorde": "07",
     "volgorde lbl": "11",
-    "Ouder-lbl": "07. Volgnommer der gebouwde eigendommen",
+    "Ouder-lbl": "07. Volgnommer der gebouwde<br/>eigendommen",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "11. Volgnommer der gebouwde eigendommen",
+    "hierarchie": "11. Volgnommer der gebouwde<br/>eigendommen",
     "sub": null,
     "Sem. Veld": [
       {
@@ -628,8 +628,8 @@
   {
     "id": 16,
     "order": "5.50000000000000000000",
-    "lbl": "12. Inhouds-grootte",
-    "titel": "Inhouds-grootte",
+    "lbl": "12. van<br/>ieder<br/>perceel",
+    "titel": "van<br/>ieder<br/>perceel",
     "Tabel": [
       {
         "id": 1,
@@ -654,7 +654,7 @@
     "Ouder-lbl": "08. Inhouds-grootte",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "Inhouds-grootte: 12. Inhouds-grootte",
+    "hierarchie": "Inhouds-grootte: 12. van<br/>ieder<br/>perceel",
     "sub": {
       "id": 1351,
       "value": "b|r|e",
@@ -718,8 +718,8 @@
   {
     "id": 21,
     "order": "12.00000000000000000000",
-    "lbl": "13. Bijeengetrokken bij soort van bebouwing",
-    "titel": "Bijeengetrokken bij soort van bebouwing",
+    "lbl": "13. Bijeengetrokken<br/>bij soort<br/>van<br/>bebouwing",
+    "titel": "Bijeengetrokken<br/>bij soort<br/>van<br/>bebouwing",
     "Tabel": [
       {
         "id": 1,
@@ -744,7 +744,7 @@
     "Ouder-lbl": "08. Inhouds-grootte",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "Inhouds-grootte: 13. Bijeengetrokken bij soort van bebouwing",
+    "hierarchie": "Inhouds-grootte: 13. Bijeengetrokken<br/>bij soort<br/>van<br/>bebouwing",
     "sub": {
       "id": 1351,
       "value": "b|r|e",
@@ -835,7 +835,7 @@
     "Ouder kolom 2": [
       {
         "id": 29,
-        "value": "Ongebouwde, en inhouds-grootte in iedere klasse gebragt",
+        "value": "Ongebouwde,<br/>en<br/>inhouds-grootte in iedere klasse gebragt",
         "order": "0.59999999999999997780"
       }
     ],
@@ -916,8 +916,8 @@
   {
     "id": 29,
     "order": "0.59999999999999997780",
-    "lbl": "Ongebouwde, en inhouds-grootte in iedere klasse gebragt",
-    "titel": "Ongebouwde, en inhouds-grootte in iedere klasse gebragt",
+    "lbl": "Ongebouwde,<br/>en<br/>inhouds-grootte in iedere klasse gebragt",
+    "titel": "Ongebouwde,<br/>en<br/>inhouds-grootte in iedere klasse gebragt",
     "Tabel": [
       {
         "id": 1,
@@ -942,7 +942,7 @@
     "Ouder-lbl": "10. Klassering der eigendommen",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "Klassering der eigendommen: Ongebouwde, en inhouds-grootte in iedere klasse gebragt",
+    "hierarchie": "Klassering der eigendommen: Ongebouwde,<br/>en<br/>inhouds-grootte in iedere klasse gebragt",
     "sub": null,
     "Sem. Veld": [],
     "volgnr. log.": "1",
@@ -986,7 +986,7 @@
     "Ouder kolom 2": [
       {
         "id": 29,
-        "value": "Ongebouwde, en inhouds-grootte in iedere klasse gebragt",
+        "value": "Ongebouwde,<br/>en<br/>inhouds-grootte in iedere klasse gebragt",
         "order": "0.59999999999999997780"
       }
     ],
@@ -1045,7 +1045,7 @@
     "Ouder kolom 2": [
       {
         "id": 29,
-        "value": "Ongebouwde, en inhouds-grootte in iedere klasse gebragt",
+        "value": "Ongebouwde,<br/>en<br/>inhouds-grootte in iedere klasse gebragt",
         "order": "0.59999999999999997780"
       }
     ],
@@ -1104,7 +1104,7 @@
     "Ouder kolom 2": [
       {
         "id": 29,
-        "value": "Ongebouwde, en inhouds-grootte in iedere klasse gebragt",
+        "value": "Ongebouwde,<br/>en<br/>inhouds-grootte in iedere klasse gebragt",
         "order": "0.59999999999999997780"
       }
     ],
@@ -1163,7 +1163,7 @@
     "Ouder kolom 2": [
       {
         "id": 29,
-        "value": "Ongebouwde, en inhouds-grootte in iedere klasse gebragt",
+        "value": "Ongebouwde,<br/>en<br/>inhouds-grootte in iedere klasse gebragt",
         "order": "0.59999999999999997780"
       }
     ],
@@ -1195,8 +1195,8 @@
   {
     "id": 48,
     "order": "18.00000000000000000000",
-    "lbl": "Toepassing van het tarief op de klassering der ongebouwde eigendommen",
-    "titel": "Toepassing van het tarief op de klassering der ongebouwde eigendommen",
+    "lbl": "Toepassing van het tarief<br/>op de klassering der<br/>ongebouwde eigendommen",
+    "titel": "Toepassing van het tarief<br/>op de klassering der<br/>ongebouwde eigendommen",
     "Tabel": [
       {
         "id": 1,
@@ -1212,10 +1212,10 @@
     },
     "logische volgorde": "11",
     "volgorde lbl": "",
-    "Ouder-lbl": "11. Toepassing van het tarief op de klassering der ongebouwde eigendommen",
+    "Ouder-lbl": "11. Toepassing van het tarief<br/>op de klassering der<br/>ongebouwde eigendommen",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "Toepassing van het tarief op de klassering der ongebouwde eigendommen",
+    "hierarchie": "Toepassing van het tarief<br/>op de klassering der<br/>ongebouwde eigendommen",
     "sub": null,
     "Sem. Veld": [],
     "volgnr. log.": "11",
@@ -1244,7 +1244,7 @@
     "Ouder kolom 1": [
       {
         "id": 48,
-        "value": "Toepassing van het tarief op de klassering der ongebouwde eigendommen",
+        "value": "Toepassing van het tarief<br/>op de klassering der<br/>ongebouwde eigendommen",
         "order": "18.00000000000000000000"
       }
     ],
@@ -1297,7 +1297,7 @@
     "Ouder kolom 1": [
       {
         "id": 48,
-        "value": "Toepassing van het tarief op de klassering der ongebouwde eigendommen",
+        "value": "Toepassing van het tarief<br/>op de klassering der<br/>ongebouwde eigendommen",
         "order": "18.00000000000000000000"
       }
     ],
@@ -1350,7 +1350,7 @@
     "Ouder kolom 1": [
       {
         "id": 48,
-        "value": "Toepassing van het tarief op de klassering der ongebouwde eigendommen",
+        "value": "Toepassing van het tarief<br/>op de klassering der<br/>ongebouwde eigendommen",
         "order": "18.00000000000000000000"
       }
     ],
@@ -1403,7 +1403,7 @@
     "Ouder kolom 1": [
       {
         "id": 48,
-        "value": "Toepassing van het tarief op de klassering der ongebouwde eigendommen",
+        "value": "Toepassing van het tarief<br/>op de klassering der<br/>ongebouwde eigendommen",
         "order": "18.00000000000000000000"
       }
     ],
@@ -1456,7 +1456,7 @@
     "Ouder kolom 1": [
       {
         "id": 48,
-        "value": "Toepassing van het tarief op de klassering der ongebouwde eigendommen",
+        "value": "Toepassing van het tarief<br/>op de klassering der<br/>ongebouwde eigendommen",
         "order": "18.00000000000000000000"
       }
     ],
@@ -1497,8 +1497,8 @@
   {
     "id": 64,
     "order": "32.00000000000000000000",
-    "lbl": "25. Bijeentrekking van het belastbaar inkomen der ongebouwde percelen bij soort van bebouwing",
-    "titel": "Bijeentrekking van het belastbaar inkomen der ongebouwde percelen bij soort van bebouwing",
+    "lbl": "25. Bijeentrekking<br/>van het<br/>belastbaar<br/>inkomen der<br/>ongebouwde<br/>percelen<br/>bij soort van<br/>bebouwing",
+    "titel": "Bijeentrekking<br/>van het<br/>belastbaar<br/>inkomen der<br/>ongebouwde<br/>percelen<br/>bij soort van<br/>bebouwing",
     "Tabel": [
       {
         "id": 1,
@@ -1514,10 +1514,10 @@
     },
     "logische volgorde": "12",
     "volgorde lbl": "25",
-    "Ouder-lbl": "12. Bijeentrekking van het belastbaar inkomen der ongebouwde percelen bij soort van bebouwing",
+    "Ouder-lbl": "12. Bijeentrekking<br/>van het<br/>belastbaar<br/>inkomen der<br/>ongebouwde<br/>percelen<br/>bij soort van<br/>bebouwing",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "25. Bijeentrekking van het belastbaar inkomen der ongebouwde percelen bij soort van bebouwing",
+    "hierarchie": "25. Bijeentrekking<br/>van het<br/>belastbaar<br/>inkomen der<br/>ongebouwde<br/>percelen<br/>bij soort van<br/>bebouwing",
     "sub": {
       "id": 1352,
       "value": "f|c",
@@ -1544,8 +1544,8 @@
   {
     "id": 67,
     "order": "35.00000000000000000000",
-    "lbl": "Belastbaar inkomen van ieder perceel",
-    "titel": "Belastbaar inkomen van ieder perceel",
+    "lbl": "Belastbaar<br/>inkomen<br/>van<br/>ieder perceel",
+    "titel": "Belastbaar<br/>inkomen<br/>van<br/>ieder perceel",
     "Tabel": [
       {
         "id": 1,
@@ -1561,10 +1561,10 @@
     },
     "logische volgorde": "13",
     "volgorde lbl": "",
-    "Ouder-lbl": "13. Belastbaar inkomen van ieder perceel",
+    "Ouder-lbl": "13. Belastbaar<br/>inkomen<br/>van<br/>ieder perceel",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "Belastbaar inkomen van ieder perceel",
+    "hierarchie": "Belastbaar<br/>inkomen<br/>van<br/>ieder perceel",
     "sub": null,
     "Sem. Veld": [],
     "volgnr. log.": "13",
@@ -1593,7 +1593,7 @@
     "Ouder kolom 1": [
       {
         "id": 67,
-        "value": "Belastbaar inkomen van ieder perceel",
+        "value": "Belastbaar<br/>inkomen<br/>van<br/>ieder perceel",
         "order": "35.00000000000000000000"
       }
     ],
@@ -1646,7 +1646,7 @@
     "Ouder kolom 1": [
       {
         "id": 67,
-        "value": "Belastbaar inkomen van ieder perceel",
+        "value": "Belastbaar<br/>inkomen<br/>van<br/>ieder perceel",
         "order": "35.00000000000000000000"
       }
     ],
@@ -1687,8 +1687,8 @@
   {
     "id": 74,
     "order": "42.00000000000000000000",
-    "lbl": "28. Verwijzing naar het nᵒ. der suppletoire aanwijzende tafel in geval van verandering",
-    "titel": "Verwijzing naar het nᵒ. der suppletoire aanwijzende tafel in geval van verandering",
+    "lbl": "28. Verwijzing naar het nᵒ. der<br/>suppletoire aanwijzende tafel<br/>in geval van verandering",
+    "titel": "Verwijzing naar het nᵒ. der<br/>suppletoire aanwijzende tafel<br/>in geval van verandering",
     "Tabel": [
       {
         "id": 1,
@@ -1704,10 +1704,10 @@
     },
     "logische volgorde": "14",
     "volgorde lbl": "28",
-    "Ouder-lbl": "14. Verwijzing naar het nᵒ. der suppletoire aanwijzende tafel in geval van verandering",
+    "Ouder-lbl": "14. Verwijzing naar het nᵒ. der<br/>suppletoire aanwijzende tafel<br/>in geval van verandering",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "28. Verwijzing naar het nᵒ. der suppletoire aanwijzende tafel in geval van verandering",
+    "hierarchie": "28. Verwijzing naar het nᵒ. der<br/>suppletoire aanwijzende tafel<br/>in geval van verandering",
     "sub": null,
     "Sem. Veld": [
       {
@@ -1730,8 +1730,8 @@
   {
     "id": 75,
     "order": "43.00000000000000000000",
-    "lbl": "31. Verwijzing naar het nº der Suppletoire Aanwijzende tafel, in geval van verandering",
-    "titel": "Verwijzing naar het nº der Suppletoire Aanwijzende tafel, in geval van verandering",
+    "lbl": "31. Verwijzing naar het nº der<br/>Suppletoire Aanwijzende tafel,<br/>in geval van verandering",
+    "titel": "Verwijzing naar het nº der<br/>Suppletoire Aanwijzende tafel,<br/>in geval van verandering",
     "Tabel": [
       {
         "id": 2,
@@ -1747,10 +1747,10 @@
     },
     "logische volgorde": "16",
     "volgorde lbl": "31",
-    "Ouder-lbl": "16. Verwijzing naar het nº der Suppletoire Aanwijzende tafel, in geval van verandering",
+    "Ouder-lbl": "16. Verwijzing naar het nº der<br/>Suppletoire Aanwijzende tafel,<br/>in geval van verandering",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "31. Verwijzing naar het nº der Suppletoire Aanwijzende tafel, in geval van verandering",
+    "hierarchie": "31. Verwijzing naar het nº der<br/>Suppletoire Aanwijzende tafel,<br/>in geval van verandering",
     "sub": null,
     "Sem. Veld": [
       {
@@ -1773,8 +1773,8 @@
   {
     "id": 76,
     "order": "0.87500000000000000000",
-    "lbl": "27. bijeengetrokken bij soort van bebouwing",
-    "titel": "bijeengetrokken bij soort van bebouwing",
+    "lbl": "27. bijeen-<br/>getrokken<br/>bij soort<br/>van<br/>bebouwing",
+    "titel": "bijeen-<br/>getrokken<br/>bij soort<br/>van<br/>bebouwing",
     "Tabel": [
       {
         "id": 2,
@@ -1785,7 +1785,7 @@
     "Ouder kolom 1": [
       {
         "id": 79,
-        "value": "Kadastraal inkomen der ongebouwde eigendommen, zonder aftrek der polder- en dijkslasten",
+        "value": "Kadastraal inkomen<br/>der<br/>ongebouwde eigendommen,<br/>zonder aftrek<br/>der<br/>polder- en dijkslasten",
         "order": "0.86363636363636364646"
       }
     ],
@@ -1796,10 +1796,10 @@
     },
     "logische volgorde": "13.2",
     "volgorde lbl": "27",
-    "Ouder-lbl": "13. Kadastraal inkomen der ongebouwde eigendommen, zonder aftrek der polder- en dijkslasten",
+    "Ouder-lbl": "13. Kadastraal inkomen<br/>der<br/>ongebouwde eigendommen,<br/>zonder aftrek<br/>der<br/>polder- en dijkslasten",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "Kadastraal inkomen der ongebouwde eigendommen, zonder aftrek der polder- en dijkslasten: 27. bijeengetrokken bij soort van bebouwing",
+    "hierarchie": "Kadastraal inkomen<br/>der<br/>ongebouwde eigendommen,<br/>zonder aftrek<br/>der<br/>polder- en dijkslasten: 27. bijeen-<br/>getrokken<br/>bij soort<br/>van<br/>bebouwing",
     "sub": {
       "id": 1352,
       "value": "f|c",
@@ -1826,8 +1826,8 @@
   {
     "id": 77,
     "order": "42.50000000000000000000",
-    "lbl": "Belastbaar inkomen van ieder perceel",
-    "titel": "Belastbaar inkomen van ieder perceel",
+    "lbl": "Belastbaar<br/>inkomen<br/>van<br/>ieder perceel",
+    "titel": "Belastbaar<br/>inkomen<br/>van<br/>ieder perceel",
     "Tabel": [
       {
         "id": 2,
@@ -1843,10 +1843,10 @@
     },
     "logische volgorde": "15",
     "volgorde lbl": "",
-    "Ouder-lbl": "15. Belastbaar inkomen van ieder perceel",
+    "Ouder-lbl": "15. Belastbaar<br/>inkomen<br/>van<br/>ieder perceel",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "Belastbaar inkomen van ieder perceel",
+    "hierarchie": "Belastbaar<br/>inkomen<br/>van<br/>ieder perceel",
     "sub": null,
     "Sem. Veld": [],
     "volgnr. log.": "15",
@@ -1863,8 +1863,8 @@
   {
     "id": 78,
     "order": "0.86666666666666669627",
-    "lbl": "26. van ieder perceel",
-    "titel": "van ieder perceel",
+    "lbl": "26. van<br/>ieder<br/>perceel",
+    "titel": "van<br/>ieder<br/>perceel",
     "Tabel": [
       {
         "id": 2,
@@ -1875,7 +1875,7 @@
     "Ouder kolom 1": [
       {
         "id": 79,
-        "value": "Kadastraal inkomen der ongebouwde eigendommen, zonder aftrek der polder- en dijkslasten",
+        "value": "Kadastraal inkomen<br/>der<br/>ongebouwde eigendommen,<br/>zonder aftrek<br/>der<br/>polder- en dijkslasten",
         "order": "0.86363636363636364646"
       }
     ],
@@ -1886,10 +1886,10 @@
     },
     "logische volgorde": "13.1",
     "volgorde lbl": "26",
-    "Ouder-lbl": "13. Kadastraal inkomen der ongebouwde eigendommen, zonder aftrek der polder- en dijkslasten",
+    "Ouder-lbl": "13. Kadastraal inkomen<br/>der<br/>ongebouwde eigendommen,<br/>zonder aftrek<br/>der<br/>polder- en dijkslasten",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "Kadastraal inkomen der ongebouwde eigendommen, zonder aftrek der polder- en dijkslasten: 26. van ieder perceel",
+    "hierarchie": "Kadastraal inkomen<br/>der<br/>ongebouwde eigendommen,<br/>zonder aftrek<br/>der<br/>polder- en dijkslasten: 26. van<br/>ieder<br/>perceel",
     "sub": {
       "id": 1352,
       "value": "f|c",
@@ -1916,8 +1916,8 @@
   {
     "id": 79,
     "order": "0.86363636363636364646",
-    "lbl": "Kadastraal inkomen der ongebouwde eigendommen, zonder aftrek der polder- en dijkslasten",
-    "titel": "Kadastraal inkomen der ongebouwde eigendommen, zonder aftrek der polder- en dijkslasten",
+    "lbl": "Kadastraal inkomen<br/>der<br/>ongebouwde eigendommen,<br/>zonder aftrek<br/>der<br/>polder- en dijkslasten",
+    "titel": "Kadastraal inkomen<br/>der<br/>ongebouwde eigendommen,<br/>zonder aftrek<br/>der<br/>polder- en dijkslasten",
     "Tabel": [
       {
         "id": 2,
@@ -1933,10 +1933,10 @@
     },
     "logische volgorde": "13",
     "volgorde lbl": "",
-    "Ouder-lbl": "13. Kadastraal inkomen der ongebouwde eigendommen, zonder aftrek der polder- en dijkslasten",
+    "Ouder-lbl": "13. Kadastraal inkomen<br/>der<br/>ongebouwde eigendommen,<br/>zonder aftrek<br/>der<br/>polder- en dijkslasten",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "Kadastraal inkomen der ongebouwde eigendommen, zonder aftrek der polder- en dijkslasten",
+    "hierarchie": "Kadastraal inkomen<br/>der<br/>ongebouwde eigendommen,<br/>zonder aftrek<br/>der<br/>polder- en dijkslasten",
     "sub": null,
     "Sem. Veld": [],
     "volgnr. log.": "13",
@@ -1953,8 +1953,8 @@
   {
     "id": 81,
     "order": "0.86111111111111116045",
-    "lbl": "9. Artikel van den Perceelsgewijzen Kadastralen Legger",
-    "titel": "Artikel van den Perceelsgewijzen Kadastralen Legger",
+    "lbl": "9. Artikel der alphabetische lijst<br/>(1e gedeelte van den kadastr. legger)",
+    "titel": "Artikel der alphabetische lijst<br/>(1e gedeelte van den kadastr. legger)",
     "Tabel": [
       {
         "id": 2,
@@ -1970,10 +1970,10 @@
     },
     "logische volgorde": "05",
     "volgorde lbl": "9",
-    "Ouder-lbl": "05. Artikel van den Perceelsgewijzen Kadastralen Legger",
+    "Ouder-lbl": "05. Artikel der alphabetische lijst<br/>(1e gedeelte van den kadastr. legger)",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "9. Artikel van den Perceelsgewijzen Kadastralen Legger",
+    "hierarchie": "9. Artikel der alphabetische lijst<br/>(1e gedeelte van den kadastr. legger)",
     "sub": null,
     "Sem. Veld": [
       {
@@ -2076,8 +2076,8 @@
   {
     "id": 84,
     "order": "0.86138613861386137405",
-    "lbl": "10. Soort der eigendommen",
-    "titel": "Soort der eigendommen",
+    "lbl": "10. Soort<br/>der<br/>eigendommen",
+    "titel": "Soort<br/>der<br/>eigendommen",
     "Tabel": [
       {
         "id": 2,
@@ -2093,10 +2093,10 @@
     },
     "logische volgorde": "06",
     "volgorde lbl": "10",
-    "Ouder-lbl": "06. Soort der eigendommen",
+    "Ouder-lbl": "06. Soort<br/>der<br/>eigendommen",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "10. Soort der eigendommen",
+    "hierarchie": "10. Soort<br/>der<br/>eigendommen",
     "sub": null,
     "Sem. Veld": [
       {
@@ -2119,8 +2119,8 @@
   {
     "id": 85,
     "order": "0.86170212765957443501",
-    "lbl": "12. van ieder perceel",
-    "titel": "van ieder perceel",
+    "lbl": "12. van<br/>ieder<br/>perceel",
+    "titel": "van<br/>ieder<br/>perceel",
     "Tabel": [
       {
         "id": 2,
@@ -2145,7 +2145,7 @@
     "Ouder-lbl": "08. Inhouds-grootte",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "Inhouds-grootte: 12. van ieder perceel",
+    "hierarchie": "Inhouds-grootte: 12. van<br/>ieder<br/>perceel",
     "sub": {
       "id": 1351,
       "value": "b|r|e",
@@ -2236,7 +2236,7 @@
     "Ouder kolom 2": [
       {
         "id": 90,
-        "value": "Ongebouwde,\\nen\\nInhouds-grootte, in iedere klasse gebracht",
+        "value": "Ongebouwde,<br/>en<br/>Inhouds-grootte, in iedere klasse gebracht",
         "order": "0.86176470588235298820"
       }
     ],
@@ -2311,8 +2311,8 @@
   {
     "id": 89,
     "order": "0.86173633440514474380",
-    "lbl": "13. bijeengetrokken bij soort van bebouwing",
-    "titel": "bijeengetrokken bij soort van bebouwing",
+    "lbl": "13. bijeengetrokken<br/>bij soort<br/>van<br/>bebouwing",
+    "titel": "bijeengetrokken<br/>bij soort<br/>van<br/>bebouwing",
     "Tabel": [
       {
         "id": 2,
@@ -2337,7 +2337,7 @@
     "Ouder-lbl": "08. Inhouds-grootte",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "Inhouds-grootte: 13. bijeengetrokken bij soort van bebouwing",
+    "hierarchie": "Inhouds-grootte: 13. bijeengetrokken<br/>bij soort<br/>van<br/>bebouwing",
     "sub": {
       "id": 1351,
       "value": "b|r|e",
@@ -2364,8 +2364,8 @@
   {
     "id": 90,
     "order": "0.86176470588235298820",
-    "lbl": "Ongebouwde,\\nen\\nInhouds-grootte, in iedere klasse gebracht",
-    "titel": "Ongebouwde,\\nen\\nInhouds-grootte, in iedere klasse gebracht",
+    "lbl": "Ongebouwde,<br/>en<br/>Inhouds-grootte, in iedere klasse gebracht",
+    "titel": "Ongebouwde,<br/>en<br/>Inhouds-grootte, in iedere klasse gebracht",
     "Tabel": [
       {
         "id": 2,
@@ -2390,7 +2390,7 @@
     "Ouder-lbl": "11. Klassering der Eigendommen",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "Klassering der Eigendommen: Ongebouwde,\\nen\\nInhouds-grootte, in iedere klasse gebracht",
+    "hierarchie": "Klassering der Eigendommen: Ongebouwde,<br/>en<br/>Inhouds-grootte, in iedere klasse gebracht",
     "sub": null,
     "Sem. Veld": [],
     "volgnr. log.": "1",
@@ -2434,7 +2434,7 @@
     "Ouder kolom 2": [
       {
         "id": 90,
-        "value": "Ongebouwde,\\nen\\nInhouds-grootte, in iedere klasse gebracht",
+        "value": "Ongebouwde,<br/>en<br/>Inhouds-grootte, in iedere klasse gebracht",
         "order": "0.86176470588235298820"
       }
     ],
@@ -2493,7 +2493,7 @@
     "Ouder kolom 2": [
       {
         "id": 90,
-        "value": "Ongebouwde,\\nen\\nInhouds-grootte, in iedere klasse gebracht",
+        "value": "Ongebouwde,<br/>en<br/>Inhouds-grootte, in iedere klasse gebracht",
         "order": "0.86176470588235298820"
       }
     ],
@@ -2611,8 +2611,8 @@
   {
     "id": 95,
     "order": "0.86175710594315246826",
-    "lbl": "14. Aanwijzing der polder- of dijks-lasten waarmede de percelen bezwaard zijn",
-    "titel": "Aanwijzing der polder- of dijks-lasten waarmede de percelen bezwaard zijn",
+    "lbl": "14. Aanwijzing<br/>der<br/>polder- of<br/>dijks-lasten<br/>waarmede de<br/>percelen<br/>bezwaard<br/>zijn",
+    "titel": "Aanwijzing<br/>der<br/>polder- of<br/>dijks-lasten<br/>waarmede de<br/>percelen<br/>bezwaard<br/>zijn",
     "Tabel": [
       {
         "id": 2,
@@ -2628,10 +2628,10 @@
     },
     "logische volgorde": "10",
     "volgorde lbl": "14",
-    "Ouder-lbl": "10. Aanwijzing der polder- of dijks-lasten waarmede de percelen bezwaard zijn",
+    "Ouder-lbl": "10. Aanwijzing<br/>der<br/>polder- of<br/>dijks-lasten<br/>waarmede de<br/>percelen<br/>bezwaard<br/>zijn",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "14. Aanwijzing der polder- of dijks-lasten waarmede de percelen bezwaard zijn",
+    "hierarchie": "14. Aanwijzing<br/>der<br/>polder- of<br/>dijks-lasten<br/>waarmede de<br/>percelen<br/>bezwaard<br/>zijn",
     "sub": null,
     "Sem. Veld": [
       {
@@ -2681,7 +2681,7 @@
     "Ouder kolom 2": [
       {
         "id": 90,
-        "value": "Ongebouwde,\\nen\\nInhouds-grootte, in iedere klasse gebracht",
+        "value": "Ongebouwde,<br/>en<br/>Inhouds-grootte, in iedere klasse gebracht",
         "order": "0.86176470588235298820"
       }
     ],
@@ -2740,7 +2740,7 @@
     "Ouder kolom 2": [
       {
         "id": 90,
-        "value": "Ongebouwde,\\nen\\nInhouds-grootte, in iedere klasse gebracht",
+        "value": "Ongebouwde,<br/>en<br/>Inhouds-grootte, in iedere klasse gebracht",
         "order": "0.86176470588235298820"
       }
     ],
@@ -2772,8 +2772,8 @@
   {
     "id": 98,
     "order": "0.86274509803921572981",
-    "lbl": "Toepassing van het tarief op de klassering der ongebouwde eigendommen",
-    "titel": "Toepassing van het tarief op de klassering der ongebouwde eigendommen",
+    "lbl": "Toepassing van het tarief<br/>op de klassering<br/>der<br/>ongebouwde eigendommen",
+    "titel": "Toepassing van het tarief<br/>op de klassering<br/>der<br/>ongebouwde eigendommen",
     "Tabel": [
       {
         "id": 2,
@@ -2789,10 +2789,10 @@
     },
     "logische volgorde": "12",
     "volgorde lbl": "",
-    "Ouder-lbl": "12. Toepassing van het tarief op de klassering der ongebouwde eigendommen",
+    "Ouder-lbl": "12. Toepassing van het tarief<br/>op de klassering<br/>der<br/>ongebouwde eigendommen",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "Toepassing van het tarief op de klassering der ongebouwde eigendommen",
+    "hierarchie": "Toepassing van het tarief<br/>op de klassering<br/>der<br/>ongebouwde eigendommen",
     "sub": null,
     "Sem. Veld": [],
     "volgnr. log.": "12",
@@ -2821,7 +2821,7 @@
     "Ouder kolom 1": [
       {
         "id": 98,
-        "value": "Toepassing van het tarief op de klassering der ongebouwde eigendommen",
+        "value": "Toepassing van het tarief<br/>op de klassering<br/>der<br/>ongebouwde eigendommen",
         "order": "0.86274509803921572981"
       }
     ],
@@ -2874,7 +2874,7 @@
     "Ouder kolom 1": [
       {
         "id": 98,
-        "value": "Toepassing van het tarief op de klassering der ongebouwde eigendommen",
+        "value": "Toepassing van het tarief<br/>op de klassering<br/>der<br/>ongebouwde eigendommen",
         "order": "0.86274509803921572981"
       }
     ],
@@ -2927,7 +2927,7 @@
     "Ouder kolom 1": [
       {
         "id": 98,
-        "value": "Toepassing van het tarief op de klassering der ongebouwde eigendommen",
+        "value": "Toepassing van het tarief<br/>op de klassering<br/>der<br/>ongebouwde eigendommen",
         "order": "0.86274509803921572981"
       }
     ],
@@ -2980,7 +2980,7 @@
     "Ouder kolom 1": [
       {
         "id": 98,
-        "value": "Toepassing van het tarief op de klassering der ongebouwde eigendommen",
+        "value": "Toepassing van het tarief<br/>op de klassering<br/>der<br/>ongebouwde eigendommen",
         "order": "0.86274509803921572981"
       }
     ],
@@ -3033,7 +3033,7 @@
     "Ouder kolom 1": [
       {
         "id": 98,
-        "value": "Toepassing van het tarief op de klassering der ongebouwde eigendommen",
+        "value": "Toepassing van het tarief<br/>op de klassering<br/>der<br/>ongebouwde eigendommen",
         "order": "0.86274509803921572981"
       }
     ],
@@ -3074,8 +3074,8 @@
   {
     "id": 104,
     "order": "42.66666666666666429819",
-    "lbl": "29. ongebouwd",
-    "titel": "ongebouwd",
+    "lbl": "29. ongeb.",
+    "titel": "ongeb.",
     "Tabel": [
       {
         "id": 2,
@@ -3086,7 +3086,7 @@
     "Ouder kolom 1": [
       {
         "id": 77,
-        "value": "Belastbaar inkomen van ieder perceel",
+        "value": "Belastbaar<br/>inkomen<br/>van<br/>ieder perceel",
         "order": "42.50000000000000000000"
       }
     ],
@@ -3097,10 +3097,10 @@
     },
     "logische volgorde": "15.1",
     "volgorde lbl": "29",
-    "Ouder-lbl": "15. Belastbaar inkomen van ieder perceel",
+    "Ouder-lbl": "15. Belastbaar<br/>inkomen<br/>van<br/>ieder perceel",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "Belastbaar inkomen van ieder perceel: 29. ongebouwd",
+    "hierarchie": "Belastbaar<br/>inkomen<br/>van<br/>ieder perceel: 29. ongeb.",
     "sub": {
       "id": 1352,
       "value": "f|c",
@@ -3127,8 +3127,8 @@
   {
     "id": 105,
     "order": "42.33333333333333570181",
-    "lbl": "28. Bedrag van den aftrek wegens polder- en dijkslasten",
-    "titel": "Bedrag van den aftrek wegens polder- en dijkslasten",
+    "lbl": "28. Bedrag<br/>van den<br/>aftrek<br/>wegens polder-<br/>en<br/>dijkslasten",
+    "titel": "Bedrag<br/>van den<br/>aftrek<br/>wegens polder-<br/>en<br/>dijkslasten",
     "Tabel": [
       {
         "id": 2,
@@ -3144,10 +3144,10 @@
     },
     "logische volgorde": "14",
     "volgorde lbl": "28",
-    "Ouder-lbl": "14. Bedrag van den aftrek wegens polder- en dijkslasten",
+    "Ouder-lbl": "14. Bedrag<br/>van den<br/>aftrek<br/>wegens polder-<br/>en<br/>dijkslasten",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "28. Bedrag van den aftrek wegens polder- en dijkslasten",
+    "hierarchie": "28. Bedrag<br/>van den<br/>aftrek<br/>wegens polder-<br/>en<br/>dijkslasten",
     "sub": {
       "id": 1352,
       "value": "f|c",
@@ -3186,7 +3186,7 @@
     "Ouder kolom 1": [
       {
         "id": 77,
-        "value": "Belastbaar inkomen van ieder perceel",
+        "value": "Belastbaar<br/>inkomen<br/>van<br/>ieder perceel",
         "order": "42.50000000000000000000"
       }
     ],
@@ -3435,7 +3435,7 @@
     "Ouder kolom 1": [
       {
         "id": 113,
-        "value": "Verwijzing naar het algemeene register der hypotheken",
+        "value": "Verwijzing<br/>naar het<br/>algemeene<br/>register<br/>der<br/>hypotheken",
         "order": "0.85869565217391308209"
       }
     ],
@@ -3484,7 +3484,7 @@
     "Ouder kolom 1": [
       {
         "id": 113,
-        "value": "Verwijzing naar het algemeene register der hypotheken",
+        "value": "Verwijzing<br/>naar het<br/>algemeene<br/>register<br/>der<br/>hypotheken",
         "order": "0.85869565217391308209"
       }
     ],
@@ -3521,8 +3521,8 @@
   {
     "id": 113,
     "order": "0.85869565217391308209",
-    "lbl": "Verwijzing naar het algemeene register der hypotheken",
-    "titel": "Verwijzing naar het algemeene register der hypotheken",
+    "lbl": "Verwijzing<br/>naar het<br/>algemeene<br/>register<br/>der<br/>hypotheken",
+    "titel": "Verwijzing<br/>naar het<br/>algemeene<br/>register<br/>der<br/>hypotheken",
     "Tabel": [
       {
         "id": 2,
@@ -3538,10 +3538,10 @@
     },
     "logische volgorde": "03",
     "volgorde lbl": "",
-    "Ouder-lbl": "03. Verwijzing naar het algemeene register der hypotheken",
+    "Ouder-lbl": "03. Verwijzing<br/>naar het<br/>algemeene<br/>register<br/>der<br/>hypotheken",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "Verwijzing naar het algemeene register der hypotheken",
+    "hierarchie": "Verwijzing<br/>naar het<br/>algemeene<br/>register<br/>der<br/>hypotheken",
     "sub": null,
     "Sem. Veld": [],
     "volgnr. log.": "3",
@@ -3558,8 +3558,8 @@
   {
     "id": 114,
     "order": "0.85858585858585856343",
-    "lbl": "2. N°. der percelen op het kadastrale plan",
-    "titel": "N°. der percelen op het kadastrale plan",
+    "lbl": "2. N°. der percelen<br/>op het<br/>kadastrale plan",
+    "titel": "N°. der percelen<br/>op het<br/>kadastrale plan",
     "Tabel": [
       {
         "id": 2,
@@ -3575,10 +3575,10 @@
     },
     "logische volgorde": "02",
     "volgorde lbl": "2",
-    "Ouder-lbl": "02. N°. der percelen op het kadastrale plan",
+    "Ouder-lbl": "02. N°. der percelen<br/>op het<br/>kadastrale plan",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "2. N°. der percelen op het kadastrale plan",
+    "hierarchie": "2. N°. der percelen<br/>op het<br/>kadastrale plan",
     "sub": null,
     "Sem. Veld": [
       {
@@ -3601,8 +3601,8 @@
   {
     "id": 115,
     "order": "0.85849056603773588048",
-    "lbl": "1. Polder, gehucht of plaatselijke benaming",
-    "titel": "Polder, gehucht of plaatselijke benaming",
+    "lbl": "1. Polder, gehucht<br/>of<br/>plaatselijke benaming",
+    "titel": "Polder, gehucht<br/>of<br/>plaatselijke benaming",
     "Tabel": [
       {
         "id": 2,
@@ -3618,10 +3618,10 @@
     },
     "logische volgorde": "01",
     "volgorde lbl": "1",
-    "Ouder-lbl": "01. Polder, gehucht of plaatselijke benaming",
+    "Ouder-lbl": "01. Polder, gehucht<br/>of<br/>plaatselijke benaming",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "1. Polder, gehucht of plaatselijke benaming",
+    "hierarchie": "1. Polder, gehucht<br/>of<br/>plaatselijke benaming",
     "sub": null,
     "Sem. Veld": [
       {
@@ -3644,8 +3644,8 @@
   {
     "id": 116,
     "order": "44.00000000000000000000",
-    "lbl": "30. Verwijzing naar het nᵒ. der suppletoire aanwijzende tafel in geval van verandering",
-    "titel": "Verwijzing naar het nᵒ. der suppletoire aanwijzende tafel in geval van verandering",
+    "lbl": "30. Verwijzing naar het nᵒ. der<br/>suppletoire aanwijzende tafel<br/>in geval van verandering",
+    "titel": "Verwijzing naar het nᵒ. der<br/>suppletoire aanwijzende tafel<br/>in geval van verandering",
     "Tabel": [
       {
         "id": 3,
@@ -3661,10 +3661,10 @@
     },
     "logische volgorde": "11",
     "volgorde lbl": "30",
-    "Ouder-lbl": "11. Verwijzing naar het nᵒ. der suppletoire aanwijzende tafel in geval van verandering",
+    "Ouder-lbl": "11. Verwijzing naar het nᵒ. der<br/>suppletoire aanwijzende tafel<br/>in geval van verandering",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "30. Verwijzing naar het nᵒ. der suppletoire aanwijzende tafel in geval van verandering",
+    "hierarchie": "30. Verwijzing naar het nᵒ. der<br/>suppletoire aanwijzende tafel<br/>in geval van verandering",
     "sub": null,
     "Sem. Veld": [
       {
@@ -3699,7 +3699,7 @@
     "Ouder kolom 1": [
       {
         "id": 120,
-        "value": "Belastbaar inkomen van ieder perceel",
+        "value": "Belastbaar<br/>inkomen<br/>van<br/>ieder perceel",
         "order": "43.37500000000000000000"
       }
     ],
@@ -3789,7 +3789,7 @@
     "Ouder kolom 1": [
       {
         "id": 120,
-        "value": "Belastbaar inkomen van ieder perceel",
+        "value": "Belastbaar<br/>inkomen<br/>van<br/>ieder perceel",
         "order": "43.37500000000000000000"
       }
     ],
@@ -3830,8 +3830,8 @@
   {
     "id": 120,
     "order": "43.37500000000000000000",
-    "lbl": "Belastbaar inkomen van ieder perceel",
-    "titel": "Belastbaar inkomen van ieder perceel",
+    "lbl": "Belastbaar<br/>inkomen<br/>van<br/>ieder perceel",
+    "titel": "Belastbaar<br/>inkomen<br/>van<br/>ieder perceel",
     "Tabel": [
       {
         "id": 3,
@@ -3847,10 +3847,10 @@
     },
     "logische volgorde": "10",
     "volgorde lbl": "",
-    "Ouder-lbl": "10. Belastbaar inkomen van ieder perceel",
+    "Ouder-lbl": "10. Belastbaar<br/>inkomen<br/>van<br/>ieder perceel",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "Belastbaar inkomen van ieder perceel",
+    "hierarchie": "Belastbaar<br/>inkomen<br/>van<br/>ieder perceel",
     "sub": null,
     "Sem. Veld": [],
     "volgnr. log.": "10",
@@ -3879,7 +3879,7 @@
     "Ouder kolom 1": [
       {
         "id": 127,
-        "value": "Toepassing van het tarief op de klassering der ongebouwde eigendommen",
+        "value": "Toepassing van het tarief<br/>op de klassering<br/>der<br/>ongebouwde eigendommen",
         "order": "43.35802469135802539313"
       }
     ],
@@ -3920,8 +3920,8 @@
   {
     "id": 122,
     "order": "43.35714285714285409767",
-    "lbl": "11. Artikel van den perceelsgewijzen legger",
-    "titel": "Artikel van den perceelsgewijzen legger",
+    "lbl": "11. Artikel van den perceels-<br/>gewijzen legger",
+    "titel": "Artikel van den perceels-<br/>gewijzen legger",
     "Tabel": [
       {
         "id": 3,
@@ -3937,10 +3937,10 @@
     },
     "logische volgorde": "04",
     "volgorde lbl": "11",
-    "Ouder-lbl": "04. Artikel van den perceelsgewijzen legger",
+    "Ouder-lbl": "04. Artikel van den perceels-<br/>gewijzen legger",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "11. Artikel van den perceelsgewijzen legger",
+    "hierarchie": "11. Artikel van den perceels-<br/>gewijzen legger",
     "sub": null,
     "Sem. Veld": [
       {
@@ -3975,7 +3975,7 @@
     "Ouder kolom 1": [
       {
         "id": 127,
-        "value": "Toepassing van het tarief op de klassering der ongebouwde eigendommen",
+        "value": "Toepassing van het tarief<br/>op de klassering<br/>der<br/>ongebouwde eigendommen",
         "order": "43.35802469135802539313"
       }
     ],
@@ -4028,7 +4028,7 @@
     "Ouder kolom 1": [
       {
         "id": 127,
-        "value": "Toepassing van het tarief op de klassering der ongebouwde eigendommen",
+        "value": "Toepassing van het tarief<br/>op de klassering<br/>der<br/>ongebouwde eigendommen",
         "order": "43.35802469135802539313"
       }
     ],
@@ -4081,7 +4081,7 @@
     "Ouder kolom 1": [
       {
         "id": 127,
-        "value": "Toepassing van het tarief op de klassering der ongebouwde eigendommen",
+        "value": "Toepassing van het tarief<br/>op de klassering<br/>der<br/>ongebouwde eigendommen",
         "order": "43.35802469135802539313"
       }
     ],
@@ -4134,7 +4134,7 @@
     "Ouder kolom 1": [
       {
         "id": 127,
-        "value": "Toepassing van het tarief op de klassering der ongebouwde eigendommen",
+        "value": "Toepassing van het tarief<br/>op de klassering<br/>der<br/>ongebouwde eigendommen",
         "order": "43.35802469135802539313"
       }
     ],
@@ -4175,8 +4175,8 @@
   {
     "id": 127,
     "order": "43.35802469135802539313",
-    "lbl": "Toepassing van het tarief op de klassering der ongebouwde eigendommen",
-    "titel": "Toepassing van het tarief op de klassering der ongebouwde eigendommen",
+    "lbl": "Toepassing van het tarief<br/>op de klassering<br/>der<br/>ongebouwde eigendommen",
+    "titel": "Toepassing van het tarief<br/>op de klassering<br/>der<br/>ongebouwde eigendommen",
     "Tabel": [
       {
         "id": 3,
@@ -4192,10 +4192,10 @@
     },
     "logische volgorde": "09",
     "volgorde lbl": "",
-    "Ouder-lbl": "09. Toepassing van het tarief op de klassering der ongebouwde eigendommen",
+    "Ouder-lbl": "09. Toepassing van het tarief<br/>op de klassering<br/>der<br/>ongebouwde eigendommen",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "Toepassing van het tarief op de klassering der ongebouwde eigendommen",
+    "hierarchie": "Toepassing van het tarief<br/>op de klassering<br/>der<br/>ongebouwde eigendommen",
     "sub": null,
     "Sem. Veld": [],
     "volgnr. log.": "9",
@@ -4239,7 +4239,7 @@
     "Ouder kolom 2": [
       {
         "id": 135,
-        "value": "Ongebouwde, en inhouds-grootte, in iedere klasse gebragt",
+        "value": "Ongebouwde,<br/>en<br/>inhouds-grootte, in iedere klasse gebragt",
         "order": "43.35758835758835516572"
       }
     ],
@@ -4298,7 +4298,7 @@
     "Ouder kolom 2": [
       {
         "id": 135,
-        "value": "Ongebouwde, en inhouds-grootte, in iedere klasse gebragt",
+        "value": "Ongebouwde,<br/>en<br/>inhouds-grootte, in iedere klasse gebragt",
         "order": "43.35758835758835516572"
       }
     ],
@@ -4357,7 +4357,7 @@
     "Ouder kolom 2": [
       {
         "id": 135,
-        "value": "Ongebouwde, en inhouds-grootte, in iedere klasse gebragt",
+        "value": "Ongebouwde,<br/>en<br/>inhouds-grootte, in iedere klasse gebragt",
         "order": "43.35758835758835516572"
       }
     ],
@@ -4416,7 +4416,7 @@
     "Ouder kolom 2": [
       {
         "id": 135,
-        "value": "Ongebouwde, en inhouds-grootte, in iedere klasse gebragt",
+        "value": "Ongebouwde,<br/>en<br/>inhouds-grootte, in iedere klasse gebragt",
         "order": "43.35758835758835516572"
       }
     ],
@@ -4475,7 +4475,7 @@
     "Ouder kolom 2": [
       {
         "id": 135,
-        "value": "Ongebouwde, en inhouds-grootte, in iedere klasse gebragt",
+        "value": "Ongebouwde,<br/>en<br/>inhouds-grootte, in iedere klasse gebragt",
         "order": "43.35758835758835516572"
       }
     ],
@@ -4507,8 +4507,8 @@
   {
     "id": 133,
     "order": "43.35757575757575921216",
-    "lbl": "14. bijeengetrokken bij soort van bebouwing",
-    "titel": "bijeengetrokken bij soort van bebouwing",
+    "lbl": "14. bijeengetrokken<br/>bij soort<br/>van<br/>bebouwing",
+    "titel": "bijeengetrokken<br/>bij soort<br/>van<br/>bebouwing",
     "Tabel": [
       {
         "id": 3,
@@ -4533,7 +4533,7 @@
     "Ouder-lbl": "06. Inhouds-grootte",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "Inhouds-grootte: 14. bijeengetrokken bij soort van bebouwing",
+    "hierarchie": "Inhouds-grootte: 14. bijeengetrokken<br/>bij soort<br/>van<br/>bebouwing",
     "sub": {
       "id": 1351,
       "value": "b|r|e",
@@ -4609,8 +4609,8 @@
   {
     "id": 135,
     "order": "43.35758835758835516572",
-    "lbl": "Ongebouwde, en inhouds-grootte, in iedere klasse gebragt",
-    "titel": "Ongebouwde, en inhouds-grootte, in iedere klasse gebragt",
+    "lbl": "Ongebouwde,<br/>en<br/>inhouds-grootte, in iedere klasse gebragt",
+    "titel": "Ongebouwde,<br/>en<br/>inhouds-grootte, in iedere klasse gebragt",
     "Tabel": [
       {
         "id": 3,
@@ -4635,7 +4635,7 @@
     "Ouder-lbl": "08. Klassering der eigendommen",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "Klassering der eigendommen: Ongebouwde, en inhouds-grootte, in iedere klasse gebragt",
+    "hierarchie": "Klassering der eigendommen: Ongebouwde,<br/>en<br/>inhouds-grootte, in iedere klasse gebragt",
     "sub": null,
     "Sem. Veld": [],
     "volgnr. log.": "1",
@@ -4732,8 +4732,8 @@
   {
     "id": 138,
     "order": "43.35754189944134395773",
-    "lbl": "13. van ieder perceel",
-    "titel": "van ieder perceel",
+    "lbl": "13. van<br/>ieder<br/>perceel",
+    "titel": "van<br/>ieder<br/>perceel",
     "Tabel": [
       {
         "id": 3,
@@ -4758,7 +4758,7 @@
     "Ouder-lbl": "06. Inhouds-grootte",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "Inhouds-grootte: 13. van ieder perceel",
+    "hierarchie": "Inhouds-grootte: 13. van<br/>ieder<br/>perceel",
     "sub": {
       "id": 1351,
       "value": "b|r|e",
@@ -4920,8 +4920,8 @@
   {
     "id": 142,
     "order": "43.35748792270531737358",
-    "lbl": "12. Soort der eigendommen",
-    "titel": "Soort der eigendommen",
+    "lbl": "12. Soort<br/>der<br/>eigendommen",
+    "titel": "Soort<br/>der<br/>eigendommen",
     "Tabel": [
       {
         "id": 3,
@@ -4937,10 +4937,10 @@
     },
     "logische volgorde": "05",
     "volgorde lbl": "12",
-    "Ouder-lbl": "05. Soort der eigendommen",
+    "Ouder-lbl": "05. Soort<br/>der<br/>eigendommen",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "12. Soort der eigendommen",
+    "hierarchie": "12. Soort<br/>der<br/>eigendommen",
     "sub": null,
     "Sem. Veld": [
       {
@@ -5125,7 +5125,7 @@
     "Ouder kolom 2": [
       {
         "id": 151,
-        "value": "het algemeen register der hypotheken",
+        "value": "het<br/>algemeen<br/>register<br/>der<br/>hypotheken",
         "order": "43.34210526315789735463"
       }
     ],
@@ -5180,7 +5180,7 @@
     "Ouder kolom 2": [
       {
         "id": 151,
-        "value": "het algemeen register der hypotheken",
+        "value": "het<br/>algemeen<br/>register<br/>der<br/>hypotheken",
         "order": "43.34210526315789735463"
       }
     ],
@@ -5208,8 +5208,8 @@
   {
     "id": 148,
     "order": "43.34482758620689679674",
-    "lbl": "4. Nommers der percelen",
-    "titel": "Nommers der percelen",
+    "lbl": "4. Nommers<br/>der<br/>percelen",
+    "titel": "Nommers<br/>der<br/>percelen",
     "Tabel": [
       {
         "id": 3,
@@ -5240,7 +5240,7 @@
       }
     ],
     "Ouder kolom 3": [],
-    "hierarchie": "Verwijzing naar > de plans: 4. Nommers der percelen",
+    "hierarchie": "Verwijzing naar > de plans: 4. Nommers<br/>der<br/>percelen",
     "sub": null,
     "Sem. Veld": [
       {
@@ -5258,7 +5258,7 @@
     "L2": "1",
     "L3": "3",
     "breedte": null,
-    "verticaal": false
+    "verticaal": true
   },
   {
     "id": 149,
@@ -5313,7 +5313,7 @@
     "L2": "1",
     "L3": "2",
     "breedte": null,
-    "verticaal": false
+    "verticaal": true
   },
   {
     "id": 150,
@@ -5368,13 +5368,13 @@
     "L2": "1",
     "L3": "1",
     "breedte": null,
-    "verticaal": false
+    "verticaal": true
   },
   {
     "id": 151,
     "order": "43.34210526315789735463",
-    "lbl": "het algemeen register der hypotheken",
-    "titel": "het algemeen register der hypotheken",
+    "lbl": "het<br/>algemeen<br/>register<br/>der<br/>hypotheken",
+    "titel": "het<br/>algemeen<br/>register<br/>der<br/>hypotheken",
     "Tabel": [
       {
         "id": 3,
@@ -5399,7 +5399,7 @@
     "Ouder-lbl": "02. Verwijzing naar",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "Verwijzing naar: het algemeen register der hypotheken",
+    "hierarchie": "Verwijzing naar: het<br/>algemeen<br/>register<br/>der<br/>hypotheken",
     "sub": null,
     "Sem. Veld": [],
     "volgnr. log.": "2",
@@ -5459,8 +5459,8 @@
   {
     "id": 153,
     "order": "43.25000000000000000000",
-    "lbl": "1. Plaatselijke benaming",
-    "titel": "Plaatselijke benaming",
+    "lbl": "1. Plaatse-<br/>lijke<br/>benaming",
+    "titel": "Plaatse-<br/>lijke<br/>benaming",
     "Tabel": [
       {
         "id": 3,
@@ -5476,10 +5476,10 @@
     },
     "logische volgorde": "01",
     "volgorde lbl": "1",
-    "Ouder-lbl": "01. Plaatselijke benaming",
+    "Ouder-lbl": "01. Plaatse-<br/>lijke<br/>benaming",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "1. Plaatselijke benaming",
+    "hierarchie": "1. Plaatse-<br/>lijke<br/>benaming",
     "sub": null,
     "Sem. Veld": [
       {
