@@ -1,7 +1,11 @@
 name: Handmatige Baserow Sync
 
 on:
-  workflow_dispatch: # Zorgt voor de handmatige trigger
+  workflow_dispatch:
+
+# VOEG DIT TOE:
+permissions:
+  contents: write
 
 jobs:
   sync:
@@ -9,19 +13,14 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
+        # Optioneel: zorg dat checkout de juiste token gebruikt (meestal automatisch)
+        
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
 
-      - name: Install dependencies
-        run: pip install requests
-
-      - name: Fetch and Compare Data
-        env:
-          BASEROW_TOKEN: ${{ secrets.BASEROW_TOKEN }}
-        run: python sync_data.py
+      # ... rest van je stappen (install, fetch) ...
 
       - name: Commit and Push if changed
         run: |
