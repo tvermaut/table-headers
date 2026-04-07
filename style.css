@@ -6,7 +6,7 @@ body { font-family: sans-serif; color: #555; margin: 30px; }
     border-top: 1px solid #555;
     border-left: 1px solid #555;
     background-color: #fff;
-    /* Kolom-breedtes worden dynamisch via JS gezet */
+    /* De grid-template-columns worden door JS gezet op basis van het aantal letters */
 }
 
 .cell {
@@ -17,31 +17,31 @@ body { font-family: sans-serif; color: #555; margin: 30px; }
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 10px 4px;
+    padding: 8px 4px;
     box-sizing: border-box;
     position: relative;
     min-height: 40px;
 }
 
-/* De Sierlijke Accolade - Wijst omlaag */
+/* De Sierlijke Accolade: BREED aan de onderkant, SMAL aan de bovenkant */
 .group-cell {
-    border-bottom: none;
-    padding-bottom: 25px;
+    border-bottom: none; /* Geen lijn onder de tekst van een groep */
+    padding-bottom: 25px; 
 }
 
 .group-cell::after {
     content: "";
     position: absolute;
-    bottom: 4px;
-    left: 8px;
-    right: 8px;
-    height: 16px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 16' preserveAspectRatio='none'%3E%3Cpath d='M0,0 C0,12 15,14 35,14 L45,14 C48,14 50,16 50,16 C50,16 52,14 55,14 L75,14 C90,14 100,12 100,0' fill='none' stroke='%23555' stroke-width='0.8'/%3E%3C/svg%3E");
+    bottom: 2px;
+    left: 4px;
+    right: 4px;
+    height: 18px;
+    /* De accolade wijst nu OMHOOG naar de groepstitel */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 18' preserveAspectRatio='none'%3E%3Cpath d='M0,18 C0,8 15,6 35,6 L45,6 C48,6 50,2 50,0 C50,2 52,6 55,6 L75,6 C90,6 100,8 100,18' fill='none' stroke='%23555' stroke-width='0.8'/%3E%3C/svg%3E");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 
-/* De vaste rijen onderin */
 .num-cell {
     height: 35px;
     font-size: 11px;
@@ -51,7 +51,7 @@ body { font-family: sans-serif; color: #555; margin: 30px; }
 .sub-cell {
     height: 25px;
     font-size: 10px;
-    border-bottom: none; /* Geen onderlijn onder b|r|e */
+    border-bottom: none;
 }
 
 .vertical-text {
