@@ -1,72 +1,79 @@
 body {
     font-family: sans-serif;
     color: #000;
-    background-color: #fff;
-    padding: 20px;
+    margin: 20px;
 }
 
-table {
+.header-container {
+    display: flex; /* Horizontale uitlijning van de hoofdkolommen */
     width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 50px;
-    table-layout: fixed;
+    border-top: 1px solid #000;
+    border-left: 1px solid #000;
 }
 
-th {
-    border: 1px solid #000;
-    padding: 4px;
-    font-weight: normal;
-    font-size: 12px;
-    text-align: center;
-    vertical-align: top; /* Tekst van de titel bovenin */
-    position: relative;
-    height: 45px; /* Geef de cellen wat ruimte */
-}
-
-/* De kleine waarde onderin de header cel */
-.volgorde-lbl {
-    display: block;
-    font-size: 10px;
-    position: absolute;
-    bottom: 2px;
-    left: 0;
-    right: 0;
-    text-align: center;
-}
-
-/* De speciale sub-rij */
-.sub-row th {
-    height: auto;
-    padding: 2px 0;
-    font-size: 10px;
-    border-bottom: none; /* De gevraagde 'geen bottom-line' */
-}
-
-.sub-split-container {
+.column-group {
     display: flex;
-    width: 100%;
+    flex-direction: column;
+    flex-grow: 1; /* Zorgt dat groepen de ruimte vullen */
+    min-width: min-content; /* Optimaliseert breedte op basis van inhoud */
 }
 
-.sub-split-item {
-    flex: 1;
-    text-align: center;
+.header-cell {
     border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+    padding: 8px 4px;
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 40px;
 }
 
-.sub-split-item:last-child {
-    border-right: none;
+/* Verticale tekst handling */
+.has-vertical {
+    padding-top: 15px;
+    padding-bottom: 25px; /* Ruimte voor volgorde-lbl */
 }
 
 .vertical-text {
     writing-mode: vertical-rl;
-    transform: rotate(180deg); /* Zorgt dat tekst van onder naar boven leest (tegen de klok in) */
+    transform: rotate(180deg);
     white-space: nowrap;
-    margin: 10px auto;
+    margin: 0 auto;
     display: inline-block;
 }
 
-/* Zorg dat cellen met verticale tekst hoog genoeg kunnen worden */
-th.has-vertical {
-    height: 150px; /* Pas dit aan naar de lengte van je titels */
-    vertical-align: middle;
+/* De onderste label waarde */
+.volgorde-lbl {
+    font-size: 10px;
+    margin-top: auto; /* Duwt het naar de bodem van de cel */
+    padding-top: 5px;
+}
+
+/* Sub-segmenten onderaan de leaf-nodes */
+.sub-container {
+    display: flex;
+    width: 100%;
+    border-top: 1px solid #000;
+    margin-top: 5px;
+}
+
+.sub-item {
+    flex: 1;
+    font-size: 10px;
+    padding: 2px 0;
+    border-right: 1px solid #000;
+}
+
+.sub-item:last-child {
+    border-right: none;
+}
+
+/* Container voor kinderen van een groep */
+.children-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-grow: 1;
 }

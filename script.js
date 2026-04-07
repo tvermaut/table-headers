@@ -16,110 +16,95 @@ async function init() {
     container.innerHTML = '';
 
     for (const tableId in tablesMap) {
-        container.appendChild(generateTable(tablesMap[tableId], tableId));
+        const wrapper = document.createElement('div');
+        wrapper.className = 'header-container';
+        
+        // Bouw de boom
+        const roots = buildTree(tablesMap[tableId]);
+        
+        roots.forEach(root => {
+            wrapper.appendChild(renderNode(root, tablesMap[tableId]));
+        });
+
+        const title = document.createElement('h2');
+        title.style.fontWeight = 'normal';
+        title.textContent = `Tabel: ${tableId}`;
+        container.appendChild(title);
+        container.appendChild(wrapper);
     }
 }
 
-function generateTable(items, tableId) {
+function buildTree(items) {
+    // Sorteer op logische volgorde
     const sorted = items.sort((a, b) => (a['logische volgorde'] || "").localeCompare(b['logische volgorde'] || "", undefined, {numeric: true}));
     
-    const table = document.createElement('table');
-    const thead = document.createElement('thead');
+    // Alleen de bovenste laag (AA zonder punten of laagste segment)
+    const roots = sorted.filter(item => {
+        const code = item['logische volgorde'] || "";
+        return !sorted.some(other => code.startsWith(other['logische volgorde'] + "."));
+    });
+    return roots;
+}
+
+function renderNode(node, allItems) {
+    const group = document.createElement('div');
+    group.className = 'column-group';
+
+    const cell = document.createElement('div');
+    cell.className = 'header-cell';
     
-    const depths = sorted.map(i => (i['logische volgorde'] || "").split('.').length);
-    const maxDepth = Math.max(...depths);
+    const code = node['logische volgorde'] || "";
+    const isVertical = node['verticaal'] === true;
 
-    // Helper om bladeren te tellen
-    function countLeaves(parentCode) {
-        const descendants = sorted.filter(i => (i['logische volgorde'] || "").startsWith(parentCode + "."));
-        if (descendants.length === 0) return 1;
-        return sorted.filter(i => {
-            const c = i['logische volgorde'] || "";
-            return c.startsWith(parentCode + ".") && !sorted.some(o => (o['logische volgorde'] || "").startsWith(c + "."));
-        }).length || 1;
+    // Titel (met <br/> support)
+    const titleSpan = document.createElement('span');
+    titleSpan.innerHTML = node['titel'] || node['lbl'] || '';
+    if (isVertical) {
+        titleSpan.className = 'vertical-text';
+        cell.classList.add('has-vertical');
     }
+    cell.appendChild(titleSpan);
 
-    // 1. De Reguliere Header Lagen
-    for (let d = 1; d <= maxDepth; d++) {
-        const tr = document.createElement('tr');
-        const levelItems = sorted.filter(i => (i['logische volgorde'] || "").split('.').length === d);
-
-        levelItems.forEach(item => {
-            const th = document.createElement('th');
-            const titleText = item['titel'] || item['lbl'] || '';
-            const isVertical = item['verticaal'] === true; // Check de nieuwe boolean kolom
-
-            // Gebruik een container span voor de tekst
-            const titleSpan = document.createElement('span');
-            titleSpan.innerHTML = titleText;
-            
-            if (isVertical) {
-                titleSpan.className = 'vertical-text';
-                th.classList.add('has-vertical');
-            }
-            
-            th.appendChild(titleSpan);
-
-            const code = item['logische volgorde'] || "";
-
-            // Volgorde LBL onderin (alleen bij leaf nodes of op het laagste niveau van dit item)
-            const isLeaf = !sorted.some(other => (other['logische volgorde'] || "").startsWith(code + "."));
-            if (isLeaf) {
-                const lbl = document.createElement('span');
-                lbl.className = 'volgorde-lbl';
-                lbl.textContent = item['volgorde lbl'] || '';
-                th.appendChild(lbl);
-            }
-
-            const leaves = countLeaves(code);
-            if (leaves > 1) th.colSpan = leaves;
-            if (isLeaf && d < maxDepth) th.rowSpan = (maxDepth - d) + 1;
-
-            tr.appendChild(th);
-        });
-        thead.appendChild(tr);
-    }
-
-    // 2. De Extra Sub-rij (b|r|e of f|c)
-    const subTr = document.createElement('tr');
-    subTr.className = 'sub-row';
-
-    // We lopen alleen langs de leaf-nodes om de sub-verdeling te maken
-    const leafNodes = sorted.filter(i => !sorted.some(other => (other['logische volgorde'] || "").startsWith((i['logische volgorde'] || "") + ".")));
-
-    leafNodes.forEach(item => {
-        const th = document.createElement('th');
-        const subType = item['sub']?.id; // 1351 = b|r|e, 1352 = f|c
-        
-        const container = document.createElement('div');
-        container.className = 'sub-split-container';
-
-        if (subType === 1351) {
-            ['b', 'r', 'e'].forEach(letter => {
-                const div = document.createElement('div');
-                div.className = 'sub-split-item';
-                div.textContent = letter;
-                container.appendChild(div);
-            });
-        } else if (subType === 1352) {
-            ['f', 'c'].forEach(letter => {
-                const div = document.createElement('div');
-                div.className = 'sub-split-item';
-                div.textContent = letter;
-                container.appendChild(div);
-            });
-        } else {
-            // Lege cel als er geen sub-selectie is
-            container.innerHTML = '&nbsp;';
-        }
-
-        th.appendChild(container);
-        subTr.appendChild(th);
+    // Zoek kinderen
+    const children = allItems.filter(i => {
+        const iCode = i['logische volgorde'] || "";
+        return iCode.startsWith(code + ".") && iCode.split('.').length === code.split('.').length + 1;
     });
 
-    thead.appendChild(subTr);
-    table.appendChild(thead);
-    return table;
+    if (children.length === 0) {
+        // Dit is een leaf node: voeg volgorde lbl toe
+        const lbl = document.createElement('div');
+        lbl.className = 'volgorde-lbl';
+        lbl.textContent = node['volgorde lbl'] || '';
+        cell.appendChild(lbl);
+
+        // Voeg sub-segmentatie toe (b|r|e of f|c)
+        const subType = node['sub']?.id;
+        if (subType === 1351 || subType === 1352) {
+            const subCont = document.createElement('div');
+            subCont.className = 'sub-container';
+            const letters = subType === 1351 ? ['b', 'r', 'e'] : ['f', 'c'];
+            letters.forEach(l => {
+                const div = document.createElement('div');
+                div.className = 'sub-item';
+                div.textContent = l;
+                subCont.appendChild(div);
+            });
+            cell.appendChild(subCont);
+        }
+        group.appendChild(cell);
+    } else {
+        // Groeps-node
+        group.appendChild(cell);
+        const childrenWrapper = document.createElement('div');
+        childrenWrapper.className = 'children-container';
+        children.forEach(child => {
+            childrenWrapper.appendChild(renderNode(child, allItems));
+        });
+        group.appendChild(childrenWrapper);
+    }
+
+    return group;
 }
 
 window.onload = init;
