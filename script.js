@@ -1,98 +1,77 @@
 async function init() {
-    try {
-        const response = await fetch('data.json');
-        const data = await response.json();
-        const items = data.results || data;
+    const res = await fetch('data.json');
+    const data = await res.json();
+    const items = data.results || data;
+    const container = document.getElementById('table-container');
+    container.innerHTML = '';
 
-        const tablesMap = {};
-        items.forEach(r => {
-            const tid = r['Tabel']?.[0]?.id;
-            if (tid) (tablesMap[tid] = tablesMap[tid] || []).push(r);
+    // Per tabel groeperen
+    const tables = {};
+    items.forEach(r => { const id = r['Tabel']?.[0]?.id; if(id) (tables[id] = tables[id] || []).push(r); });
+
+    for (const id in tables) {
+        const sorted = tables[id].sort((a, b) => (a['logische volgorde'] || "").localeCompare(b['logische volgorde'] || "", undefined, {numeric: true}));
+        
+        // 1. Bereken de breedte van de 'leaves' (eindkolommen)
+        const leaves = sorted.filter(i => !sorted.some(other => (other['logische volgorde'] || "").startsWith(i['logische volgorde'] + ".")));
+        let currentX = 1;
+        const leafMap = leaves.map(node => {
+            const width = (node['sub']?.id === 1351) ? 3 : (node['sub']?.id === 1352 ? 2 : 1);
+            const info = { ...node, start: currentX, end: currentX + width };
+            currentX += width;
+            return info;
         });
 
-        const container = document.getElementById('table-container');
-        container.innerHTML = '';
+        const grid = document.createElement('div');
+        grid.className = 'header-grid';
+        grid.style.gridTemplateColumns = `repeat(${currentX - 1}, 1fr)`;
 
-        for (const tid in tablesMap) {
-            renderTableStack(tablesMap[tid], container, tid);
-        }
-    } catch (e) {
-        console.error("Fout bij laden:", e);
+        // 2. Render de hiërarchie: ELK item maar één keer tekenen
+        const maxDepth = Math.max(...sorted.map(i => (i['logische volgorde'] || "").split('.').length));
+
+        sorted.forEach(item => {
+            const code = item['logische volgorde'];
+            const depth = code.split('.').length;
+            const itemLeaves = leafMap.filter(l => l['logische volgorde'].startsWith(code));
+            
+            const cell = document.createElement('div');
+            cell.className = 'cell';
+            const isGroup = sorted.some(other => (other['logische volgorde'] || "").startsWith(code + "."));
+            if(isGroup) cell.classList.add('group-cell');
+
+            cell.style.gridColumn = `${itemLeaves[0].start} / ${itemLeaves[itemLeaves.length-1].end}`;
+            cell.style.gridRow = depth;
+
+            // Alleen de tekst van dit specifieke niveau tonen
+            const span = document.createElement('span');
+            span.innerHTML = item['titel'] || item['lbl'];
+            if(item['verticaal']) span.className = 'vertical-text';
+            cell.appendChild(span);
+            grid.appendChild(cell);
+        });
+
+        // 3. De nummers en letters (vaste rijen onderaan)
+        leafMap.forEach(l => {
+            const n = document.createElement('div');
+            n.className = 'cell num-cell';
+            n.style.gridColumn = `${l.start} / ${l.end}`;
+            n.style.gridRow = maxDepth + 1;
+            n.textContent = l['volgorde lbl'];
+            grid.appendChild(n);
+
+            const letters = (l['sub']?.id === 1351) ? ['b','r','e'] : (l['sub']?.id === 1352 ? ['f','c'] : [null]);
+            letters.forEach((char, i) => {
+                if(!char) return;
+                const s = document.createElement('div');
+                s.className = 'cell sub-cell';
+                s.style.gridColumn = l.start + i;
+                s.style.gridRow = maxDepth + 2;
+                s.textContent = char;
+                grid.appendChild(s);
+            });
+        });
+
+        container.appendChild(grid);
     }
 }
-
-function renderTableStack(items, target, tid) {
-    // Sorteer op logische volgorde (01, 01.1, etc.)
-    const sorted = items.sort((a, b) => 
-        (a['logische volgorde'] || "").localeCompare(b['logische volgorde'] || "", undefined, {numeric: true})
-    );
-    
-    // Vind de leaf-nodes (de kolommen die daadwerkelijk nummers hebben)
-    const leafNodes = sorted.filter(i => 
-        !sorted.some(other => (other['logische volgorde'] || "").startsWith(i['logische volgorde'] + "."))
-    );
-
-    const title = document.createElement('h2');
-    title.textContent = `Tabel: ${tid}`;
-    target.appendChild(title);
-
-    const headerRow = document.createElement('div');
-    headerRow.className = 'header-row';
-
-    leafNodes.forEach(leaf => {
-        const stack = document.createElement('div');
-        stack.className = 'column-stack';
-
-        // 1. Onderste laag: b|r|e of f|c
-        const subType = leaf['sub']?.id;
-        if (subType === 1351 || subType === 1352) {
-            const subDiv = document.createElement('div');
-            subDiv.className = 'sub-row';
-            const letters = (subType === 1351) ? ['b','r','e'] : ['f','c'];
-            letters.forEach(l => {
-                const div = document.createElement('div');
-                div.className = 'sub-letter';
-                div.textContent = l;
-                subDiv.appendChild(div);
-            });
-            stack.appendChild(subDiv);
-        }
-
-        // 2. Basis laag: Het kolomnummer (volgorde lbl)
-        const numBlock = document.createElement('div');
-        numBlock.className = 'header-block stack-base';
-        numBlock.textContent = leaf['volgorde lbl'] || '';
-        stack.appendChild(numBlock);
-
-        // 3. Hiërarchie omhoog bouwen (ouders opzoeken)
-        const parts = (leaf['logische volgorde'] || "").split('.');
-        
-        // We lopen van de diepste code naar de root (bijv. 01.2.3 -> 01.2 -> 01)
-        for (let i = parts.length; i > 0; i--) {
-            const currentCode = parts.slice(0, i).join('.');
-            const node = sorted.find(n => n['logische volgorde'] === currentCode);
-            
-            if (node) {
-                const block = document.createElement('div');
-                block.className = 'header-block';
-                
-                const span = document.createElement('span');
-                span.innerHTML = node['titel'] || node['lbl'] || '';
-                if (node['verticaal']) span.className = 'vertical-text';
-                block.appendChild(span);
-
-                // Als dit een ouder is (niet de leaf zelf), krijgt hij een accolade
-                if (i < parts.length) {
-                    block.classList.add('has-accolade');
-                }
-
-                stack.appendChild(block);
-            }
-        }
-        headerRow.appendChild(stack);
-    });
-
-    target.appendChild(headerRow);
-}
-
 window.onload = init;
