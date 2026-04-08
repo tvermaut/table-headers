@@ -1,21 +1,27 @@
 body { font-family: sans-serif; color: #555; margin: 20px; }
 
+h2 { font-weight: normal; margin-bottom: 10px; color: #333; }
+
 .table-wrapper { 
-    margin-bottom: 60px; 
-    display: inline-block; /* Zorgt dat de wrapper strak om de tabel sluit */
+    margin-bottom: 80px; 
+    display: inline-block;
     min-width: 100%;
-    /* De dubbele buitenrand (dikker aan de buitenkant) */
-    outline: 2px solid #444;
-    outline-offset: 2px;
-    padding: 0;
-    border-bottom: none; /* Geen dubbele rand onderin zoals gevraagd */
+    /* Dubbele rand alleen boven, links en rechts */
+    border-top: 2px solid #444;
+    border-left: 2px solid #444;
+    border-right: 2px solid #444;
+    padding: 2px 2px 0 2px; /* Ruimte tussen de twee randen, onderkant 0 */
+    box-sizing: border-box;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    table-layout: auto;
-    border: 1px solid #555; /* De binnenste buitenrand */
+    /* Fixed layout voorkomt dat kolommen over elkaar heen schuiven */
+    table-layout: fixed; 
+    border-top: 1px solid #555;
+    border-left: 1px solid #555;
+    border-right: 1px solid #555;
 }
 
 th, td {
@@ -25,24 +31,23 @@ th, td {
     font-weight: normal;
     text-align: center;
     background: #fff;
-    white-space: nowrap; /* NOOIT woorden afbreken, tenzij <br/> */
+    overflow: hidden; /* Voorkom dat tekst uit de cel steekt */
 }
 
-/* Verberg lijnen */
 .no-border-bottom { border-bottom: none !important; }
 .no-border-top { border-top: none !important; }
 
 .title-cell { 
-    padding: 2px 4px; /* Minimale padding voor hoogtebesparing */
-    font-size: 1em;
+    padding: 2px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-height: 20px;
 }
 
 .accolade-row {
-    height: 12px; /* Iets compacter */
+    height: 12px;
     width: 100%;
     position: relative;
 }
@@ -54,17 +59,15 @@ th, td {
     left: 4px;
     right: 4px;
     height: 10px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 14' preserveAspectRatio='none'%3E%3Cpath d='M0,14 C0,6 15,4 35,4 L45,4 C48,4 50,0 50,0 C50,2 52,4 55,4 L75,4 C90,4 100,6 100,14' fill='none' stroke='%23555' stroke-width='1'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 14' preserveAspectRatio='none'%3E%3Cpath d='M0,14 C0,6 15,4 35,4 L45,4 C48,4 50,0 50,0 C50,2 52,4 55,4 L75,4 C90,4 100,6 100,14' fill='none' stroke='%23555' stroke-width='1.2'/%3E%3C/svg%3E");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 
 .num-row-cell {
-    height: 18px; /* Zeer compacte hoogte voor nummers */
-    line-height: 18px;
+    height: 18px;
     font-size: 0.9em;
     font-weight: bold;
-    padding: 0 2px;
 }
 
 .sub-cell {
@@ -77,6 +80,14 @@ th, td {
     writing-mode: vertical-rl;
     transform: rotate(180deg);
     display: inline-block;
-    padding: 4px 1px; /* Minimale padding voor verticale tekst */
-    margin: 0;
+    white-space: nowrap;
+    padding: 4px 0;
+}
+
+/* Verklein lettertype voor titels als ze in een smalle kolom staan */
+.title-cell span {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

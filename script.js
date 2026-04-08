@@ -16,15 +16,12 @@ async function init() {
     });
 
     for (const id in tables) {
+        const h2 = document.createElement('h2');
+        h2.textContent = tables[id].name || `Tabel ${id}`;
+        container.appendChild(h2);
+
         const outerWrapper = document.createElement('div');
         outerWrapper.className = 'table-wrapper';
-        
-        const h2 = document.createElement('h2');
-        h2.style.fontWeight = 'normal';
-        h2.style.marginBottom = '10px';
-        h2.textContent = tables[id].name || `Tabel ${id}`;
-        
-        container.appendChild(h2); // Titel buiten de wrapper met outline
 
         const htmlTable = renderPerfectTable(tables[id].rows);
         outerWrapper.appendChild(htmlTable);
@@ -39,18 +36,36 @@ function renderPerfectTable(items) {
         (a['logische volgorde'] || "").localeCompare(b['logische volgorde'] || "", undefined, {numeric: true})
     );
 
-    const leafNodes = sorted.filter(i => !sorted.some(other => (other['logische volgombe'] || "").startsWith(i['logische volgorde'] + ".")));
+    const leafNodes = sorted.filter(i => !sorted.some(other => (other['logische volgorde'] || "").startsWith(i['logische volgorde'] + ".")));
     const maxLevel = Math.max(...sorted.map(i => i['logische volgorde'].split('.').length));
 
     const table = document.createElement('table');
 
+    // Bereken totale breedte-units
+    const getLeafWidth = (node) => {
+        const subId = node['sub']?.id;
+        return (subId === 1351) ? 3 : (subId === 1352 ? 2 : 1);
+    };
+
+    const totalWidthUnits = leafNodes.reduce((sum, leaf) => sum + getLeafWidth(leaf), 0);
+
+    // Stel de breedte van de kolommen in via <colgroup>
+    const colgroup = document.createElement('colgroup');
+    leafNodes.forEach(leaf => {
+        const subId = leaf['sub']?.id;
+        const letters = (subId === 1351) ? 3 : (subId === 1352 ? 2 : 1);
+        for(let i=0; i<letters; i++) {
+            const col = document.createElement('col');
+            col.style.width = (100 / totalWidthUnits) + "%";
+            colgroup.appendChild(col);
+        }
+    });
+    table.appendChild(colgroup);
+
     const getWidth = (node) => {
         const code = node['logische volgorde'];
         const nodeLeaves = leafNodes.filter(l => l['logische volgorde'].startsWith(code));
-        return nodeLeaves.reduce((sum, leaf) => {
-            const sub = leaf['sub']?.id;
-            return sum + (sub === 1351 ? 3 : (sub === 1352 ? 2 : 1));
-        }, 0);
+        return nodeLeaves.reduce((sum, leaf) => sum + getLeafWidth(leaf), 0);
     };
 
     for (let level = 1; level <= maxLevel; level++) {
@@ -65,7 +80,6 @@ function renderPerfectTable(items) {
             th.colSpan = getWidth(node);
             if (isLeaf) {
                 th.rowSpan = (maxLevel - level) + 1;
-                // STRENG: Verwijder de onderrand van de laatste tekstcel voor de nummers
                 th.classList.add('no-border-bottom');
             } else {
                 th.classList.add('no-border-bottom');
@@ -89,18 +103,18 @@ function renderPerfectTable(items) {
         table.appendChild(tr);
     }
 
-    // Zone: Nummers (Zonder bovenlijn, Bold, Compact)
+    // Rij: Nummers
     const numTr = document.createElement('tr');
     leafNodes.forEach(node => {
         const th = document.createElement('th');
         th.className = 'num-row-cell no-border-top';
-        th.colSpan = (node['sub']?.id === 1351) ? 3 : (node['sub']?.id === 1352 ? 2 : 1);
+        th.colSpan = getLeafWidth(node);
         th.textContent = node['volgorde lbl'] || '';
         numTr.appendChild(th);
     });
     table.appendChild(numTr);
 
-    // Zone: Sub-letters
+    // Rij: Letters
     const subTr = document.createElement('tr');
     leafNodes.forEach(node => {
         const subId = node['sub']?.id;
@@ -122,9 +136,9 @@ function adjustTableScale(table) {
     let currentFontSize = 12;
     table.style.fontSize = currentFontSize + "px";
 
-    // Geen 'has-space' meer gebruiken om de hoogte maximaal te beperken
-    while (table.offsetWidth > maxWidth && currentFontSize > 7) {
-        currentFontSize -= 0.3;
+    // Verklein font-size tot de tabel fysiek binnen het scherm past
+    while (table.scrollWidth > table.parentElement.clientWidth && currentFontSize > 6) {
+        currentFontSize -= 0.2;
         table.style.fontSize = currentFontSize + "px";
     }
 }
