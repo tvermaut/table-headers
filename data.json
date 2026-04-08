@@ -2033,8 +2033,8 @@
   {
     "id": 83,
     "order": "0.86153846153846158629",
-    "lbl": "11. Plaatselijk Nommer des Gebouwde Eigendommen",
-    "titel": "Plaatselijk Nommer des Gebouwde Eigendommen",
+    "lbl": "11. Volgnommer der<br/>gebouwde eigendommen",
+    "titel": "Volgnommer der<br/>gebouwde eigendommen",
     "Tabel": [
       {
         "id": 2,
@@ -2050,10 +2050,10 @@
     },
     "logische volgorde": "07",
     "volgorde lbl": "11",
-    "Ouder-lbl": "07. Plaatselijk Nommer des Gebouwde Eigendommen",
+    "Ouder-lbl": "07. Volgnommer der<br/>gebouwde eigendommen",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "11. Plaatselijk Nommer des Gebouwde Eigendommen",
+    "hierarchie": "11. Volgnommer der<br/>gebouwde eigendommen",
     "sub": null,
     "Sem. Veld": [
       {
