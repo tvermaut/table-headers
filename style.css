@@ -2,7 +2,7 @@ body { font-family: sans-serif; color: #555; margin: 20px; }
 
 h2 { font-weight: normal; margin-bottom: 10px; }
 
-/* De dubbele border: Alleen boven en zijkanten */
+/* Dubbele border: Alleen boven en zijkanten, onder open */
 .table-wrapper { 
     margin-bottom: 100px; 
     border-top: 2px solid #444;
@@ -17,11 +17,11 @@ h2 { font-weight: normal; margin-bottom: 10px; }
 table {
     width: 100%;
     border-collapse: collapse;
-    table-layout: fixed; /* Voorkomt dat kolommen verschuiven */
+    table-layout: fixed; 
     border-top: 1px solid #555;
     border-left: 1px solid #555;
     border-right: 1px solid #555;
-    border-bottom: none; /* Open onderkant */
+    border-bottom: none;
 }
 
 th, td {
@@ -31,16 +31,14 @@ th, td {
     font-weight: normal;
     text-align: center;
     background: #fff;
-    overflow: hidden; /* Nooit over de rand heen */
-    word-wrap: break-word;
+    overflow: hidden; /* Houdt het binnen de lijnen */
 }
 
-/* De accolade: breed onderaan, puntje naar boven */
 .accolade-row {
     height: 32px;
     width: 100%;
     position: relative;
-    margin-bottom: -1px; /* Trek de accolade over de border-rand heen */
+    margin-bottom: -1px;
 }
 
 .accolade-row::after {
@@ -58,7 +56,7 @@ th, td {
 .num-cell {
     font-weight: bold;
     height: 25px;
-    border-top: none !important; /* Lijn boven nummer weg */
+    border-top: none !important;
 }
 
 .sub-cell {
@@ -73,7 +71,7 @@ th, td {
     writing-mode: vertical-rl;
     transform: rotate(180deg);
     display: inline-block;
-    white-space: nowrap;
+    white-space: nowrap; /* Forceert dat we de breedte kunnen meten */
 }
 
 .title-container {
@@ -82,7 +80,8 @@ th, td {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
 }
 
-/* Verberg onderrand van de tabel zelf */
+/* Laatste rij cellen hebben geen onderrand */
 tr:last-child td { border-bottom: none !important; }
