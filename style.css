@@ -5,7 +5,7 @@ body { font-family: sans-serif; color: #555; margin: 20px; }
 table {
     width: 100%;
     border-collapse: collapse;
-    table-layout: fixed;
+    table-layout: auto; /* Browser bepaalt nu de optimale breedte */
     border-top: 1px solid #555;
     border-left: 1px solid #555;
 }
@@ -19,34 +19,43 @@ th, td {
     background: #fff;
 }
 
-/* De Accolade: Puntje boven, armen beneden */
+/* Verberg lijn onder accolade */
+.no-border-bottom { border-bottom: none !important; }
+
+/* Verberg lijn boven nummer */
+.no-border-top { border-top: none !important; }
+
 .accolade-row {
     height: 16px;
     width: 100%;
     position: relative;
-    border-bottom: none;
 }
 
 .accolade-row::after {
     content: "";
     position: absolute;
     top: 0;
-    left: 8px;
-    right: 8px;
+    left: 4px;
+    right: 4px;
     height: 14px;
-    /* Puntje boven (vertex), armen naar beneden */
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 14' preserveAspectRatio='none'%3E%3Cpath d='M0,14 C0,6 15,4 35,4 L45,4 C48,4 50,0 50,0 C50,2 52,4 55,4 L75,4 C90,4 100,6 100,14' fill='none' stroke='%23555' stroke-width='0.8'/%3E%3C/svg%3E");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 
-.title-cell { padding: 8px 4px; font-size: 12px; }
+.title-cell { 
+    padding: 8px 6px; 
+    font-size: 12px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 30px;
+}
 
-/* De rij met nummers: gegarandeerd op 1 lijn */
 .num-row-cell {
-    height: 30px;
+    height: 25px;
     font-size: 11px;
-    background-color: #f9f9f9; /* Heel licht accentje voor de leesbaarheid */
+    padding: 2px 4px;
 }
 
 .sub-cell {
@@ -58,6 +67,7 @@ th, td {
 .vertical-text {
     writing-mode: vertical-rl;
     transform: rotate(180deg);
-    white-space: nowrap;
+    white-space: nowrap; /* Cruciaal: dwingt kolombreedte af */
     display: inline-block;
+    padding: 10px 2px;
 }
