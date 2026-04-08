@@ -27,7 +27,6 @@ async function init() {
         wrapper.appendChild(htmlTable);
         container.appendChild(wrapper);
         
-        // Pas de slimme schaling toe
         smartScale(htmlTable);
     }
 }
@@ -88,16 +87,20 @@ function renderTable(items) {
         table.appendChild(tr);
     }
 
+    // Nummer-rij
     const nTr = document.createElement('tr');
     leafNodes.forEach(l => {
         const td = document.createElement('td');
         td.className = 'num-cell';
         td.colSpan = getLeafUnits(l);
-        td.textContent = l['volgorde lbl'];
+        const span = document.createElement('span');
+        span.textContent = l['volgorde lbl'];
+        td.appendChild(span);
         nTr.appendChild(td);
     });
     table.appendChild(nTr);
 
+    // Letter-rij (b|r|e)
     const lTr = document.createElement('tr');
     leafNodes.forEach(l => {
         const subId = l['sub']?.id;
@@ -106,7 +109,9 @@ function renderTable(items) {
             const td = document.createElement('td');
             td.className = 'sub-cell';
             if (idx === chars.length - 1) td.classList.add('sub-cell-end');
-            td.innerHTML = c || '&nbsp;';
+            const span = document.createElement('span');
+            span.innerHTML = c || '&nbsp;';
+            td.appendChild(span);
             lTr.appendChild(td);
         });
     });
@@ -115,41 +120,29 @@ function renderTable(items) {
     return table;
 }
 
-/**
- * Controleert elke cel en verkleint de font-size van de tabel 
- * totdat er GEEN overflow meer is in welke cel dan ook.
- */
 function smartScale(table) {
     const wrapper = table.parentElement;
     let fs = 14; 
     table.style.fontSize = fs + "px";
 
     const checkOverflow = () => {
-        // 1. Check tabelbreedte t.o.v. scherm
         if (table.scrollWidth > wrapper.clientWidth + 1) return true;
-
-        // 2. Check individuele cellen op tekst-overflow
         const spans = table.querySelectorAll('span');
         for (let span of spans) {
             const cell = span.closest('th, td');
             if (!cell) continue;
-
             const isVertical = span.classList.contains('vertical-text');
-            
             if (isVertical) {
-                // Bij verticale tekst is de 'hoogte' van de span de breedte die hij inneemt
-                if (span.offsetHeight > cell.clientWidth - 2) return true;
+                if (span.offsetHeight > cell.clientWidth - 1) return true;
             } else {
-                // Bij horizontale tekst checken we de breedte
-                if (span.offsetWidth > cell.clientWidth - 2) return true;
+                if (span.offsetWidth > cell.clientWidth - 1) return true;
             }
         }
         return false;
     };
 
-    // Verlaag font-size in stapjes tot alles past
     while (checkOverflow() && fs > 6) {
-        fs -= 0.2;
+        fs -= 0.1;
         table.style.fontSize = fs + "px";
     }
 }
