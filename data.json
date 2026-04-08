@@ -5498,5 +5498,1014 @@
     "L3": null,
     "breedte": null,
     "verticaal": false
+  },
+  {
+    "id": 155,
+    "order": "45.00000000000000000000",
+    "lbl": "Plaatselijke<br/>benamingen",
+    "titel": "Plaatselijke<br/>benamingen",
+    "Tabel": [
+      {
+        "id": 4,
+        "value": "Castelré en Zondereigen",
+        "order": "4.00000000000000000000"
+      }
+    ],
+    "Ouder kolom 1": [],
+    "soort": {
+      "id": 1347,
+      "value": "data",
+      "color": "dark-yellow"
+    },
+    "logische volgorde": "01",
+    "volgorde lbl": "",
+    "Ouder-lbl": "01. Plaatselijke<br/>benamingen",
+    "Ouder kolom 2": [],
+    "Ouder kolom 3": [],
+    "hierarchie": "Plaatselijke<br/>benamingen",
+    "sub": null,
+    "Sem. Veld": [],
+    "volgnr. log.": "1",
+    "O1": null,
+    "LeegNrVeld": null,
+    "O2": null,
+    "O3": null,
+    "L1": "1",
+    "L2": null,
+    "L3": null,
+    "breedte": null,
+    "verticaal": false
+  },
+  {
+    "id": 156,
+    "order": "46.00000000000000000000",
+    "lbl": "Nummers",
+    "titel": "Nummers",
+    "Tabel": [
+      {
+        "id": 4,
+        "value": "Castelré en Zondereigen",
+        "order": "4.00000000000000000000"
+      }
+    ],
+    "Ouder kolom 1": [],
+    "soort": {
+      "id": 1346,
+      "value": "groep",
+      "color": "dark-blue"
+    },
+    "logische volgorde": "02",
+    "volgorde lbl": "",
+    "Ouder-lbl": "02. Nummers",
+    "Ouder kolom 2": [],
+    "Ouder kolom 3": [],
+    "hierarchie": "Nummers",
+    "sub": null,
+    "Sem. Veld": [],
+    "volgnr. log.": "2",
+    "O1": null,
+    "LeegNrVeld": null,
+    "O2": null,
+    "O3": null,
+    "L1": "2",
+    "L2": null,
+    "L3": null,
+    "breedte": null,
+    "verticaal": false
+  },
+  {
+    "id": 157,
+    "order": "47.00000000000000000000",
+    "lbl": "der alphabe-<br/>tische lijst",
+    "titel": "der alphabe-<br/>tische lijst",
+    "Tabel": [
+      {
+        "id": 4,
+        "value": "Castelré en Zondereigen",
+        "order": "4.00000000000000000000"
+      }
+    ],
+    "Ouder kolom 1": [
+      {
+        "id": 156,
+        "value": "Nummers",
+        "order": "46.00000000000000000000"
+      }
+    ],
+    "soort": {
+      "id": 1347,
+      "value": "data",
+      "color": "dark-yellow"
+    },
+    "logische volgorde": "02.1",
+    "volgorde lbl": "",
+    "Ouder-lbl": "02. Nummers",
+    "Ouder kolom 2": [],
+    "Ouder kolom 3": [],
+    "hierarchie": "Nummers: der alphabe-<br/>tische lijst",
+    "sub": null,
+    "Sem. Veld": [],
+    "volgnr. log.": "1",
+    "O1": "2",
+    "LeegNrVeld": null,
+    "O2": null,
+    "O3": null,
+    "L1": "2",
+    "L2": "1",
+    "L3": null,
+    "breedte": null,
+    "verticaal": false
+  },
+  {
+    "id": 158,
+    "order": "48.00000000000000000000",
+    "lbl": "der<br/>Wijk",
+    "titel": "der<br/>Wijk",
+    "Tabel": [
+      {
+        "id": 4,
+        "value": "Castelré en Zondereigen",
+        "order": "4.00000000000000000000"
+      }
+    ],
+    "Ouder kolom 1": [
+      {
+        "id": 156,
+        "value": "Nummers",
+        "order": "46.00000000000000000000"
+      }
+    ],
+    "soort": {
+      "id": 1347,
+      "value": "data",
+      "color": "dark-yellow"
+    },
+    "logische volgorde": "02.2",
+    "volgorde lbl": "",
+    "Ouder-lbl": "02. Nummers",
+    "Ouder kolom 2": [],
+    "Ouder kolom 3": [],
+    "hierarchie": "Nummers: der<br/>Wijk",
+    "sub": null,
+    "Sem. Veld": [],
+    "volgnr. log.": "2",
+    "O1": "2",
+    "LeegNrVeld": null,
+    "O2": null,
+    "O3": null,
+    "L1": "2",
+    "L2": "2",
+    "L3": null,
+    "breedte": null,
+    "verticaal": false
+  },
+  {
+    "id": 159,
+    "order": "49.00000000000000000000",
+    "lbl": "Namen, beroepen en<br/>woonplaatsen der<br/>Eigenaars en vruchtgebruikers",
+    "titel": "Namen, beroepen en<br/>woonplaatsen der<br/>Eigenaars en vruchtgebruikers",
+    "Tabel": [
+      {
+        "id": 4,
+        "value": "Castelré en Zondereigen",
+        "order": "4.00000000000000000000"
+      }
+    ],
+    "Ouder kolom 1": [],
+    "soort": {
+      "id": 1347,
+      "value": "data",
+      "color": "dark-yellow"
+    },
+    "logische volgorde": "03",
+    "volgorde lbl": "",
+    "Ouder-lbl": "03. Namen, beroepen en<br/>woonplaatsen der<br/>Eigenaars en vruchtgebruikers",
+    "Ouder kolom 2": [],
+    "Ouder kolom 3": [],
+    "hierarchie": "Namen, beroepen en<br/>woonplaatsen der<br/>Eigenaars en vruchtgebruikers",
+    "sub": null,
+    "Sem. Veld": [],
+    "volgnr. log.": "3",
+    "O1": null,
+    "LeegNrVeld": null,
+    "O2": null,
+    "O3": null,
+    "L1": "3",
+    "L2": null,
+    "L3": null,
+    "breedte": null,
+    "verticaal": false
+  },
+  {
+    "id": 160,
+    "order": "50.00000000000000000000",
+    "lbl": "Soort<br/>der<br/>eigendommen",
+    "titel": "Soort<br/>der<br/>eigendommen",
+    "Tabel": [
+      {
+        "id": 4,
+        "value": "Castelré en Zondereigen",
+        "order": "4.00000000000000000000"
+      }
+    ],
+    "Ouder kolom 1": [],
+    "soort": {
+      "id": 1347,
+      "value": "data",
+      "color": "dark-yellow"
+    },
+    "logische volgorde": "04",
+    "volgorde lbl": "",
+    "Ouder-lbl": "04. Soort<br/>der<br/>eigendommen",
+    "Ouder kolom 2": [],
+    "Ouder kolom 3": [],
+    "hierarchie": "Soort<br/>der<br/>eigendommen",
+    "sub": null,
+    "Sem. Veld": [],
+    "volgnr. log.": "4",
+    "O1": null,
+    "LeegNrVeld": null,
+    "O2": null,
+    "O3": null,
+    "L1": "4",
+    "L2": null,
+    "L3": null,
+    "breedte": null,
+    "verticaal": false
+  },
+  {
+    "id": 161,
+    "order": "51.00000000000000000000",
+    "lbl": "Grootte gerekend<br/>bij elk perceel",
+    "titel": "Grootte gerekend<br/>bij elk perceel",
+    "Tabel": [
+      {
+        "id": 4,
+        "value": "Castelré en Zondereigen",
+        "order": "4.00000000000000000000"
+      }
+    ],
+    "Ouder kolom 1": [],
+    "soort": {
+      "id": 1346,
+      "value": "groep",
+      "color": "dark-blue"
+    },
+    "logische volgorde": "05",
+    "volgorde lbl": "",
+    "Ouder-lbl": "05. Grootte gerekend<br/>bij elk perceel",
+    "Ouder kolom 2": [],
+    "Ouder kolom 3": [],
+    "hierarchie": "Grootte gerekend<br/>bij elk perceel",
+    "sub": null,
+    "Sem. Veld": [],
+    "volgnr. log.": "5",
+    "O1": null,
+    "LeegNrVeld": null,
+    "O2": null,
+    "O3": null,
+    "L1": "5",
+    "L2": null,
+    "L3": null,
+    "breedte": null,
+    "verticaal": false
+  },
+  {
+    "id": 162,
+    "order": "48.50000000000000000000",
+    "lbl": "belastbaar",
+    "titel": "belastbaar",
+    "Tabel": [
+      {
+        "id": 4,
+        "value": "Castelré en Zondereigen",
+        "order": "4.00000000000000000000"
+      }
+    ],
+    "Ouder kolom 1": [
+      {
+        "id": 161,
+        "value": "Grootte gerekend<br/>bij elk perceel",
+        "order": "51.00000000000000000000"
+      }
+    ],
+    "soort": {
+      "id": 1347,
+      "value": "data",
+      "color": "dark-yellow"
+    },
+    "logische volgorde": "05.1",
+    "volgorde lbl": "",
+    "Ouder-lbl": "05. Grootte gerekend<br/>bij elk perceel",
+    "Ouder kolom 2": [],
+    "Ouder kolom 3": [],
+    "hierarchie": "Grootte gerekend<br/>bij elk perceel: belastbaar",
+    "sub": null,
+    "Sem. Veld": [],
+    "volgnr. log.": "1",
+    "O1": "5",
+    "LeegNrVeld": null,
+    "O2": null,
+    "O3": null,
+    "L1": "5",
+    "L2": "1",
+    "L3": null,
+    "breedte": null,
+    "verticaal": false
+  },
+  {
+    "id": 163,
+    "order": "48.66666666666666429819",
+    "lbl": "onbelastbaar",
+    "titel": "onbelastbaar",
+    "Tabel": [
+      {
+        "id": 4,
+        "value": "Castelré en Zondereigen",
+        "order": "4.00000000000000000000"
+      }
+    ],
+    "Ouder kolom 1": [
+      {
+        "id": 161,
+        "value": "Grootte gerekend<br/>bij elk perceel",
+        "order": "51.00000000000000000000"
+      }
+    ],
+    "soort": {
+      "id": 1347,
+      "value": "data",
+      "color": "dark-yellow"
+    },
+    "logische volgorde": "05.2",
+    "volgorde lbl": "",
+    "Ouder-lbl": "05. Grootte gerekend<br/>bij elk perceel",
+    "Ouder kolom 2": [],
+    "Ouder kolom 3": [],
+    "hierarchie": "Grootte gerekend<br/>bij elk perceel: onbelastbaar",
+    "sub": null,
+    "Sem. Veld": [],
+    "volgnr. log.": "2",
+    "O1": "5",
+    "LeegNrVeld": null,
+    "O2": null,
+    "O3": null,
+    "L1": "5",
+    "L2": "2",
+    "L3": null,
+    "breedte": null,
+    "verticaal": false
+  },
+  {
+    "id": 164,
+    "order": "48.75000000000000000000",
+    "lbl": "1 klasse",
+    "titel": "1 klasse",
+    "Tabel": [
+      {
+        "id": 4,
+        "value": "Castelré en Zondereigen",
+        "order": "4.00000000000000000000"
+      }
+    ],
+    "Ouder kolom 1": [
+      {
+        "id": 178,
+        "value": "Verdeeling der grootte op ieder klasse",
+        "order": "44.33333333333333570181"
+      }
+    ],
+    "soort": {
+      "id": 1347,
+      "value": "data",
+      "color": "dark-yellow"
+    },
+    "logische volgorde": "08.1",
+    "volgorde lbl": "",
+    "Ouder-lbl": "08. Verdeeling der grootte op ieder klasse",
+    "Ouder kolom 2": [],
+    "Ouder kolom 3": [],
+    "hierarchie": "Verdeeling der grootte op ieder klasse: 1 klasse",
+    "sub": null,
+    "Sem. Veld": [],
+    "volgnr. log.": "1",
+    "O1": "8",
+    "LeegNrVeld": null,
+    "O2": null,
+    "O3": null,
+    "L1": "8",
+    "L2": "1",
+    "L3": null,
+    "breedte": null,
+    "verticaal": false
+  },
+  {
+    "id": 165,
+    "order": "48.79999999999999715783",
+    "lbl": "[Classificatiën]<br/>der<br/>eigendommen",
+    "titel": "[Classificatiën]<br/>der<br/>eigendommen",
+    "Tabel": [
+      {
+        "id": 4,
+        "value": "Castelré en Zondereigen",
+        "order": "4.00000000000000000000"
+      }
+    ],
+    "Ouder kolom 1": [],
+    "soort": {
+      "id": 1347,
+      "value": "data",
+      "color": "dark-yellow"
+    },
+    "logische volgorde": "07",
+    "volgorde lbl": "",
+    "Ouder-lbl": "07. [Classificatiën]<br/>der<br/>eigendommen",
+    "Ouder kolom 2": [],
+    "Ouder kolom 3": [],
+    "hierarchie": "[Classificatiën]<br/>der<br/>eigendommen",
+    "sub": null,
+    "Sem. Veld": [],
+    "volgnr. log.": "7",
+    "O1": null,
+    "LeegNrVeld": null,
+    "O2": null,
+    "O3": null,
+    "L1": "7",
+    "L2": null,
+    "L3": null,
+    "breedte": null,
+    "verticaal": false
+  },
+  {
+    "id": 166,
+    "order": "48.83333333333333570181",
+    "lbl": "Groote<br/>gerekend bij elk<br/>soort van<br/>bebouwing",
+    "titel": "Groote<br/>gerekend bij elk<br/>soort van<br/>bebouwing",
+    "Tabel": [
+      {
+        "id": 4,
+        "value": "Castelré en Zondereigen",
+        "order": "4.00000000000000000000"
+      }
+    ],
+    "Ouder kolom 1": [],
+    "soort": {
+      "id": 1347,
+      "value": "data",
+      "color": "dark-yellow"
+    },
+    "logische volgorde": "06",
+    "volgorde lbl": "",
+    "Ouder-lbl": "06. Groote<br/>gerekend bij elk<br/>soort van<br/>bebouwing",
+    "Ouder kolom 2": [],
+    "Ouder kolom 3": [],
+    "hierarchie": "Groote<br/>gerekend bij elk<br/>soort van<br/>bebouwing",
+    "sub": null,
+    "Sem. Veld": [],
+    "volgnr. log.": "6",
+    "O1": null,
+    "LeegNrVeld": null,
+    "O2": null,
+    "O3": null,
+    "L1": "6",
+    "L2": null,
+    "L3": null,
+    "breedte": null,
+    "verticaal": false
+  },
+  {
+    "id": 167,
+    "order": "44.50000000000000000000",
+    "lbl": "2 klasse",
+    "titel": "2 klasse",
+    "Tabel": [
+      {
+        "id": 4,
+        "value": "Castelré en Zondereigen",
+        "order": "4.00000000000000000000"
+      }
+    ],
+    "Ouder kolom 1": [
+      {
+        "id": 178,
+        "value": "Verdeeling der grootte op ieder klasse",
+        "order": "44.33333333333333570181"
+      }
+    ],
+    "soort": {
+      "id": 1347,
+      "value": "data",
+      "color": "dark-yellow"
+    },
+    "logische volgorde": "08.5",
+    "volgorde lbl": "",
+    "Ouder-lbl": "08. Verdeeling der grootte op ieder klasse",
+    "Ouder kolom 2": [],
+    "Ouder kolom 3": [],
+    "hierarchie": "Verdeeling der grootte op ieder klasse: 2 klasse",
+    "sub": null,
+    "Sem. Veld": [],
+    "volgnr. log.": "5",
+    "O1": "8",
+    "LeegNrVeld": null,
+    "O2": null,
+    "O3": null,
+    "L1": "8",
+    "L2": "5",
+    "L3": null,
+    "breedte": null,
+    "verticaal": false
+  },
+  {
+    "id": 168,
+    "order": "44.66666666666666429819",
+    "lbl": "3 klasse",
+    "titel": "3 klasse",
+    "Tabel": [
+      {
+        "id": 4,
+        "value": "Castelré en Zondereigen",
+        "order": "4.00000000000000000000"
+      }
+    ],
+    "Ouder kolom 1": [
+      {
+        "id": 178,
+        "value": "Verdeeling der grootte op ieder klasse",
+        "order": "44.33333333333333570181"
+      }
+    ],
+    "soort": {
+      "id": 1347,
+      "value": "data",
+      "color": "dark-yellow"
+    },
+    "logische volgorde": "08.2",
+    "volgorde lbl": "",
+    "Ouder-lbl": "08. Verdeeling der grootte op ieder klasse",
+    "Ouder kolom 2": [],
+    "Ouder kolom 3": [],
+    "hierarchie": "Verdeeling der grootte op ieder klasse: 3 klasse",
+    "sub": null,
+    "Sem. Veld": [],
+    "volgnr. log.": "2",
+    "O1": "8",
+    "LeegNrVeld": null,
+    "O2": null,
+    "O3": null,
+    "L1": "8",
+    "L2": "2",
+    "L3": null,
+    "breedte": null,
+    "verticaal": false
+  },
+  {
+    "id": 169,
+    "order": "44.75000000000000000000",
+    "lbl": "4 klasse",
+    "titel": "4 klasse",
+    "Tabel": [
+      {
+        "id": 4,
+        "value": "Castelré en Zondereigen",
+        "order": "4.00000000000000000000"
+      }
+    ],
+    "Ouder kolom 1": [
+      {
+        "id": 178,
+        "value": "Verdeeling der grootte op ieder klasse",
+        "order": "44.33333333333333570181"
+      }
+    ],
+    "soort": {
+      "id": 1347,
+      "value": "data",
+      "color": "dark-yellow"
+    },
+    "logische volgorde": "08.3",
+    "volgorde lbl": "",
+    "Ouder-lbl": "08. Verdeeling der grootte op ieder klasse",
+    "Ouder kolom 2": [],
+    "Ouder kolom 3": [],
+    "hierarchie": "Verdeeling der grootte op ieder klasse: 4 klasse",
+    "sub": null,
+    "Sem. Veld": [],
+    "volgnr. log.": "3",
+    "O1": "8",
+    "LeegNrVeld": null,
+    "O2": null,
+    "O3": null,
+    "L1": "8",
+    "L2": "3",
+    "L3": null,
+    "breedte": null,
+    "verticaal": false
+  },
+  {
+    "id": 170,
+    "order": "44.79999999999999715783",
+    "lbl": "5 klasse",
+    "titel": "5 klasse",
+    "Tabel": [
+      {
+        "id": 4,
+        "value": "Castelré en Zondereigen",
+        "order": "4.00000000000000000000"
+      }
+    ],
+    "Ouder kolom 1": [
+      {
+        "id": 178,
+        "value": "Verdeeling der grootte op ieder klasse",
+        "order": "44.33333333333333570181"
+      }
+    ],
+    "soort": {
+      "id": 1347,
+      "value": "data",
+      "color": "dark-yellow"
+    },
+    "logische volgorde": "08.4",
+    "volgorde lbl": "",
+    "Ouder-lbl": "08. Verdeeling der grootte op ieder klasse",
+    "Ouder kolom 2": [],
+    "Ouder kolom 3": [],
+    "hierarchie": "Verdeeling der grootte op ieder klasse: 5 klasse",
+    "sub": null,
+    "Sem. Veld": [],
+    "volgnr. log.": "4",
+    "O1": "8",
+    "LeegNrVeld": null,
+    "O2": null,
+    "O3": null,
+    "L1": "8",
+    "L2": "4",
+    "L3": null,
+    "breedte": null,
+    "verticaal": false
+  },
+  {
+    "id": 171,
+    "order": "44.83333333333333570181",
+    "lbl": "Toepassing van het tarief<br/>of de verdeeling",
+    "titel": "Toepassing van het tarief<br/>of de verdeeling",
+    "Tabel": [
+      {
+        "id": 4,
+        "value": "Castelré en Zondereigen",
+        "order": "4.00000000000000000000"
+      }
+    ],
+    "Ouder kolom 1": [],
+    "soort": {
+      "id": 1346,
+      "value": "groep",
+      "color": "dark-blue"
+    },
+    "logische volgorde": "09",
+    "volgorde lbl": "",
+    "Ouder-lbl": "09. Toepassing van het tarief<br/>of de verdeeling",
+    "Ouder kolom 2": [],
+    "Ouder kolom 3": [],
+    "hierarchie": "Toepassing van het tarief<br/>of de verdeeling",
+    "sub": null,
+    "Sem. Veld": [],
+    "volgnr. log.": "9",
+    "O1": null,
+    "LeegNrVeld": null,
+    "O2": null,
+    "O3": null,
+    "L1": "9",
+    "L2": null,
+    "L3": null,
+    "breedte": null,
+    "verticaal": false
+  },
+  {
+    "id": 172,
+    "order": "44.85714285714285409767",
+    "lbl": "1",
+    "titel": "1",
+    "Tabel": [
+      {
+        "id": 4,
+        "value": "Castelré en Zondereigen",
+        "order": "4.00000000000000000000"
+      }
+    ],
+    "Ouder kolom 1": [
+      {
+        "id": 171,
+        "value": "Toepassing van het tarief<br/>of de verdeeling",
+        "order": "44.83333333333333570181"
+      }
+    ],
+    "soort": {
+      "id": 1347,
+      "value": "data",
+      "color": "dark-yellow"
+    },
+    "logische volgorde": "09.1",
+    "volgorde lbl": "",
+    "Ouder-lbl": "09. Toepassing van het tarief<br/>of de verdeeling",
+    "Ouder kolom 2": [],
+    "Ouder kolom 3": [],
+    "hierarchie": "Toepassing van het tarief<br/>of de verdeeling: 1",
+    "sub": null,
+    "Sem. Veld": [],
+    "volgnr. log.": "1",
+    "O1": "9",
+    "LeegNrVeld": null,
+    "O2": null,
+    "O3": null,
+    "L1": "9",
+    "L2": "1",
+    "L3": null,
+    "breedte": null,
+    "verticaal": false
+  },
+  {
+    "id": 173,
+    "order": "44.87500000000000000000",
+    "lbl": "Totaal",
+    "titel": "Totaal",
+    "Tabel": [
+      {
+        "id": 4,
+        "value": "Castelré en Zondereigen",
+        "order": "4.00000000000000000000"
+      }
+    ],
+    "Ouder kolom 1": [],
+    "soort": {
+      "id": 1347,
+      "value": "data",
+      "color": "dark-yellow"
+    },
+    "logische volgorde": "11",
+    "volgorde lbl": "",
+    "Ouder-lbl": "11. Totaal",
+    "Ouder kolom 2": [],
+    "Ouder kolom 3": [],
+    "hierarchie": "Totaal",
+    "sub": null,
+    "Sem. Veld": [],
+    "volgnr. log.": "11",
+    "O1": null,
+    "LeegNrVeld": null,
+    "O2": null,
+    "O3": null,
+    "L1": "11",
+    "L2": null,
+    "L3": null,
+    "breedte": null,
+    "verticaal": false
+  },
+  {
+    "id": 174,
+    "order": "44.88888888888888573092",
+    "lbl": "4",
+    "titel": "4",
+    "Tabel": [
+      {
+        "id": 4,
+        "value": "Castelré en Zondereigen",
+        "order": "4.00000000000000000000"
+      }
+    ],
+    "Ouder kolom 1": [
+      {
+        "id": 171,
+        "value": "Toepassing van het tarief<br/>of de verdeeling",
+        "order": "44.83333333333333570181"
+      }
+    ],
+    "soort": {
+      "id": 1347,
+      "value": "data",
+      "color": "dark-yellow"
+    },
+    "logische volgorde": "09.4",
+    "volgorde lbl": "",
+    "Ouder-lbl": "09. Toepassing van het tarief<br/>of de verdeeling",
+    "Ouder kolom 2": [],
+    "Ouder kolom 3": [],
+    "hierarchie": "Toepassing van het tarief<br/>of de verdeeling: 4",
+    "sub": null,
+    "Sem. Veld": [],
+    "volgnr. log.": "4",
+    "O1": "9",
+    "LeegNrVeld": null,
+    "O2": null,
+    "O3": null,
+    "L1": "9",
+    "L2": "4",
+    "L3": null,
+    "breedte": null,
+    "verticaal": false
+  },
+  {
+    "id": 175,
+    "order": "44.86666666666666714036",
+    "lbl": "3",
+    "titel": "3",
+    "Tabel": [
+      {
+        "id": 4,
+        "value": "Castelré en Zondereigen",
+        "order": "4.00000000000000000000"
+      }
+    ],
+    "Ouder kolom 1": [
+      {
+        "id": 171,
+        "value": "Toepassing van het tarief<br/>of de verdeeling",
+        "order": "44.83333333333333570181"
+      }
+    ],
+    "soort": {
+      "id": 1347,
+      "value": "data",
+      "color": "dark-yellow"
+    },
+    "logische volgorde": "09.2",
+    "volgorde lbl": "",
+    "Ouder-lbl": "09. Toepassing van het tarief<br/>of de verdeeling",
+    "Ouder kolom 2": [],
+    "Ouder kolom 3": [],
+    "hierarchie": "Toepassing van het tarief<br/>of de verdeeling: 3",
+    "sub": null,
+    "Sem. Veld": [],
+    "volgnr. log.": "2",
+    "O1": "9",
+    "LeegNrVeld": null,
+    "O2": null,
+    "O3": null,
+    "L1": "9",
+    "L2": "2",
+    "L3": null,
+    "breedte": null,
+    "verticaal": false
+  },
+  {
+    "id": 176,
+    "order": "44.86956521739130465676",
+    "lbl": "2",
+    "titel": "2",
+    "Tabel": [
+      {
+        "id": 4,
+        "value": "Castelré en Zondereigen",
+        "order": "4.00000000000000000000"
+      }
+    ],
+    "Ouder kolom 1": [
+      {
+        "id": 171,
+        "value": "Toepassing van het tarief<br/>of de verdeeling",
+        "order": "44.83333333333333570181"
+      }
+    ],
+    "soort": {
+      "id": 1347,
+      "value": "data",
+      "color": "dark-yellow"
+    },
+    "logische volgorde": "09.3",
+    "volgorde lbl": "",
+    "Ouder-lbl": "09. Toepassing van het tarief<br/>of de verdeeling",
+    "Ouder kolom 2": [],
+    "Ouder kolom 3": [],
+    "hierarchie": "Toepassing van het tarief<br/>of de verdeeling: 2",
+    "sub": null,
+    "Sem. Veld": [],
+    "volgnr. log.": "3",
+    "O1": "9",
+    "LeegNrVeld": null,
+    "O2": null,
+    "O3": null,
+    "L1": "9",
+    "L2": "3",
+    "L3": null,
+    "breedte": null,
+    "verticaal": false
+  },
+  {
+    "id": 177,
+    "order": "44.89999999999999857891",
+    "lbl": "5",
+    "titel": "5",
+    "Tabel": [
+      {
+        "id": 4,
+        "value": "Castelré en Zondereigen",
+        "order": "4.00000000000000000000"
+      }
+    ],
+    "Ouder kolom 1": [
+      {
+        "id": 171,
+        "value": "Toepassing van het tarief<br/>of de verdeeling",
+        "order": "44.83333333333333570181"
+      }
+    ],
+    "soort": {
+      "id": 1347,
+      "value": "data",
+      "color": "dark-yellow"
+    },
+    "logische volgorde": "09.5",
+    "volgorde lbl": "",
+    "Ouder-lbl": "09. Toepassing van het tarief<br/>of de verdeeling",
+    "Ouder kolom 2": [],
+    "Ouder kolom 3": [],
+    "hierarchie": "Toepassing van het tarief<br/>of de verdeeling: 5",
+    "sub": null,
+    "Sem. Veld": [],
+    "volgnr. log.": "5",
+    "O1": "9",
+    "LeegNrVeld": null,
+    "O2": null,
+    "O3": null,
+    "L1": "9",
+    "L2": "5",
+    "L3": null,
+    "breedte": null,
+    "verticaal": false
+  },
+  {
+    "id": 178,
+    "order": "44.33333333333333570181",
+    "lbl": "Verdeeling der grootte op ieder klasse",
+    "titel": "Verdeeling der grootte op ieder klasse",
+    "Tabel": [
+      {
+        "id": 4,
+        "value": "Castelré en Zondereigen",
+        "order": "4.00000000000000000000"
+      }
+    ],
+    "Ouder kolom 1": [],
+    "soort": {
+      "id": 1346,
+      "value": "groep",
+      "color": "dark-blue"
+    },
+    "logische volgorde": "08",
+    "volgorde lbl": "",
+    "Ouder-lbl": "08. Verdeeling der grootte op ieder klasse",
+    "Ouder kolom 2": [],
+    "Ouder kolom 3": [],
+    "hierarchie": "Verdeeling der grootte op ieder klasse",
+    "sub": null,
+    "Sem. Veld": [],
+    "volgnr. log.": "8",
+    "O1": null,
+    "LeegNrVeld": null,
+    "O2": null,
+    "O3": null,
+    "L1": "8",
+    "L2": null,
+    "L3": null,
+    "breedte": null,
+    "verticaal": false
+  },
+  {
+    "id": 179,
+    "order": "48.71428571428571530078",
+    "lbl": "Som<br/>der gezamelijke<br/>klassen",
+    "titel": "Som<br/>der gezamelijke<br/>klassen",
+    "Tabel": [
+      {
+        "id": 4,
+        "value": "Castelré en Zondereigen",
+        "order": "4.00000000000000000000"
+      }
+    ],
+    "Ouder kolom 1": [],
+    "soort": {
+      "id": 1347,
+      "value": "data",
+      "color": "dark-yellow"
+    },
+    "logische volgorde": "10",
+    "volgorde lbl": "",
+    "Ouder-lbl": "10. Som<br/>der gezamelijke<br/>klassen",
+    "Ouder kolom 2": [],
+    "Ouder kolom 3": [],
+    "hierarchie": "Som<br/>der gezamelijke<br/>klassen",
+    "sub": null,
+    "Sem. Veld": [],
+    "volgnr. log.": "10",
+    "O1": null,
+    "LeegNrVeld": null,
+    "O2": null,
+    "O3": null,
+    "L1": "10",
+    "L2": null,
+    "L3": null,
+    "breedte": null,
+    "verticaal": false
   }
 ]
