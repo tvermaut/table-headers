@@ -2,26 +2,26 @@ body { font-family: sans-serif; color: #555; margin: 20px; }
 
 h2 { font-weight: normal; margin-bottom: 10px; }
 
+/* Wrapper met dubbele rand, alleen boven en opzij */
 .table-wrapper { 
     margin-bottom: 60px; 
     border-top: 2px solid #444;
     border-left: 2px solid #444;
     border-right: 2px solid #444;
     padding: 2px 2px 0 2px;
-    display: inline-block;
-    width: 100%;
+    display: inline-block; /* Zorgt dat de rand strak om de tabel sluit */
     box-sizing: border-box;
 }
 
 table {
-    width: 100%;
     border-collapse: collapse;
-    table-layout: fixed; 
+    /* Geen width: 100% meer, de tekst bepaalt de breedte */
+    table-layout: auto; 
     border-top: 1px solid #555;
     border-left: 1px solid #555;
     border-right: 1px solid #555;
     border-bottom: none;
-    line-height: 1; /* Geen extra witruimte boven/onder tekst */
+    line-height: 1; /* Maximale verticale compactheid */
 }
 
 th, td {
@@ -31,12 +31,12 @@ th, td {
     font-weight: normal;
     text-align: center;
     background: #fff;
-    overflow: hidden;
-    white-space: nowrap; /* Nooit afbreken, behalve bij <br/> */
+    white-space: nowrap; /* Nooit afbreken */
 }
 
+/* Accolade: Compact en overlappend */
 .accolade-row {
-    height: 24px; /* Iets compacter */
+    height: 20px; 
     width: 100%;
     position: relative;
     margin-bottom: -1px;
@@ -46,9 +46,9 @@ th, td {
     content: "";
     position: absolute;
     top: 0;
-    left: 6px;
-    right: 6px;
-    height: 22px;
+    left: 4px;
+    right: 4px;
+    height: 18px;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20' preserveAspectRatio='none'%3E%3Cpath d='M0,20 C0,10 15,8 35,8 L45,8 C48,8 50,0 50,0 C50,2 52,8 55,8 L75,8 C90,8 100,10 100,20' fill='none' stroke='%23555' stroke-width='1'/%3E%3C/svg%3E");
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -56,12 +56,12 @@ th, td {
 
 .num-cell {
     font-weight: bold;
-    height: 18px; /* Zo laag mogelijk */
+    height: 18px;
     border-top: none !important;
 }
 
 .sub-cell {
-    height: 16px; /* Zo laag mogelijk */
+    height: 16px;
     border-right: 1px dashed #ccc !important;
 }
 
@@ -74,7 +74,7 @@ th, td {
 }
 
 .title-container {
-    padding: 2px 1px; /* Minimale verticale padding */
+    padding: 2px 4px; /* Iets meer horizontale ademruimte voor de tekst */
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -26,8 +26,6 @@ async function init() {
         const htmlTable = renderTable(tables[id].rows);
         wrapper.appendChild(htmlTable);
         container.appendChild(wrapper);
-        
-        smartScale(htmlTable);
     }
 }
 
@@ -37,20 +35,8 @@ function renderTable(items) {
     
     const table = document.createElement('table');
 
+    // Breedte-eenheden bepalen
     const getLeafUnits = (n) => (n['sub']?.id === 1351) ? 3 : (n['sub']?.id === 1352 ? 2 : 1);
-    const totalUnits = leafNodes.reduce((sum, l) => sum + getLeafUnits(l), 0);
-
-    const colgroup = document.createElement('colgroup');
-    leafNodes.forEach(l => {
-        const u = getLeafUnits(l);
-        for(let i=0; i<u; i++) {
-            const col = document.createElement('col');
-            col.style.width = (100 / totalUnits) + "%";
-            colgroup.appendChild(col);
-        }
-    });
-    table.appendChild(colgroup);
-
     const maxLevel = Math.max(...sorted.map(i => i['logische volgorde'].split('.').length));
 
     for (let level = 1; level <= maxLevel; level++) {
@@ -87,20 +73,18 @@ function renderTable(items) {
         table.appendChild(tr);
     }
 
-    // Nummer-rij
+    // Rij voor de kolomnummers
     const nTr = document.createElement('tr');
     leafNodes.forEach(l => {
         const td = document.createElement('td');
         td.className = 'num-cell';
         td.colSpan = getLeafUnits(l);
-        const span = document.createElement('span');
-        span.textContent = l['volgorde lbl'];
-        td.appendChild(span);
+        td.textContent = l['volgorde lbl'];
         nTr.appendChild(td);
     });
     table.appendChild(nTr);
 
-    // Letter-rij (b|r|e)
+    // Rij voor de sub-letters (b|r|e)
     const lTr = document.createElement('tr');
     leafNodes.forEach(l => {
         const subId = l['sub']?.id;
@@ -109,9 +93,7 @@ function renderTable(items) {
             const td = document.createElement('td');
             td.className = 'sub-cell';
             if (idx === chars.length - 1) td.classList.add('sub-cell-end');
-            const span = document.createElement('span');
-            span.innerHTML = c || '&nbsp;';
-            td.appendChild(span);
+            td.innerHTML = c || '&nbsp;';
             lTr.appendChild(td);
         });
     });
@@ -120,32 +102,4 @@ function renderTable(items) {
     return table;
 }
 
-function smartScale(table) {
-    const wrapper = table.parentElement;
-    let fs = 14; 
-    table.style.fontSize = fs + "px";
-
-    const checkOverflow = () => {
-        if (table.scrollWidth > wrapper.clientWidth + 1) return true;
-        const spans = table.querySelectorAll('span');
-        for (let span of spans) {
-            const cell = span.closest('th, td');
-            if (!cell) continue;
-            const isVertical = span.classList.contains('vertical-text');
-            if (isVertical) {
-                if (span.offsetHeight > cell.clientWidth - 1) return true;
-            } else {
-                if (span.offsetWidth > cell.clientWidth - 1) return true;
-            }
-        }
-        return false;
-    };
-
-    while (checkOverflow() && fs > 6) {
-        fs -= 0.1;
-        table.style.fontSize = fs + "px";
-    }
-}
-
 window.onload = init;
-window.onresize = () => document.querySelectorAll('table').forEach(smartScale);
