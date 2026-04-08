@@ -1,9 +1,6 @@
 body { font-family: sans-serif; color: #555; margin: 20px; }
 
-/* Verticaal witruimte tussen verschillende tabellen */
-.table-wrapper {
-    margin-bottom: 80px; 
-}
+.table-wrapper { margin-bottom: 80px; }
 
 table {
     width: 100%;
@@ -18,61 +15,43 @@ th, td {
     border-bottom: 1px solid #555;
     padding: 0;
     font-weight: normal;
-    vertical-align: top;
+    text-align: center;
     background: #fff;
 }
 
-/* Container om elementen binnen een TH te positioneren */
-.cell-content {
-    display: flex;
-    flex-direction: column;
-    height: 100%; /* Zorgt dat de flex-box de hele rowspan vult */
-    min-height: 60px;
-}
-
-.title-text {
-    padding: 8px 4px;
-    flex-grow: 1; /* Duwt de rest naar beneden */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-size: 12px;
-}
-
-/* Accolade ONDER de tekst, aan de onderzijde van de groepscel */
+/* De Accolade: Puntje boven, armen beneden */
 .accolade-row {
-    height: 18px;
+    height: 16px;
     width: 100%;
     position: relative;
-    margin-bottom: 2px;
+    border-bottom: none;
 }
 
 .accolade-row::after {
     content: "";
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 8px;
     right: 8px;
     height: 14px;
-    /* Accolade wijst nu weer omlaag, onder de tekst */
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 14' preserveAspectRatio='none'%3E%3Cpath d='M0,0 C0,8 15,10 35,10 L45,10 C48,10 50,14 50,14 C50,14 52,10 55,10 L75,10 C90,10 100,8 100,0' fill='none' stroke='%23555' stroke-width='0.8'/%3E%3C/svg%3E");
+    /* Puntje boven (vertex), armen naar beneden */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 14' preserveAspectRatio='none'%3E%3Cpath d='M0,14 C0,6 15,4 35,4 L45,4 C48,4 50,0 50,0 C50,2 52,4 55,4 L75,4 C90,4 100,6 100,14' fill='none' stroke='%23555' stroke-width='0.8'/%3E%3C/svg%3E");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 
-/* Kolomnummer strak aan de onderkant */
-.num-label {
-    font-size: 10px;
-    padding: 4px 0;
-    text-align: center;
-    border-top: 1px solid transparent; /* Ruimtehouder */
+.title-cell { padding: 8px 4px; font-size: 12px; }
+
+/* De rij met nummers: gegarandeerd op 1 lijn */
+.num-row-cell {
+    height: 30px;
+    font-size: 11px;
+    background-color: #f9f9f9; /* Heel licht accentje voor de leesbaarheid */
 }
 
 .sub-cell {
     height: 22px;
     font-size: 10px;
-    text-align: center;
     border-bottom: none;
 }
 

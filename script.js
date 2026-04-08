@@ -20,33 +20,32 @@ async function init() {
         h2.textContent = `Tabel: ${id}`;
         wrapper.appendChild(h2);
 
-        renderClassicTable(tables[id], wrapper);
+        renderPerfectTable(tables[id], wrapper);
         container.appendChild(wrapper);
     }
 }
 
-function renderClassicTable(items, target) {
+function renderPerfectTable(items, target) {
     const sorted = items.sort((a, b) => 
         (a['logische volgorde'] || "").localeCompare(b['logische volgorde'] || "", undefined, {numeric: true})
     );
 
-    // Bepaal colspan (breedte in sub-kolommen)
-    const getColSpan = (node) => {
+    const leafNodes = sorted.filter(i => !sorted.some(other => other['logische volgorde'].startsWith(i['logische volgorde'] + ".")));
+    const maxLevel = Math.max(...sorted.map(i => i['logische volgorde'].split('.').length));
+
+    const table = document.createElement('table');
+
+    // Helper: bereken totale breedte van een node in sub-kolommen
+    const getWidth = (node) => {
         const code = node['logische volgorde'];
-        const leaves = sorted.filter(i => {
-            const isDesc = i['logische volgorde'].startsWith(code + ".");
-            const isLeaf = !sorted.some(other => other['logische volgorde'].startsWith(i['logische volgorde'] + "."));
-            return (i['logische volgorde'] === code && isLeaf) || (isDesc && isLeaf);
-        });
-        return leaves.reduce((sum, leaf) => {
+        const nodeLeaves = leafNodes.filter(l => l['logische volgorde'].startsWith(code));
+        return nodeLeaves.reduce((sum, leaf) => {
             const sub = leaf['sub']?.id;
             return sum + (sub === 1351 ? 3 : (sub === 1352 ? 2 : 1));
         }, 0);
     };
 
-    const maxLevel = Math.max(...sorted.map(i => i['logische volgorde'].split('.').length));
-    const table = document.createElement('table');
-    
+    // 1. ZONE A & B: De hiërarchie en de titels
     for (let level = 1; level <= maxLevel; level++) {
         const tr = document.createElement('tr');
         const nodesAtLevel = sorted.filter(n => n['logische volgorde'].split('.').length === level);
@@ -56,45 +55,45 @@ function renderClassicTable(items, target) {
             const code = node['logische volgorde'];
             const isLeaf = !sorted.some(other => other['logische volgorde'].startsWith(code + "."));
             
-            th.colSpan = getColSpan(node);
+            th.colSpan = getWidth(node);
+            
+            // Als het een leaf is, moet hij doortrekken tot de nummers-rij
             if (isLeaf) th.rowSpan = (maxLevel - level) + 1;
 
-            const cellContent = document.createElement('div');
-            cellContent.className = 'cell-content';
-
-            // 1. De Titel-tekst (bovenin/midden)
-            const titleArea = document.createElement('div');
-            titleArea.className = 'title-text';
+            // Tekst area
+            const titleDiv = document.createElement('div');
+            titleDiv.className = 'title-cell';
             const span = document.createElement('span');
             span.innerHTML = node['titel'] || node['lbl'];
             if (node['verticaal']) span.className = 'vertical-text';
-            titleArea.appendChild(span);
-            cellContent.appendChild(titleArea);
+            titleDiv.appendChild(span);
+            th.appendChild(titleDiv);
 
-            // 2. De Accolade (Alleen voor groepen, onder de tekst)
+            // Accolade area (Onder de tekst, puntje naar boven)
             if (!isLeaf) {
                 const acc = document.createElement('div');
                 acc.className = 'accolade-row';
-                cellContent.appendChild(acc);
+                th.appendChild(acc);
             }
 
-            // 3. Kolomnummer (Alleen voor leaf nodes, onderaan de cel)
-            if (isLeaf) {
-                const num = document.createElement('div');
-                num.className = 'num-label';
-                num.textContent = node['volgorde lbl'] || '';
-                cellContent.appendChild(num);
-            }
-
-            th.appendChild(cellContent);
             tr.appendChild(th);
         });
         table.appendChild(tr);
     }
 
-    // De onderste rij met letters (b|r|e)
+    // 2. ZONE C: De rij met Kolomnummers (strikt op 1 rij)
+    const numTr = document.createElement('tr');
+    leafNodes.forEach(node => {
+        const th = document.createElement('th');
+        th.className = 'num-row-cell';
+        th.colSpan = (node['sub']?.id === 1351) ? 3 : (node['sub']?.id === 1352 ? 2 : 1);
+        th.textContent = node['volgorde lbl'] || '';
+        numTr.appendChild(th);
+    });
+    table.appendChild(numTr);
+
+    // 3. ZONE D: De rij met letters (b|r|e)
     const subTr = document.createElement('tr');
-    const leafNodes = sorted.filter(i => !sorted.some(other => other['logische volgorde'].startsWith(i['logische volgorde'] + ".")));
     leafNodes.forEach(node => {
         const subId = node['sub']?.id;
         const letters = (subId === 1351) ? ['b','r','e'] : (subId === 1352 ? ['f','c'] : [null]);
@@ -106,6 +105,7 @@ function renderClassicTable(items, target) {
         });
     });
     table.appendChild(subTr);
+
     target.appendChild(table);
 }
 
