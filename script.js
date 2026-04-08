@@ -27,7 +27,8 @@ async function init() {
         outerWrapper.appendChild(htmlTable);
         container.appendChild(outerWrapper);
 
-        adjustTableScale(htmlTable);
+        // Schalen op basis van breedte-invulling
+        fillTableWidth(htmlTable);
     }
 }
 
@@ -41,31 +42,23 @@ function renderPerfectTable(items) {
 
     const table = document.createElement('table');
 
-    const getLeafWidth = (node) => {
+    const getLeafUnits = (node) => {
         const subId = node['sub']?.id;
         return (subId === 1351) ? 3 : (subId === 1352 ? 2 : 1);
     };
 
-    const totalWidthUnits = leafNodes.reduce((sum, leaf) => sum + getLeafWidth(leaf), 0);
+    const totalUnits = leafNodes.reduce((sum, leaf) => sum + getLeafUnits(leaf), 0);
 
     const colgroup = document.createElement('colgroup');
     leafNodes.forEach(leaf => {
-        const units = getLeafWidth(leaf);
+        const units = getLeafUnits(leaf);
         for(let i=0; i<units; i++) {
             const col = document.createElement('col');
-            // Gebruik procentuele breedte, maar we laten de browser iets meer ruimte
-            // voor kolommen met verticale tekst in de auto-scaling later.
-            col.style.width = (100 / totalWidthUnits) + "%";
+            col.style.width = (100 / totalUnits) + "%";
             colgroup.appendChild(col);
         }
     });
     table.appendChild(colgroup);
-
-    const getWidth = (node) => {
-        const code = node['logische volgorde'];
-        const nodeLeaves = leafNodes.filter(l => l['logische volgorde'].startsWith(code));
-        return nodeLeaves.reduce((sum, leaf) => sum + getLeafWidth(leaf), 0);
-    };
 
     for (let level = 1; level <= maxLevel; level++) {
         const tr = document.createElement('tr');
@@ -76,7 +69,9 @@ function renderPerfectTable(items) {
             const code = node['logische volgorde'];
             const isLeaf = !sorted.some(other => (other['logische volgorde'] || "").startsWith(code + "."));
             
-            th.colSpan = getWidth(node);
+            const leavesUnderNode = leafNodes.filter(l => l['logische volgorde'].startsWith(code));
+            th.colSpan = leavesUnderNode.reduce((sum, leaf) => sum + getLeafUnits(leaf), 0);
+            
             if (isLeaf) {
                 th.rowSpan = (maxLevel - level) + 1;
                 th.classList.add('no-border-bottom');
@@ -88,7 +83,13 @@ function renderPerfectTable(items) {
             titleDiv.className = 'title-cell';
             const span = document.createElement('span');
             span.innerHTML = node['titel'] || node['lbl'];
-            if (node['verticaal']) span.className = 'vertical-text';
+            
+            if (node['verticaal']) {
+                span.className = 'vertical-text';
+            } else {
+                span.className = 'horizontal-text';
+            }
+            
             titleDiv.appendChild(span);
             th.appendChild(titleDiv);
 
@@ -102,11 +103,12 @@ function renderPerfectTable(items) {
         table.appendChild(tr);
     }
 
+    // Nummers en Letters toevoegen (zoals voorheen)
     const numTr = document.createElement('tr');
     leafNodes.forEach(node => {
         const th = document.createElement('th');
         th.className = 'num-row-cell no-border-top';
-        th.colSpan = getLeafWidth(node);
+        th.colSpan = getLeafUnits(node);
         th.textContent = node['volgorde lbl'] || '';
         numTr.appendChild(th);
     });
@@ -115,7 +117,7 @@ function renderPerfectTable(items) {
     const subTr = document.createElement('tr');
     leafNodes.forEach(node => {
         const subId = node['sub']?.id;
-        const letters = (subId === 1351) ? ['b','r','e'] : (subId === 1352) ? ['f','c'] : [null];
+        const letters = (subId === 1351) ? ['b','r','e'] : (subId === 1352 ? ['f','c'] : [null]);
         letters.forEach(l => {
             const td = document.createElement('td');
             td.className = 'sub-cell';
@@ -128,31 +130,33 @@ function renderPerfectTable(items) {
     return table;
 }
 
-function adjustTableScale(table) {
+function fillTableWidth(table) {
     const wrapper = table.parentElement;
-    const maxWidth = window.innerWidth - 60;
-    let currentFontSize = 12;
-    table.style.fontSize = currentFontSize + "px";
+    let baseFontSize = 14; // We mikken op een groter font als basis
+    table.style.fontSize = baseFontSize + "px";
 
-    // Stap 1: Als de tabel te breed is, font verkleinen
-    while (table.scrollWidth > wrapper.clientWidth && currentFontSize > 7) {
-        currentFontSize -= 0.2;
-        table.style.fontSize = currentFontSize + "px";
-    }
-
-    // Stap 2: Extra check voor verticale tekst. 
-    // Als een verticale span breder is dan zijn TH, moet de font nog verder omlaag.
+    // Voor de verticale teksten: we begrenzen deze op de celbreedte
     const verticalSpans = table.querySelectorAll('.vertical-text');
     verticalSpans.forEach(span => {
         const cell = span.closest('th');
-        if (span.offsetHeight > cell.clientWidth) { // offsetHeight is breedte bij 90deg rotatie
-             while (span.offsetHeight > cell.clientWidth && currentFontSize > 6) {
-                currentFontSize -= 0.1;
-                table.style.fontSize = currentFontSize + "px";
-             }
+        let vFontSize = baseFontSize;
+        span.style.fontSize = vFontSize + "px";
+        
+        // Verklein alleen als de breedte van de gedraaide tekst (offsetHeight) de cel ontgroeit
+        while (span.offsetHeight > (cell.clientWidth - 4) && vFontSize > 7) {
+            vFontSize -= 0.5;
+            span.style.fontSize = vFontSize + "px";
         }
     });
+
+    // Voor de tabel als geheel: als hij tóch te breed is voor het window, font verlagen
+    while (table.scrollWidth > wrapper.clientWidth && baseFontSize > 8) {
+        baseFontSize -= 0.5;
+        table.style.fontSize = baseFontSize + "px";
+        // Update ook de verticale teksten mee
+        verticalSpans.forEach(s => s.style.fontSize = (parseFloat(s.style.fontSize) - 0.5) + "px");
+    }
 }
 
 window.onload = init;
-window.onresize = () => document.querySelectorAll('table').forEach(adjustTableScale);
+window.onresize = () => document.querySelectorAll('table').forEach(fillTableWidth);
