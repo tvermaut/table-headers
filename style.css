@@ -1,80 +1,70 @@
-body { font-family: sans-serif; color: #555; margin: 30px; }
+body { font-family: sans-serif; color: #555; margin: 20px; }
 
-h2 { font-weight: normal; margin-bottom: 20px; border-bottom: 1px solid #555; }
-
-.table-wrapper { 
-    margin-bottom: 80px; 
-    border-top: 2px solid #555;
-    border-left: 2px solid #555;
-    border-right: 2px solid #555;
-    padding: 2px 2px 0 2px;
-}
+h2 { font-weight: normal; margin-bottom: 20px; }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    table-layout: auto;
-    border-top: 1px solid #555;
-    border-left: 1px solid #555;
-    border-right: 1px solid #555;
+    table-layout: fixed;
+    /* De dubbele buitenrand */
+    border: 1px solid #555;
+    outline: 2px solid #444;
+    outline-offset: 2px;
+}
+
+/* Verwijder outline aan de onderkant */
+/* We doen dit door een clip-path of simpelweg de outline-offset te negeren, 
+   maar de meest betrouwbare manier is een wrapper die alleen onder geen border heeft */
+.table-container {
+    padding: 4px 4px 0 4px;
+    display: block;
 }
 
 th, td {
-    border-right: 1px solid #555;
-    border-bottom: 1px solid #555;
+    border: 1px solid #555;
     padding: 0;
     font-weight: normal;
     text-align: center;
+    vertical-align: middle;
     background: #fff;
-    overflow: hidden;
+    white-space: nowrap;
+    line-height: 1.2;
+    font-size: 12px;
+}
+
+/* De Accolade Rij */
+.accolade-cell {
+    height: 25px;
+    border-top: none !important;
     position: relative;
 }
 
-/* Verberg de lijnen die je storen */
-.no-border-bottom { border-bottom: none !important; }
-.no-border-top { border-top: none !important; }
-
-/* De Sierlijke Accolade - Wijst omlaag */
-.group-cell {
-    border-bottom: none;
-    padding-bottom: 25px; /* Ruimte voor de krul */
-}
-
-.group-cell::after {
+.accolade-cell::after {
     content: "";
     position: absolute;
-    bottom: 5px;
-    left: 8px; /* Een klein beetje witruimte tot de rand */
-    right: 8px; /* Een klein beetje witruimte tot de rand */
-    height: 16px;
-    /* De Sierlijke SVG curve */
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 16' preserveAspectRatio='none'%3E%3Cpath d='M0,0 C0,12 15,14 35,14 L45,14 C48,14 50,16 50,16 C50,16 52,14 55,14 L75,14 C90,14 100,12 100,0' fill='none' stroke='%23555' stroke-width='0.8'/%3E%3C/svg%3E");
+    top: 0;
+    left: 8px;
+    right: 8px;
+    height: 20px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20' preserveAspectRatio='none'%3E%3Cpath d='M0,20 C0,10 15,8 35,8 L45,8 C48,8 50,0 50,0 C50,2 52,8 55,8 L75,8 C90,8 100,10 100,20' fill='none' stroke='%23555' stroke-width='1'/%3E%3C/svg%3E");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 
-.title-cell { padding: 6px 4px; font-size: 11px; display: flex; align-items: center; justify-content: center; }
-
-/* De Vaste Nummers-Rij */
-.num-row-cell {
-    height: 35px;
-    font-size: 11px;
-    vertical-align: bottom;
-    padding-bottom: 2px;
-    border-bottom: 1px solid #555;
+.num-cell {
+    font-weight: bold;
+    height: 22px;
+    border-top: none !important; /* Open naar boven */
 }
 
-/* De Vaste Letters-Rij ONDER de lijn */
-.sub-row-cell {
-    height: 25px;
+.sub-cell {
+    height: 20px;
     font-size: 10px;
-    vertical-align: middle;
-    border-bottom: none; /* Geen lijn aan de onderkant zoals gevraagd */
+    border-bottom: none;
 }
 
 .vertical-text {
     writing-mode: vertical-rl;
     transform: rotate(180deg);
-    white-space: nowrap;
     display: inline-block;
 }
