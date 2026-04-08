@@ -5902,8 +5902,8 @@
   {
     "id": 165,
     "order": "48.79999999999999715783",
-    "lbl": "[Classificatiën]<br/>der<br/>eigendommen",
-    "titel": "[Classificatiën]<br/>der<br/>eigendommen",
+    "lbl": "Klassificering<br/>der<br/>eigendommen",
+    "titel": "Klassificering<br/>der<br/>eigendommen",
     "Tabel": [
       {
         "id": 4,
@@ -5919,10 +5919,10 @@
     },
     "logische volgorde": "07",
     "volgorde lbl": "",
-    "Ouder-lbl": "07. [Classificatiën]<br/>der<br/>eigendommen",
+    "Ouder-lbl": "07. Klassificering<br/>der<br/>eigendommen",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "[Classificatiën]<br/>der<br/>eigendommen",
+    "hierarchie": "Klassificering<br/>der<br/>eigendommen",
     "sub": null,
     "Sem. Veld": [],
     "volgnr. log.": "7",
