@@ -20,162 +20,105 @@ async function init() {
         h2.textContent = tables[id].name || `Tabel ${id}`;
         container.appendChild(h2);
 
-        const div = document.createElement('div');
-        div.className = 'table-container';
-        const htmlTable = renderRowBasedTable(tables[id].rows);
-        div.appendChild(htmlTable);
-        container.appendChild(div);
+        const wrapper = document.createElement('div');
+        wrapper.className = 'table-wrapper';
         
-        scaleTable(htmlTable);
+        const grid = renderGridTable(tables[id].rows);
+        wrapper.appendChild(grid);
+        container.appendChild(wrapper);
+        
+        // Schaal de tekst als het niet past
+        scaleGridText(grid);
     }
 }
 
-function renderRowBasedTable(items) {
+function renderGridTable(items) {
     const sorted = items.sort((a, b) => (a['logische volgorde'] || "").localeCompare(b['logische volgorde'] || "", undefined, {numeric: true}));
-    const leafNodes = sorted.filter(i => !sorted.some(other => other['logische volgorde'].startsWith(i['logische volgorde'] + ".")));
+    const leafNodes = sorted.filter(i => !sorted.some(other => (other['logische volgorde'] || "").startsWith(i['logische volgorde'] + ".")));
 
-    // Helper: Tel regels tekst
-    const countLines = (txt) => (txt || "").split(/<br\s*\/?>/i).length;
-
-    // 1. Bereken de benodigde rijen per kolom-tak
-    const colStats = leafNodes.map(leaf => {
-        const parts = leaf['logische volgorde'].split('.');
-        let totalRows = 0;
-        const stack = [];
-
-        parts.forEach((p, idx) => {
-            const code = parts.slice(0, idx + 1).join('.');
-            const node = sorted.find(n => n['logische volgorde'] === code);
-            if (node) {
-                const lines = node['verticaal'] ? 8 : countLines(node['titel'] || node['lbl']);
-                const isGroup = sorted.some(other => other['logische volgorde'].startsWith(code + "."));
-                
-                // Elke node krijgt lines + 1 (marge)
-                // Als het een groep is komt daar de accolade rij bij (+1)
-                const nodeRows = lines + 1 + (isGroup ? 1 : 0);
-                totalRows += nodeRows;
-                stack.push({ node, lines, nodeRows, isGroup });
-            }
-        });
-        return { leaf, totalRows, stack };
+    // 1. Bereken totale grid-breedte (units)
+    let totalX = 0;
+    const leafMap = leafNodes.map(leaf => {
+        const sub = leaf['sub']?.id;
+        const width = sub === 1351 ? 3 : (sub === 1352 ? 2 : 1);
+        const start = totalX + 1;
+        totalX += width;
+        return { ...leaf, start, end: totalX + 1 };
     });
 
-    const maxHeaderRows = Math.max(...colStats.map(s => s.totalRows));
-    const table = document.createElement('table');
+    const maxDepth = Math.max(...sorted.map(i => i['logische volgorde'].split('.').length));
     
-    // We maken colgroups voor de breedte
-    const colgroup = document.createElement('colgroup');
-    leafNodes.forEach(leaf => {
-        const subId = leaf['sub']?.id;
-        const width = subId === 1351 ? 3 : (subId === 1352 ? 2 : 1);
-        for(let i=0; i<width; i++) {
-            const col = document.createElement('col');
-            col.style.width = (100 / colStats.reduce((a,b) => a + (b.leaf['sub']?.id === 1351 ? 3 : (b.leaf['sub']?.id === 1352 ? 2 : 1)), 0)) + "%";
-            colgroup.appendChild(col);
+    const grid = document.createElement('div');
+    grid.className = 'grid-container';
+    grid.style.gridTemplateColumns = `repeat(${totalX}, 1fr)`;
+
+    // 2. Plaats de Header Cellen
+    sorted.forEach(item => {
+        const code = item['logische volgorde'];
+        const depth = code.split('.').length;
+        const itemLeaves = leafMap.filter(l => l['logische volgorde'].startsWith(code));
+        const isGroup = sorted.some(other => (other['logische volgorde'] || "").startsWith(code + "."));
+
+        const cell = document.createElement('div');
+        cell.className = 'grid-cell';
+        if (isGroup) cell.classList.add('no-b-border');
+        
+        cell.style.gridColumn = `${itemLeaves[0].start} / ${itemLeaves[itemLeaves.length-1].end}`;
+        cell.style.gridRow = depth;
+
+        const content = document.createElement('div');
+        content.innerHTML = item['titel'] || item['lbl'];
+        if (item['verticaal']) content.className = 'vertical-text';
+        cell.appendChild(content);
+
+        if (isGroup) {
+            const acc = document.createElement('div');
+            acc.className = 'accolade-zone';
+            cell.appendChild(acc);
+        }
+
+        grid.appendChild(cell);
+
+        // Als dit een leaf is die hoger stopt, trek de cel door naar beneden
+        if (!isGroup && depth < maxDepth) {
+            cell.style.gridRow = `${depth} / ${maxDepth + 1}`;
         }
     });
-    table.appendChild(colgroup);
 
-    // 2. We bouwen de rijen. Dit is abstracter: we vullen een grid-matrix
-    // Omdat we rowspan/colspan gebruiken, vullen we de rijen per niveau
-    const levels = Math.max(...sorted.map(i => i['logische volgorde'].split('.').length));
-    
-    for (let l = 1; l <= levels; l++) {
-        const tr = document.createElement('tr');
-        const nodesAtLevel = sorted.filter(n => n['logische volgorde'].split('.').length === l);
-        
-        nodesAtLevel.forEach(node => {
-            const th = document.createElement('th');
-            const code = node['logische volgorde'];
-            const isGroup = sorted.some(other => other['logische volgorde'].startsWith(code + "."));
-            const isLeaf = !isGroup;
-
-            // Colspan berekenen
-            const nodeLeaves = leafNodes.filter(leaf => leaf['logische volgorde'].startsWith(code));
-            th.colSpan = nodeLeaves.reduce((sum, leaf) => {
-                const sub = leaf['sub']?.id;
-                return sum + (sub === 1351 ? 3 : (sub === 1352 ? 2 : 1));
-            }, 0);
-
-            // Rowspan berekenen op basis van onze "regel-wiskunde"
-            const lines = node['verticaal'] ? 8 : countLines(node['titel'] || node['lbl']);
-            th.rowSpan = lines + 1; 
-
-            // Als dit een leaf is die eerder stopt, trekken we hem door naar de nummers
-            if (isLeaf) {
-                // Hoeveel rijen blijven er over tot de maxHeaderRows?
-                const currentStackHeight = colStats.find(s => s.leaf === node).totalRows;
-                th.rowSpan += (maxHeaderRows - currentStackHeight);
-            }
-
-            const content = document.createElement('div');
-            content.style.padding = "4px 0";
-            content.innerHTML = node['titel'] || node['lbl'];
-            if (node['verticaal']) content.className = "vertical-text";
-            
-            th.appendChild(content);
-            tr.appendChild(th);
-        });
-        table.appendChild(tr);
-
-        // Accolade rij toevoegen direct onder groepen op dit niveau
-        const trAcc = document.createElement('tr');
-        nodesAtLevel.forEach(node => {
-            if (sorted.some(other => other['logische volgorde'].startsWith(node['logische volgorde'] + "."))) {
-                const tdAcc = document.createElement('td');
-                tdAcc.className = "accolade-cell";
-                tdAcc.colSpan = nodeLeavesCount(node, sorted, leafNodes); 
-                trAcc.appendChild(tdAcc);
-            }
-        });
-        if (trAcc.children.length > 0) table.appendChild(trAcc);
-    }
-
-    // Nummers-rij
-    const trNum = document.createElement('tr');
-    leafNodes.forEach(leaf => {
-        const td = document.createElement('td');
-        td.className = "num-cell num-row-cell";
-        const sub = leaf['sub']?.id;
-        td.colSpan = (sub === 1351 ? 3 : (sub === 1352 ? 2 : 1));
-        td.textContent = leaf['volgorde lbl'];
-        trNum.appendChild(td);
+    // 3. De Nummers Rij (Zone B)
+    leafMap.forEach(leaf => {
+        const cell = document.createElement('div');
+        cell.className = 'grid-cell num-cell no-t-border';
+        cell.style.gridColumn = `${leaf.start} / ${leaf.end}`;
+        cell.style.gridRow = maxDepth + 1;
+        cell.textContent = leaf['volgorde lbl'];
+        grid.appendChild(cell);
     });
-    table.appendChild(trNum);
 
-    // Letters-rij
-    const trLet = document.createElement('tr');
-    leafNodes.forEach(leaf => {
-        const sub = leaf['sub']?.id;
-        const letters = sub === 1351 ? ['b','r','e'] : (sub === 1352 ? ['f','c'] : [null]);
-        letters.forEach(l => {
-            const td = document.createElement('td');
-            td.className = "sub-cell";
-            td.innerHTML = l || "&nbsp;";
-            trLet.appendChild(td);
+    // 4. De Letters Rij (Zone C)
+    leafMap.forEach(leaf => {
+        const subId = leaf['sub']?.id;
+        const letters = subId === 1351 ? ['b','r','e'] : (subId === 1352 ? ['f','c'] : [null]);
+        letters.forEach((l, i) => {
+            const cell = document.createElement('div');
+            cell.className = 'grid-cell sub-cell';
+            cell.style.gridColumn = leaf.start + i;
+            cell.style.gridRow = maxDepth + 2;
+            cell.innerHTML = l || '&nbsp;';
+            grid.appendChild(cell);
         });
     });
-    table.appendChild(trLet);
 
-    return table;
+    return grid;
 }
 
-function nodeLeavesCount(node, all, leaves) {
-    const code = node['logische volgorde'];
-    const nodeLeaves = leaves.filter(l => l['logische volgorde'].startsWith(code));
-    return nodeLeaves.reduce((sum, leaf) => {
-        const sub = leaf['sub']?.id;
-        return sum + (sub === 1351 ? 3 : (sub === 1352 ? 2 : 1));
-    }, 0);
-}
-
-function scaleTable(table) {
-    const wrapper = table.parentElement;
+function scaleGridText(grid) {
+    const wrapper = grid.parentElement;
     let fs = 12;
-    table.style.fontSize = fs + "px";
-    while (table.scrollWidth > wrapper.clientWidth && fs > 7) {
+    grid.style.fontSize = fs + "px";
+    while (grid.scrollWidth > wrapper.clientWidth && fs > 7) {
         fs -= 0.5;
-        table.style.fontSize = fs + "px";
+        grid.style.fontSize = fs + "px";
     }
 }
 
