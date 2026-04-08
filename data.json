@@ -1195,8 +1195,8 @@
   {
     "id": 48,
     "order": "18.00000000000000000000",
-    "lbl": "Toepassing van het tarief<br/>op de klassering der<br/>ongebouwde eigendommen",
-    "titel": "Toepassing van het tarief<br/>op de klassering der<br/>ongebouwde eigendommen",
+    "lbl": "Toepassing van het tarief<br/>op de klassering<br/>der<br/>ongebouwde eigendommen",
+    "titel": "Toepassing van het tarief<br/>op de klassering<br/>der<br/>ongebouwde eigendommen",
     "Tabel": [
       {
         "id": 1,
@@ -1212,10 +1212,10 @@
     },
     "logische volgorde": "11",
     "volgorde lbl": "",
-    "Ouder-lbl": "11. Toepassing van het tarief<br/>op de klassering der<br/>ongebouwde eigendommen",
+    "Ouder-lbl": "11. Toepassing van het tarief<br/>op de klassering<br/>der<br/>ongebouwde eigendommen",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "Toepassing van het tarief<br/>op de klassering der<br/>ongebouwde eigendommen",
+    "hierarchie": "Toepassing van het tarief<br/>op de klassering<br/>der<br/>ongebouwde eigendommen",
     "sub": null,
     "Sem. Veld": [],
     "volgnr. log.": "11",
@@ -1244,7 +1244,7 @@
     "Ouder kolom 1": [
       {
         "id": 48,
-        "value": "Toepassing van het tarief<br/>op de klassering der<br/>ongebouwde eigendommen",
+        "value": "Toepassing van het tarief<br/>op de klassering<br/>der<br/>ongebouwde eigendommen",
         "order": "18.00000000000000000000"
       }
     ],
@@ -1297,7 +1297,7 @@
     "Ouder kolom 1": [
       {
         "id": 48,
-        "value": "Toepassing van het tarief<br/>op de klassering der<br/>ongebouwde eigendommen",
+        "value": "Toepassing van het tarief<br/>op de klassering<br/>der<br/>ongebouwde eigendommen",
         "order": "18.00000000000000000000"
       }
     ],
@@ -1350,7 +1350,7 @@
     "Ouder kolom 1": [
       {
         "id": 48,
-        "value": "Toepassing van het tarief<br/>op de klassering der<br/>ongebouwde eigendommen",
+        "value": "Toepassing van het tarief<br/>op de klassering<br/>der<br/>ongebouwde eigendommen",
         "order": "18.00000000000000000000"
       }
     ],
@@ -1403,7 +1403,7 @@
     "Ouder kolom 1": [
       {
         "id": 48,
-        "value": "Toepassing van het tarief<br/>op de klassering der<br/>ongebouwde eigendommen",
+        "value": "Toepassing van het tarief<br/>op de klassering<br/>der<br/>ongebouwde eigendommen",
         "order": "18.00000000000000000000"
       }
     ],
@@ -1456,7 +1456,7 @@
     "Ouder kolom 1": [
       {
         "id": 48,
-        "value": "Toepassing van het tarief<br/>op de klassering der<br/>ongebouwde eigendommen",
+        "value": "Toepassing van het tarief<br/>op de klassering<br/>der<br/>ongebouwde eigendommen",
         "order": "18.00000000000000000000"
       }
     ],
@@ -1581,8 +1581,8 @@
   {
     "id": 68,
     "order": "36.00000000000000000000",
-    "lbl": "26. Ongebouwd",
-    "titel": "Ongebouwd",
+    "lbl": "26. Ongeb.",
+    "titel": "Ongeb.",
     "Tabel": [
       {
         "id": 1,
@@ -1604,10 +1604,10 @@
     },
     "logische volgorde": "13.1",
     "volgorde lbl": "26",
-    "Ouder-lbl": "13. Belastbaar inkomen van ieder perceel",
+    "Ouder-lbl": "13. Belastbaar<br/>inkomen<br/>van<br/>ieder perceel",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "Belastbaar inkomen van ieder perceel: 26. Ongebouwd",
+    "hierarchie": "Belastbaar<br/>inkomen<br/>van<br/>ieder perceel: 26. Ongeb.",
     "sub": {
       "id": 1352,
       "value": "f|c",
@@ -3127,8 +3127,8 @@
   {
     "id": 105,
     "order": "42.33333333333333570181",
-    "lbl": "28. Bedrag<br/>van den<br/>aftrek<br/>wegens polder-<br/>en<br/>dijkslasten",
-    "titel": "Bedrag<br/>van den<br/>aftrek<br/>wegens polder-<br/>en<br/>dijkslasten",
+    "lbl": "28. Bedrag<br/>van den<br/>aftrek<br/>wegens<br/>polder-<br/>en<br/>dijks-lasten",
+    "titel": "Bedrag<br/>van den<br/>aftrek<br/>wegens<br/>polder-<br/>en<br/>dijks-lasten",
     "Tabel": [
       {
         "id": 2,
@@ -3144,10 +3144,10 @@
     },
     "logische volgorde": "14",
     "volgorde lbl": "28",
-    "Ouder-lbl": "14. Bedrag<br/>van den<br/>aftrek<br/>wegens polder-<br/>en<br/>dijkslasten",
+    "Ouder-lbl": "14. Bedrag<br/>van den<br/>aftrek<br/>wegens<br/>polder-<br/>en<br/>dijks-lasten",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "28. Bedrag<br/>van den<br/>aftrek<br/>wegens polder-<br/>en<br/>dijkslasten",
+    "hierarchie": "28. Bedrag<br/>van den<br/>aftrek<br/>wegens<br/>polder-<br/>en<br/>dijks-lasten",
     "sub": {
       "id": 1352,
       "value": "f|c",
@@ -3435,7 +3435,7 @@
     "Ouder kolom 1": [
       {
         "id": 113,
-        "value": "Verwijzing<br/>naar het<br/>algemeene<br/>register<br/>der<br/>hypotheken",
+        "value": "Verwijzing<br/>naar het<br/>algemeen<br/>register<br/>der<br/>hypotheken",
         "order": "0.85869565217391308209"
       }
     ],
@@ -3484,7 +3484,7 @@
     "Ouder kolom 1": [
       {
         "id": 113,
-        "value": "Verwijzing<br/>naar het<br/>algemeene<br/>register<br/>der<br/>hypotheken",
+        "value": "Verwijzing<br/>naar het<br/>algemeen<br/>register<br/>der<br/>hypotheken",
         "order": "0.85869565217391308209"
       }
     ],
@@ -3521,8 +3521,8 @@
   {
     "id": 113,
     "order": "0.85869565217391308209",
-    "lbl": "Verwijzing<br/>naar het<br/>algemeene<br/>register<br/>der<br/>hypotheken",
-    "titel": "Verwijzing<br/>naar het<br/>algemeene<br/>register<br/>der<br/>hypotheken",
+    "lbl": "Verwijzing<br/>naar het<br/>algemeen<br/>register<br/>der<br/>hypotheken",
+    "titel": "Verwijzing<br/>naar het<br/>algemeen<br/>register<br/>der<br/>hypotheken",
     "Tabel": [
       {
         "id": 2,
@@ -3538,10 +3538,10 @@
     },
     "logische volgorde": "03",
     "volgorde lbl": "",
-    "Ouder-lbl": "03. Verwijzing<br/>naar het<br/>algemeene<br/>register<br/>der<br/>hypotheken",
+    "Ouder-lbl": "03. Verwijzing<br/>naar het<br/>algemeen<br/>register<br/>der<br/>hypotheken",
     "Ouder kolom 2": [],
     "Ouder kolom 3": [],
-    "hierarchie": "Verwijzing<br/>naar het<br/>algemeene<br/>register<br/>der<br/>hypotheken",
+    "hierarchie": "Verwijzing<br/>naar het<br/>algemeen<br/>register<br/>der<br/>hypotheken",
     "sub": null,
     "Sem. Veld": [],
     "volgnr. log.": "3",
@@ -3639,7 +3639,7 @@
     "L2": null,
     "L3": null,
     "breedte": null,
-    "verticaal": false
+    "verticaal": true
   },
   {
     "id": 116,
