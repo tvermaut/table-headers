@@ -27,8 +27,8 @@ async function init() {
         wrapper.appendChild(grid);
         container.appendChild(wrapper);
         
-        // Schaal de tekst als het niet past
-        scaleGridText(grid);
+        // Directe schaling na renderen
+        adjustTableScale(grid);
     }
 }
 
@@ -36,14 +36,13 @@ function renderGridTable(items) {
     const sorted = items.sort((a, b) => (a['logische volgorde'] || "").localeCompare(b['logische volgorde'] || "", undefined, {numeric: true}));
     const leafNodes = sorted.filter(i => !sorted.some(other => (other['logische volgorde'] || "").startsWith(i['logische volgorde'] + ".")));
 
-    // 1. Bereken totale grid-breedte (units)
     let totalX = 0;
     const leafMap = leafNodes.map(leaf => {
         const sub = leaf['sub']?.id;
         const width = sub === 1351 ? 3 : (sub === 1352 ? 2 : 1);
         const start = totalX + 1;
         totalX += width;
-        return { ...leaf, start, end: totalX + 1 };
+        return { ...leaf, start, end: totalX + 1, width };
     });
 
     const maxDepth = Math.max(...sorted.map(i => i['logische volgorde'].split('.').length));
@@ -52,7 +51,6 @@ function renderGridTable(items) {
     grid.className = 'grid-container';
     grid.style.gridTemplateColumns = `repeat(${totalX}, 1fr)`;
 
-    // 2. Plaats de Header Cellen
     sorted.forEach(item => {
         const code = item['logische volgorde'];
         const depth = code.split('.').length;
@@ -79,13 +77,12 @@ function renderGridTable(items) {
 
         grid.appendChild(cell);
 
-        // Als dit een leaf is die hoger stopt, trek de cel door naar beneden
         if (!isGroup && depth < maxDepth) {
             cell.style.gridRow = `${depth} / ${maxDepth + 1}`;
         }
     });
 
-    // 3. De Nummers Rij (Zone B)
+    // Nummers
     leafMap.forEach(leaf => {
         const cell = document.createElement('div');
         cell.className = 'grid-cell num-cell no-t-border';
@@ -95,13 +92,16 @@ function renderGridTable(items) {
         grid.appendChild(cell);
     });
 
-    // 4. De Letters Rij (Zone C)
+    // Letters
     leafMap.forEach(leaf => {
         const subId = leaf['sub']?.id;
         const letters = subId === 1351 ? ['b','r','e'] : (subId === 1352 ? ['f','c'] : [null]);
         letters.forEach((l, i) => {
             const cell = document.createElement('div');
             cell.className = 'grid-cell sub-cell';
+            // Als het de laatste letter van de leaf is, geef harde rand
+            if (i === letters.length - 1) cell.classList.add('sub-cell-end');
+            
             cell.style.gridColumn = leaf.start + i;
             cell.style.gridRow = maxDepth + 2;
             cell.innerHTML = l || '&nbsp;';
@@ -112,14 +112,21 @@ function renderGridTable(items) {
     return grid;
 }
 
-function scaleGridText(grid) {
+function adjustTableScale(grid) {
     const wrapper = grid.parentElement;
-    let fs = 12;
+    const availableWidth = wrapper.clientWidth - 10;
+    let fs = 14; // Begin wat groter
     grid.style.fontSize = fs + "px";
-    while (grid.scrollWidth > wrapper.clientWidth && fs > 7) {
-        fs -= 0.5;
+
+    // Krimp totdat de grid fysiek in de wrapper past zonder scroll
+    // We gebruiken scrollWidth van de grid t.o.v. de clientWidth van de wrapper
+    while (grid.scrollWidth > availableWidth && fs > 6) {
+        fs -= 0.2;
         grid.style.fontSize = fs + "px";
     }
 }
 
 window.onload = init;
+window.onresize = () => {
+    document.querySelectorAll('.grid-container').forEach(adjustTableScale);
+};

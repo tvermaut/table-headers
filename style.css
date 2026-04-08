@@ -2,15 +2,16 @@ body { font-family: sans-serif; color: #555; margin: 20px; }
 
 h2 { font-weight: normal; margin-bottom: 10px; }
 
-/* De dubbele border: alleen boven en zijkanten */
+/* De dubbele border: alleen boven en zijkanten, onderaan open */
 .table-wrapper { 
     margin-bottom: 80px; 
     border-top: 2px solid #444;
     border-left: 2px solid #444;
     border-right: 2px solid #444;
     padding: 2px 2px 0 2px;
-    display: inline-block;
-    width: 100%;
+    display: block;
+    width: fit-content;
+    min-width: 100%;
     box-sizing: border-box;
 }
 
@@ -20,7 +21,7 @@ h2 { font-weight: normal; margin-bottom: 10px; }
     border-top: 1px solid #555;
     border-left: 1px solid #555;
     background-color: #fff;
-    /* De kolommen worden berekend in JS */
+    table-layout: fixed;
 }
 
 .grid-cell {
@@ -34,26 +35,28 @@ h2 { font-weight: normal; margin-bottom: 10px; }
     padding: 4px;
     box-sizing: border-box;
     font-size: 12px;
-    line-height: 1.2;
+    line-height: 1.1;
     background: #fff;
+    overflow: hidden; /* Harde grens */
 }
 
 /* Accolade: Puntje boven, armen beneden */
 .accolade-zone {
-    height: 20px;
+    height: 30px;
     width: 100%;
     position: relative;
     margin-top: 4px;
+    margin-bottom: -10px; /* Overlap naar beneden voor verbinding */
 }
 
 .accolade-zone::after {
     content: "";
     position: absolute;
     top: 0;
-    left: 8px;
-    right: 8px;
-    height: 16px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 16' preserveAspectRatio='none'%3E%3Cpath d='M0,16 C0,8 15,6 35,6 L45,6 C48,6 50,0 50,0 C50,2 52,6 55,6 L75,6 C90,6 100,8 100,16' fill='none' stroke='%23555' stroke-width='1'/%3E%3C/svg%3E");
+    left: 10px;
+    right: 10px;
+    height: 25px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20' preserveAspectRatio='none'%3E%3Cpath d='M0,20 C0,10 15,8 35,8 L45,8 C48,8 50,0 50,0 C50,2 52,8 55,8 L75,8 C90,8 100,10 100,20' fill='none' stroke='%23555' stroke-width='0.8'/%3E%3C/svg%3E");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -67,6 +70,12 @@ h2 { font-weight: normal; margin-bottom: 10px; }
 .sub-cell {
     height: 20px;
     font-size: 10px;
+    border-right: 1px dashed #ccc !important; /* Grijze stippellijn */
+}
+
+/* De laatste letter van een groep moet weer een harde lijn hebben */
+.sub-cell-end {
+    border-right: 1px solid #555 !important;
 }
 
 .vertical-text {
@@ -76,6 +85,5 @@ h2 { font-weight: normal; margin-bottom: 10px; }
     display: inline-block;
 }
 
-/* De speciale 'no-border' voor de accolades en nummers koppeling */
 .no-b-border { border-bottom: none !important; }
 .no-t-border { border-top: none !important; }
