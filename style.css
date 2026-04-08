@@ -1,21 +1,19 @@
-body { font-family: sans-serif; color: #555; margin: 20px; }
+body { font-family: sans-serif; color: #555; margin: 30px; }
 
-h2 { font-weight: normal; margin-bottom: 15px; color: #333; }
+h2 { font-weight: normal; margin-bottom: 20px; border-bottom: 1px solid #555; }
 
 .table-wrapper { 
     margin-bottom: 80px; 
-    width: 100%;
-    border-top: 2px solid #444;
-    border-left: 2px solid #444;
-    border-right: 2px solid #444;
+    border-top: 2px solid #555;
+    border-left: 2px solid #555;
+    border-right: 2px solid #555;
     padding: 2px 2px 0 2px;
-    box-sizing: border-box;
 }
 
 table {
-    width: 100%; /* Dwing volledige breedte af */
+    width: 100%;
     border-collapse: collapse;
-    table-layout: fixed; 
+    table-layout: auto;
     border-top: 1px solid #555;
     border-left: 1px solid #555;
     border-right: 1px solid #555;
@@ -25,68 +23,58 @@ th, td {
     border-right: 1px solid #555;
     border-bottom: 1px solid #555;
     padding: 0;
+    font-weight: normal;
+    text-align: center;
     background: #fff;
     overflow: hidden;
+    position: relative;
 }
 
+/* Verberg de lijnen die je storen */
 .no-border-bottom { border-bottom: none !important; }
 .no-border-top { border-top: none !important; }
 
-/* De Slimme Accolade: Puntje blijft scherp */
-.accolade-row {
-    height: 32px;
-    width: 100%;
-    position: relative;
-    margin-bottom: -10px;
-    /* We gebruiken een SVG als achtergrond die niet uniform schaalt */
-    background-image: 
-        /* De linker arm */
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 50 20'%3E%3Cpath d='M0,20 C0,10 15,8 35,8 L50,8' fill='none' stroke='%23555' stroke-width='0.8'/%3E%3C/svg%3E"),
-        /* De rechter arm */
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 50 20'%3E%3Cpath d='M0,8 L15,8 C35,8 50,10 50,20' fill='none' stroke='%23555' stroke-width='0.8'/%3E%3C/svg%3E"),
-        /* Het scherpe middelpuntje */
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M0,8 C5,8 10,2 10,0 C10,2 15,8 20,8' fill='none' stroke='%23555' stroke-width='0.8'/%3E%3C/svg%3E");
-    background-position: left bottom, right bottom, center top;
-    background-size: calc(50% - 10px) 28px, calc(50% - 10px) 28px, 20px 28px;
+/* De Sierlijke Accolade - Wijst omlaag */
+.group-cell {
+    border-bottom: none;
+    padding-bottom: 25px; /* Ruimte voor de krul */
+}
+
+.group-cell::after {
+    content: "";
+    position: absolute;
+    bottom: 5px;
+    left: 8px; /* Een klein beetje witruimte tot de rand */
+    right: 8px; /* Een klein beetje witruimte tot de rand */
+    height: 16px;
+    /* De Sierlijke SVG curve */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 16' preserveAspectRatio='none'%3E%3Cpath d='M0,0 C0,12 15,14 35,14 L45,14 C48,14 50,16 50,16 C50,16 52,14 55,14 L75,14 C90,14 100,12 100,0' fill='none' stroke='%23555' stroke-width='0.8'/%3E%3C/svg%3E");
+    background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 
-.title-cell { 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 20px;
-    padding: 2px;
-}
+.title-cell { padding: 6px 4px; font-size: 11px; display: flex; align-items: center; justify-content: center; }
 
+/* De Vaste Nummers-Rij */
 .num-row-cell {
-    height: 22px;
-    font-weight: bold;
-    font-size: 0.9em;
+    height: 35px;
+    font-size: 11px;
+    vertical-align: bottom;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #555;
 }
 
-.sub-cell {
-    height: 20px;
-    font-size: 0.8em;
-    border-bottom: none;
+/* De Vaste Letters-Rij ONDER de lijn */
+.sub-row-cell {
+    height: 25px;
+    font-size: 10px;
+    vertical-align: middle;
+    border-bottom: none; /* Geen lijn aan de onderkant zoals gevraagd */
 }
 
-/* Verticale tekst met variabele font-size */
 .vertical-text {
     writing-mode: vertical-rl;
     transform: rotate(180deg);
-    display: inline-block;
     white-space: nowrap;
-    line-height: 1;
-    padding: 8px 0;
-    margin: 0 auto;
-}
-
-/* Horizontale tekst mag groot worden */
-.horizontal-text {
-    display: block;
-    width: 100%;
-    padding: 4px;
-    box-sizing: border-box;
+    display: inline-block;
 }
