@@ -1,14 +1,21 @@
 body { font-family: sans-serif; color: #555; margin: 20px; }
 
-.table-wrapper { margin-bottom: 80px; overflow-x: hidden; }
+.table-wrapper { 
+    margin-bottom: 60px; 
+    display: inline-block; /* Zorgt dat de wrapper strak om de tabel sluit */
+    min-width: 100%;
+    /* De dubbele buitenrand (dikker aan de buitenkant) */
+    outline: 2px solid #444;
+    outline-offset: 2px;
+    padding: 0;
+    border-bottom: none; /* Geen dubbele rand onderin zoals gevraagd */
+}
 
 table {
     width: 100%;
     border-collapse: collapse;
     table-layout: auto;
-    border-top: 1px solid #555;
-    border-left: 1px solid #555;
-    transition: font-size 0.2s ease; /* Zachte overgang bij schalen */
+    border: 1px solid #555; /* De binnenste buitenrand */
 }
 
 th, td {
@@ -18,14 +25,24 @@ th, td {
     font-weight: normal;
     text-align: center;
     background: #fff;
+    white-space: nowrap; /* NOOIT woorden afbreken, tenzij <br/> */
 }
 
-/* Verberg lijnen volgens verzoek */
+/* Verberg lijnen */
 .no-border-bottom { border-bottom: none !important; }
 .no-border-top { border-top: none !important; }
 
+.title-cell { 
+    padding: 2px 4px; /* Minimale padding voor hoogtebesparing */
+    font-size: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .accolade-row {
-    height: 14px;
+    height: 12px; /* Iets compacter */
     width: 100%;
     position: relative;
 }
@@ -36,32 +53,22 @@ th, td {
     top: 0;
     left: 4px;
     right: 4px;
-    height: 12px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 14' preserveAspectRatio='none'%3E%3Cpath d='M0,14 C0,6 15,4 35,4 L45,4 C48,4 50,0 50,0 C50,2 52,4 55,4 L75,4 C90,4 100,6 100,14' fill='none' stroke='%23555' stroke-width='0.8'/%3E%3C/svg%3E");
+    height: 10px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 14' preserveAspectRatio='none'%3E%3Cpath d='M0,14 C0,6 15,4 35,4 L45,4 C48,4 50,0 50,0 C50,2 52,4 55,4 L75,4 C90,4 100,6 100,14' fill='none' stroke='%23555' stroke-width='1'/%3E%3C/svg%3E");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 
-.title-cell { 
-    padding: 4px 2px; /* Minimale basis padding */
-    font-size: 1em; /* Relatief aan de tabel font-size */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Meer padding als er ruimte is (via JS class) */
-.has-space .title-cell { padding: 8px 6px; }
-
 .num-row-cell {
-    height: 25px;
+    height: 18px; /* Zeer compacte hoogte voor nummers */
+    line-height: 18px;
     font-size: 0.9em;
-    font-weight: bold; /* Nummers bold */
-    padding: 2px;
+    font-weight: bold;
+    padding: 0 2px;
 }
 
 .sub-cell {
-    height: 20px;
+    height: 18px;
     font-size: 0.8em;
     border-bottom: none;
 }
@@ -69,8 +76,7 @@ th, td {
 .vertical-text {
     writing-mode: vertical-rl;
     transform: rotate(180deg);
-    white-space: nowrap;
     display: inline-block;
-    padding: 0; /* Verwijder extra padding rond de gedraaide tekst */
-    margin: 5px 0;
+    padding: 4px 1px; /* Minimale padding voor verticale tekst */
+    margin: 0;
 }

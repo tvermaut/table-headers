@@ -16,19 +16,20 @@ async function init() {
     });
 
     for (const id in tables) {
-        const wrapper = document.createElement('div');
-        wrapper.className = 'table-wrapper';
+        const outerWrapper = document.createElement('div');
+        outerWrapper.className = 'table-wrapper';
         
         const h2 = document.createElement('h2');
         h2.style.fontWeight = 'normal';
+        h2.style.marginBottom = '10px';
         h2.textContent = tables[id].name || `Tabel ${id}`;
-        wrapper.appendChild(h2);
+        
+        container.appendChild(h2); // Titel buiten de wrapper met outline
 
         const htmlTable = renderPerfectTable(tables[id].rows);
-        wrapper.appendChild(htmlTable);
-        container.appendChild(wrapper);
+        outerWrapper.appendChild(htmlTable);
+        container.appendChild(outerWrapper);
 
-        // Pas schaling toe nadat de tabel in de DOM staat
         adjustTableScale(htmlTable);
     }
 }
@@ -38,7 +39,7 @@ function renderPerfectTable(items) {
         (a['logische volgorde'] || "").localeCompare(b['logische volgorde'] || "", undefined, {numeric: true})
     );
 
-    const leafNodes = sorted.filter(i => !sorted.some(other => (other['logische volgorde'] || "").startsWith(i['logische volgorde'] + ".")));
+    const leafNodes = sorted.filter(i => !sorted.some(other => (other['logische volgombe'] || "").startsWith(i['logische volgorde'] + ".")));
     const maxLevel = Math.max(...sorted.map(i => i['logische volgorde'].split('.').length));
 
     const table = document.createElement('table');
@@ -62,8 +63,13 @@ function renderPerfectTable(items) {
             const isLeaf = !sorted.some(other => (other['logische volgorde'] || "").startsWith(code + "."));
             
             th.colSpan = getWidth(node);
-            if (isLeaf) th.rowSpan = (maxLevel - level) + 1;
-            if (!isLeaf) th.className = 'no-border-bottom';
+            if (isLeaf) {
+                th.rowSpan = (maxLevel - level) + 1;
+                // STRENG: Verwijder de onderrand van de laatste tekstcel voor de nummers
+                th.classList.add('no-border-bottom');
+            } else {
+                th.classList.add('no-border-bottom');
+            }
 
             const titleDiv = document.createElement('div');
             titleDiv.className = 'title-cell';
@@ -83,7 +89,7 @@ function renderPerfectTable(items) {
         table.appendChild(tr);
     }
 
-    // Zone: Kolomnummers (Geen bovenlijn, Bold)
+    // Zone: Nummers (Zonder bovenlijn, Bold, Compact)
     const numTr = document.createElement('tr');
     leafNodes.forEach(node => {
         const th = document.createElement('th');
@@ -111,29 +117,17 @@ function renderPerfectTable(items) {
     return table;
 }
 
-/**
- * Verkleint de font-size van de tabel als deze breder is dan het scherm.
- * Voegt ook ruimere padding toe als er plek genoeg is.
- */
 function adjustTableScale(table) {
-    const maxWidth = window.innerWidth - 40; // 20px marge aan weerszijden
-    let currentFontSize = 12; // Start font-size in pixels
+    const maxWidth = window.innerWidth - 60;
+    let currentFontSize = 12;
     table.style.fontSize = currentFontSize + "px";
 
-    // Stap 1: Check of we extra padding kunnen veroorloven
-    if (table.offsetWidth < maxWidth * 0.8) {
-        table.classList.add('has-space');
-    }
-
-    // Stap 2: Verklein font-size tot het past (tot minimaal 8px)
-    while (table.offsetWidth > maxWidth && currentFontSize > 8) {
-        currentFontSize -= 0.5;
+    // Geen 'has-space' meer gebruiken om de hoogte maximaal te beperken
+    while (table.offsetWidth > maxWidth && currentFontSize > 7) {
+        currentFontSize -= 0.3;
         table.style.fontSize = currentFontSize + "px";
     }
 }
 
 window.onload = init;
-// Herschaal bij window resize
-window.onresize = () => {
-    document.querySelectorAll('table').forEach(adjustTableScale);
-};
+window.onresize = () => document.querySelectorAll('table').forEach(adjustTableScale);
