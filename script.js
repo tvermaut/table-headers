@@ -41,7 +41,6 @@ function renderPerfectTable(items) {
 
     const table = document.createElement('table');
 
-    // Bereken totale breedte-units
     const getLeafWidth = (node) => {
         const subId = node['sub']?.id;
         return (subId === 1351) ? 3 : (subId === 1352 ? 2 : 1);
@@ -49,13 +48,13 @@ function renderPerfectTable(items) {
 
     const totalWidthUnits = leafNodes.reduce((sum, leaf) => sum + getLeafWidth(leaf), 0);
 
-    // Stel de breedte van de kolommen in via <colgroup>
     const colgroup = document.createElement('colgroup');
     leafNodes.forEach(leaf => {
-        const subId = leaf['sub']?.id;
-        const letters = (subId === 1351) ? 3 : (subId === 1352 ? 2 : 1);
-        for(let i=0; i<letters; i++) {
+        const units = getLeafWidth(leaf);
+        for(let i=0; i<units; i++) {
             const col = document.createElement('col');
+            // Gebruik procentuele breedte, maar we laten de browser iets meer ruimte
+            // voor kolommen met verticale tekst in de auto-scaling later.
             col.style.width = (100 / totalWidthUnits) + "%";
             colgroup.appendChild(col);
         }
@@ -103,7 +102,6 @@ function renderPerfectTable(items) {
         table.appendChild(tr);
     }
 
-    // Rij: Nummers
     const numTr = document.createElement('tr');
     leafNodes.forEach(node => {
         const th = document.createElement('th');
@@ -114,7 +112,6 @@ function renderPerfectTable(items) {
     });
     table.appendChild(numTr);
 
-    // Rij: Letters
     const subTr = document.createElement('tr');
     leafNodes.forEach(node => {
         const subId = node['sub']?.id;
@@ -132,15 +129,29 @@ function renderPerfectTable(items) {
 }
 
 function adjustTableScale(table) {
+    const wrapper = table.parentElement;
     const maxWidth = window.innerWidth - 60;
     let currentFontSize = 12;
     table.style.fontSize = currentFontSize + "px";
 
-    // Verklein font-size tot de tabel fysiek binnen het scherm past
-    while (table.scrollWidth > table.parentElement.clientWidth && currentFontSize > 6) {
+    // Stap 1: Als de tabel te breed is, font verkleinen
+    while (table.scrollWidth > wrapper.clientWidth && currentFontSize > 7) {
         currentFontSize -= 0.2;
         table.style.fontSize = currentFontSize + "px";
     }
+
+    // Stap 2: Extra check voor verticale tekst. 
+    // Als een verticale span breder is dan zijn TH, moet de font nog verder omlaag.
+    const verticalSpans = table.querySelectorAll('.vertical-text');
+    verticalSpans.forEach(span => {
+        const cell = span.closest('th');
+        if (span.offsetHeight > cell.clientWidth) { // offsetHeight is breedte bij 90deg rotatie
+             while (span.offsetHeight > cell.clientWidth && currentFontSize > 6) {
+                currentFontSize -= 0.1;
+                table.style.fontSize = currentFontSize + "px";
+             }
+        }
+    });
 }
 
 window.onload = init;
