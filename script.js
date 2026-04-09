@@ -35,10 +35,17 @@ function renderTable(items) {
     
     const table = document.createElement('table');
 
-    // Breedte-eenheden bepalen
-    const getLeafUnits = (n) => (n['sub']?.id === 1351) ? 3 : (n['sub']?.id === 1352 ? 2 : 1);
+    // Functie om de sub-letters te bepalen op basis van pipe-scheiding
+    const getSubLetters = (node) => {
+        const subVal = node['sub']?.value || "";
+        if (!subVal) return [null];
+        return subVal.split('|').map(s => s.trim());
+    };
+
+    const getLeafUnits = (n) => getSubLetters(n).length;
     const maxLevel = Math.max(...sorted.map(i => i['logische volgorde'].split('.').length));
 
+    // 1. Header Rijen
     for (let level = 1; level <= maxLevel; level++) {
         const tr = document.createElement('tr');
         const nodesAtLevel = sorted.filter(n => n['logische volgorde'].split('.').length === level);
@@ -73,22 +80,24 @@ function renderTable(items) {
         table.appendChild(tr);
     }
 
-    // Rij voor de kolomnummers
-    const nTr = document.createElement('tr');
-    leafNodes.forEach(l => {
-        const td = document.createElement('td');
-        td.className = 'num-cell';
-        td.colSpan = getLeafUnits(l);
-        td.textContent = l['volgorde lbl'];
-        nTr.appendChild(td);
-    });
-    table.appendChild(nTr);
+    // 2. Kolomnummers Rij (alleen als er nummers zijn)
+    const hasAnyNumbers = leafNodes.some(l => l['volgorde lbl'] && l['volgorde lbl'].trim() !== "");
+    if (hasAnyNumbers) {
+        const nTr = document.createElement('tr');
+        leafNodes.forEach(l => {
+            const td = document.createElement('td');
+            td.className = 'num-cell';
+            td.colSpan = getLeafUnits(l);
+            td.textContent = l['volgorde lbl'] || '';
+            nTr.appendChild(td);
+        });
+        table.appendChild(nTr);
+    }
 
-    // Rij voor de sub-letters (b|r|e)
+    // 3. Sub-letters Rij
     const lTr = document.createElement('tr');
     leafNodes.forEach(l => {
-        const subId = l['sub']?.id;
-        const chars = subId === 1351 ? ['b','r','e'] : (subId === 1352 ? ['f','c'] : [null]);
+        const chars = getSubLetters(l);
         chars.forEach((c, idx) => {
             const td = document.createElement('td');
             td.className = 'sub-cell';

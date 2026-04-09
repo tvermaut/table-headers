@@ -2,26 +2,24 @@ body { font-family: sans-serif; color: #555; margin: 20px; }
 
 h2 { font-weight: normal; margin-bottom: 10px; }
 
-/* Wrapper met dubbele rand, alleen boven en opzij */
 .table-wrapper { 
     margin-bottom: 60px; 
     border-top: 2px solid #444;
     border-left: 2px solid #444;
     border-right: 2px solid #444;
     padding: 2px 2px 0 2px;
-    display: inline-block; /* Zorgt dat de rand strak om de tabel sluit */
+    display: inline-block;
     box-sizing: border-box;
 }
 
 table {
     border-collapse: collapse;
-    /* Geen width: 100% meer, de tekst bepaalt de breedte */
     table-layout: auto; 
     border-top: 1px solid #555;
     border-left: 1px solid #555;
     border-right: 1px solid #555;
     border-bottom: none;
-    line-height: 1; /* Maximale verticale compactheid */
+    line-height: 1;
 }
 
 th, td {
@@ -31,10 +29,9 @@ th, td {
     font-weight: normal;
     text-align: center;
     background: #fff;
-    white-space: nowrap; /* Nooit afbreken */
+    white-space: nowrap;
 }
 
-/* Accolade: Compact en overlappend */
 .accolade-row {
     height: 20px; 
     width: 100%;
@@ -57,11 +54,12 @@ th, td {
 .num-cell {
     font-weight: bold;
     height: 18px;
-    border-top: none !important;
+    border-top: none !important; /* Lijn boven nummer weg */
 }
 
 .sub-cell {
     height: 16px;
+    font-size: 10px;
     border-right: 1px dashed #ccc !important;
 }
 
@@ -74,11 +72,12 @@ th, td {
 }
 
 .title-container {
-    padding: 2px 4px; /* Iets meer horizontale ademruimte voor de tekst */
+    padding: 2px 4px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+/* Open onderkant */
 tr:last-child td { border-bottom: none !important; }
